@@ -22,26 +22,20 @@
       },
       "preview": {
         "kind": "page",
-        "path": "index.html"
+        "path": "dist/index.html"
       },
       "dependencies": [
-        "src/main.jsx",
-        "src/App.jsx",
-        "src/styles.css",
-        "assets/plates/panorama-art.png",
-        "assets/plates/top-charred-timber.png",
-        "assets/plates/view-rail-timber.png",
-        "assets/plates/shoji-paper.png",
-        "assets/plates/shoji-lintel.png",
-        "assets/plates/shoji-post.png",
-        "node_modules/@fontsource/cantata-one/latin-400.css",
-        "node_modules/@fontsource/cantata-one/files/cantata-one-latin-400-normal.woff2",
-        "node_modules/@fontsource/cormorant-garamond/latin-400.css",
-        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2",
-        "node_modules/@fontsource/cormorant-garamond/latin-500.css",
-        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
-        "node_modules/@fontsource/cormorant-garamond/latin-600.css",
-        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2"
+        "dist/assets/index-BGm12PSa.js",
+        "dist/assets/index-CEng-bnI.css",
+        "dist/assets/panorama-art-BOvLHQRd.png",
+        "dist/assets/top-charred-timber-Cxmsx97i.png",
+        "dist/assets/view-rail-timber-DXTgdVL4.png",
+        "dist/assets/shoji-paper-D1T7OYdQ.png",
+        "dist/assets/shoji-lintel-n-PNvB6V.png",
+        "dist/assets/cantata-one-latin-400-normal-aP5POKto.woff2",
+        "dist/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "dist/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "dist/assets/cormorant-garamond-latin-600-normal-Co1r35X9.woff2"
       ]
     }
   ]
