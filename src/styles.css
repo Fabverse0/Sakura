@@ -353,10 +353,31 @@ a {
 }
 
 @media (max-width: 1100px) {
+  body {
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
   .comp-frame {
+    display: flex;
     width: 100%;
     height: auto;
+    min-height: 100vh;
     aspect-ratio: auto;
+    flex-direction: column;
+  }
+
+  .top-beam {
+    flex: 0 0 auto;
+  }
+
+  .page-main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
   }
 
   .top-beam {
@@ -409,6 +430,7 @@ a {
     position: relative;
     inset: auto;
     height: clamp(390px, 48vw, 530px);
+    flex: 0 0 auto;
     overflow: hidden;
   }
 
@@ -446,6 +468,7 @@ a {
     inset: auto;
     top: auto;
     display: grid;
+    flex: 0 0 auto;
     min-height: 68px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     padding: 8px clamp(30px, 10vw, 120px);
@@ -475,6 +498,7 @@ a {
     inset: auto;
     top: auto;
     height: auto;
+    flex: 1 0 auto;
     min-height: 250px;
     padding: clamp(48px, 6vw, 70px) clamp(9vw, 11vw, 150px) clamp(42px, 5vw, 60px);
     background-position: center;
