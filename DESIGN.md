@@ -156,16 +156,27 @@ The composition uses square-edged rectangular regions. No border-radius scale or
 ### Panorama focus rail
 - **Style:** Three text buttons on the repeated timber rail, with transparent backgrounds and no border. The rail labels use the Cormorant Garamond label style.
 - **State:** The selected control has white text and a short `1px` maple-red rule. Buttons expose their state through `aria-pressed`.
-- **Interaction:** Cabang, Puncak, and Pagoda select image origins `17% 52%`, `52% 40%`, and `72% 57%`. The image scales to `1.12` and transitions its transform over `900ms cubic-bezier(0.16, 1, 0.3, 1)`. At `700px` and below, `object-position` also follows the selected origin.
+- **Interaction:** Cabang, Puncak, and Pagoda select image origins `17% 52%`, `52% 40%`, and `72% 57%`. The image scales to `1.12` and transitions its transform over `900ms cubic-bezier(0.16, 1, 0.3, 1)`. The selected view updates the shoji note and the matching detail card. At `700px` and below, `object-position` also follows the selected origin.
 - **Responsive:** The rail changes from absolutely positioned controls to a three-column grid at `1100px`.
 
 ### Shoji description
-- **Style:** A warm paper texture sits behind the heading and one Indonesian sentence describing visible artwork details. The section uses raster timber for its posts and lintel, a CSS lattice at the edges, and the maple shadow image at the lower right.
+- **Style:** A warm paper texture sits behind the heading and a live Indonesian note describing the selected detail. The section uses raster timber for its posts and lintel, a CSS lattice at the edges, and the maple shadow image at the lower right.
 - **Typography:** The heading uses the title role; the paragraph uses the body role and becomes a single flowing block on smaller screens.
+
+### Panorama detail cards
+- **Style:** Three square-edged paper buttons describe the visible Cabang, Puncak, and Pagoda details below the panorama.
+- **Interaction:** Selecting a card updates the shared focus state, marks the matching rail control and card with `aria-pressed`, then returns the visitor to the panorama.
+- **Responsive:** Cards form a three-column row on wide screens and adapt to narrower widths without horizontal overflow.
+
+### Guided pause
+- **Style:** A dark ink section follows the panorama details. Its shoji pane and large timer keep the optional 30-second pause visually tied to the artwork.
+- **Interaction:** Visitors start three cycles of four seconds inhaling and six seconds exhaling. The timer counts down, the status text gives each cue, the pane expands and contracts, and an end action remains available throughout.
+- **Reduced motion:** The pane stays still while the status text and timer continue to communicate the sequence.
+- **Responsive:** Text and controls use two columns on wide screens and stack on small screens.
 
 ### Focus and motion
 - **Keyboard focus:** All links and buttons use the global `2px solid #e03a32` focus-visible outline with `4px` offset.
-- **Reduced motion:** `prefers-reduced-motion: reduce` disables smooth scrolling and sets transitions to `0.01ms`.
+- **Reduced motion:** `prefers-reduced-motion: reduce` disables smooth scrolling, sets transitions to `0.01ms`, and keeps the breathing pane static.
 
 ## Do's and Don'ts
 
