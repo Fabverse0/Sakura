@@ -4,8 +4,13 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: Georgia, "Times New Roman", serif;
   background: #151619;
-  --r-panorama-art-x: 0%;
+  color: #f2eee7;
+  --ink: #151619;
+  --paper: #ede8e3;
+  --maple: #bf1818;
+  --ivory: #f2eee7;
   --r-panorama-art-y: 5.85%;
   --r-panorama-art-w: 100%;
   --r-panorama-art-h: 72.18%;
@@ -22,6 +27,7 @@
 html {
   min-width: 320px;
   scroll-behavior: smooth;
+  scrollbar-color: #5a4432 #151619;
 }
 
 body {
@@ -29,6 +35,25 @@ body {
   margin: 0;
   overflow-x: hidden;
   background: #151619;
+}
+
+button,
+a {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  color: #fff;
+  background: #9f1717;
 }
 
 #root {
@@ -42,29 +67,150 @@ body {
   aspect-ratio: 1586 / 992;
   margin-inline: auto;
   overflow: hidden;
-  background: #151619;
+  background: var(--ink);
+  isolation: isolate;
 }
 
 .top-beam {
   position: absolute;
   inset: 0 0 auto;
-  z-index: 2;
+  z-index: 5;
   height: var(--r-panorama-art-y);
   background-repeat: repeat-x;
   background-position: 35.31vw 0.4vh;
   background-size: 26.48vw 5.04vh;
 }
 
+.brand-wordmark {
+  position: absolute;
+  top: 1.61vh;
+  left: 4.92%;
+  display: flex;
+  width: 12.55%;
+  height: 2.92vh;
+  align-items: center;
+  color: #f1f0e9;
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 1.89vw;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-nav {
+  position: absolute;
+  inset: 0;
+}
+
+.header-nav__link {
+  position: absolute;
+  top: 1.21vh;
+  display: flex;
+  height: 4.33vh;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f3;
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 1.45vw;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header-nav__link--active {
+  left: 81.21%;
+  width: 4.67%;
+}
+
+.header-nav__link:last-child {
+  left: 88.78%;
+  width: 5.93%;
+}
+
+.header-nav__link--active::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 0.32vh;
+  background: #d51e1a;
+  content: "";
+}
+
+.header-nav__link:hover,
+.brand-wordmark:hover {
+  color: #fff;
+}
+
+.hero-stage {
+  position: absolute;
+  inset: 0;
+}
+
 .panorama-art {
   position: absolute;
-  left: var(--r-panorama-art-x);
   top: var(--r-panorama-art-y);
+  left: 0;
   z-index: 1;
   display: block;
   width: var(--r-panorama-art-w);
   height: var(--r-panorama-art-h);
   object-fit: cover;
   object-position: center 50%;
+  transform: scale(1);
+  transform-origin: var(--focus-origin);
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.comp-frame[data-focus="cabang"] .panorama-art,
+.comp-frame[data-focus="puncak"] .panorama-art,
+.comp-frame[data-focus="pagoda"] .panorama-art {
+  transform: scale(1.12);
+}
+
+.hero-headline {
+  position: absolute;
+  top: 42.44%;
+  left: 3.91%;
+  z-index: 2;
+  width: 36.44%;
+  height: 11.19%;
+  margin: 0;
+  color: #f2eee7;
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 4.035vw;
+  font-weight: 400;
+  letter-spacing: -0.018em;
+  line-height: 0.9;
+  text-shadow: 0 2px 8px rgb(17 12 10 / 28%);
+}
+
+.primary-action {
+  position: absolute;
+  top: 56.85%;
+  left: 4.22%;
+  z-index: 2;
+  display: flex;
+  width: 18.73%;
+  height: 6.05%;
+  align-items: center;
+  justify-content: center;
+  background: var(--maple);
+  color: #f8f5f4;
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 1.4vw;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.primary-action:hover {
+  background: #a91616;
+  color: #fff;
 }
 
 .view-rail {
@@ -73,20 +219,71 @@ body {
   top: var(--r-view-rail-timber-y);
   z-index: 3;
   height: var(--r-view-rail-timber-h);
+  background-color: #1a1817;
   background-repeat: repeat-x;
-  background-position: 81.02vw 1.01vh;
-  background-size: 10.09vw 4.84vh;
+  background-position: left center;
+  background-size: 25.2vw 6.35vh;
+}
+
+.view-control {
+  position: absolute;
+  top: 8.03%;
+  display: flex;
+  height: 77.8%;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #f2f1ee;
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 1.15vw;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 55%);
+  transition: color 160ms ease;
+}
+
+.view-control:nth-child(1) {
+  left: 20.18%;
+  width: 11.22%;
+}
+
+.view-control:nth-child(2) {
+  left: 44.83%;
+  width: 11.03%;
+}
+
+.view-control:nth-child(3) {
+  left: 69.42%;
+  width: 11.22%;
+}
+
+.view-control:hover,
+.view-control[aria-pressed="true"] {
+  color: #fff;
+}
+
+.view-control[aria-pressed="true"]::after {
+  position: absolute;
+  bottom: 0;
+  width: 1.4em;
+  height: 1px;
+  background: #d51e1a;
+  content: "";
 }
 
 .shoji-wall {
   position: absolute;
   inset-inline: 0;
   top: var(--r-shoji-wall-y);
+  z-index: 4;
   height: var(--r-shoji-wall-h);
   overflow: hidden;
+  background-color: var(--paper);
   background-repeat: repeat;
   background-position: 40.98vw 2.21vh;
   background-size: 20.18vw 5.24vh;
+  color: #141211;
 }
 
 .shoji-lintel {
@@ -94,6 +291,7 @@ body {
   inset-inline: 0;
   top: 0.1vh;
   height: 1.51vh;
+  border-top: 1px solid rgb(56 43 34 / 65%);
   background-repeat: repeat-x;
   background-position: 40.98vw 0;
   background-size: 20.18vw 1.51vh;
@@ -101,10 +299,11 @@ body {
 
 .shoji-post {
   position: absolute;
-  top: 2.11vh;
+  top: 0;
   width: 0.88vw;
-  height: 4.03vh;
-  background-repeat: no-repeat;
+  height: 100%;
+  background-repeat: repeat-y;
+  background-position: left 2.11vh;
   background-size: 0.88vw 4.03vh;
 }
 
@@ -116,9 +315,54 @@ body {
   right: 4.92%;
 }
 
+.section-heading {
+  position: absolute;
+  top: 0.4vh;
+  left: 10.78%;
+  width: 24.59%;
+  height: 6.45vh;
+  margin: 0;
+  color: #141211;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.97vw;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.section-description {
+  position: absolute;
+  top: 8.56vh;
+  left: 10.78%;
+  width: 54.48%;
+  height: 5.24vh;
+  margin: 0;
+  color: #141211;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.32vw;
+  line-height: 1.18;
+}
+
+:focus-visible {
+  outline: 2px solid #e03a32;
+  outline-offset: 4px;
+}
+
 @media (max-width: 700px) {
   .comp-frame {
     width: 100%;
     aspect-ratio: 1586 / 992;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
