@@ -1,0 +1,181 @@
+{
+    "regions":  [
+                    {
+                        "id":  "top-charred-timber",
+                        "kind":  "texture",
+                        "pixelBox":  {
+                                         "x":  560,
+                                         "y":  4,
+                                         "w":  420,
+                                         "h":  50
+                                     },
+                        "note":  "Clean sample of the dark charred wood grain used across the top navigation beam."
+                    },
+                    {
+                        "id":  "panorama-art",
+                        "kind":  "image",
+                        "pixelBox":  {
+                                         "x":  0,
+                                         "y":  58,
+                                         "w":  1586,
+                                         "h":  716
+                                     },
+                        "note":  "Uninterrupted illustrated landscape background; production uses the exact user-supplied Sakura artwork, preserving its maple, Fuji, sun, pagoda, lake and boat.",
+                        "bleed":  true
+                    },
+                    {
+                        "id":  "brand-wordmark",
+                        "kind":  "text",
+                        "pixelBox":  {
+                                         "x":  78,
+                                         "y":  16,
+                                         "w":  199,
+                                         "h":  29
+                                     },
+                        "note":  "Wide tracked ivory SAKURA wordmark on the timber beam."
+                    },
+                    {
+                        "id":  "nav-karya",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  1288,
+                                         "y":  12,
+                                         "w":  74,
+                                         "h":  43
+                                     },
+                        "note":  "Karya in-page navigation link with a maple-red active rule."
+                    },
+                    {
+                        "id":  "nav-tentang",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  1408,
+                                         "y":  12,
+                                         "w":  94,
+                                         "h":  43
+                                     },
+                        "note":  "Tentang in-page navigation link at the right of the top beam."
+                    },
+                    {
+                        "id":  "hero-headline",
+                        "kind":  "text",
+                        "pixelBox":  {
+                                         "x":  62,
+                                         "y":  421,
+                                         "w":  578,
+                                         "h":  111
+                                     },
+                        "note":  "Two-line ivory serif headline over the dark red maple canopy at the lower left."
+                    },
+                    {
+                        "id":  "primary-action",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  67,
+                                         "y":  564,
+                                         "w":  297,
+                                         "h":  60
+                                     },
+                        "note":  "Square maple-red action plaque labelled Jelajahi panorama."
+                    },
+                    {
+                        "id":  "view-rail-timber",
+                        "kind":  "texture",
+                        "pixelBox":  {
+                                         "x":  1285,
+                                         "y":  784,
+                                         "w":  160,
+                                         "h":  48
+                                     },
+                        "note":  "Clean grain sample repeated across the dark timber sightline rail."
+                    },
+                    {
+                        "id":  "view-cabang",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  320,
+                                         "y":  779,
+                                         "w":  178,
+                                         "h":  49
+                                     },
+                        "note":  "Cabang panorama focus control, centered in the left rail segment."
+                    },
+                    {
+                        "id":  "view-puncak",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  711,
+                                         "y":  779,
+                                         "w":  175,
+                                         "h":  49
+                                     },
+                        "note":  "Puncak panorama focus control, centered in the middle rail segment."
+                    },
+                    {
+                        "id":  "view-pagoda",
+                        "kind":  "control",
+                        "pixelBox":  {
+                                         "x":  1101,
+                                         "y":  779,
+                                         "w":  178,
+                                         "h":  49
+                                     },
+                        "note":  "Pagoda panorama focus control, centered in the right rail segment."
+                    },
+                    {
+                        "id":  "section-heading",
+                        "kind":  "text",
+                        "pixelBox":  {
+                                         "x":  171,
+                                         "y":  841,
+                                         "w":  390,
+                                         "h":  64
+                                     },
+                        "note":  "Large black serif section heading Memandang pelan on the paper field."
+                    },
+                    {
+                        "id":  "section-description",
+                        "kind":  "text",
+                        "pixelBox":  {
+                                         "x":  171,
+                                         "y":  922,
+                                         "w":  864,
+                                         "h":  52
+                                     },
+                        "note":  "Two-line factual description of the visible maple, Fuji, pagoda and boat."
+                    },
+                    {
+                        "id":  "shoji-paper",
+                        "kind":  "texture",
+                        "pixelBox":  {
+                                         "x":  650,
+                                         "y":  859,
+                                         "w":  320,
+                                         "h":  52
+                                     },
+                        "note":  "Clean warm paper sample repeated across the shoji wall surface."
+                    },
+                    {
+                        "id":  "shoji-lintel",
+                        "kind":  "texture",
+                        "pixelBox":  {
+                                         "x":  650,
+                                         "y":  838,
+                                         "w":  320,
+                                         "h":  15
+                                     },
+                        "note":  "Clean sample of the warm horizontal timber lintel above the shoji wall."
+                    },
+                    {
+                        "id":  "shoji-post",
+                        "kind":  "texture",
+                        "pixelBox":  {
+                                         "x":  78,
+                                         "y":  858,
+                                         "w":  14,
+                                         "h":  40
+                                     },
+                        "note":  "Clean sample of the warm vertical timber post beside the shoji wall."
+                    }
+                ]
+}

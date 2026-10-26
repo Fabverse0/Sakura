@@ -1,0 +1,922 @@
+{
+  "tool": "comp-spec",
+  "version": 1,
+  "createdAt": "2026-10-26T11:43:09.030Z",
+  "comp": ".impeccable/mocks/engawa-route.png",
+  "warnings": [
+    "region panorama-art: \"bleed\": true set in the regions file (the clipped-artwork refusal is overridden: the page crops it there)"
+  ],
+  "uncoveredInkCells": [
+    "G0"
+  ],
+  "compSize": {
+    "width": 1586,
+    "height": 992
+  },
+  "aspect": 1.5988,
+  "orientation": "landscape",
+  "palette": [
+    {
+      "hex": "#ede8e3",
+      "coverage": 0.393
+    },
+    {
+      "hex": "#151619",
+      "coverage": 0.3523
+    },
+    {
+      "hex": "#c3b8af",
+      "coverage": 0.1043
+    },
+    {
+      "hex": "#8b8682",
+      "coverage": 0.0963
+    },
+    {
+      "hex": "#38332d",
+      "coverage": 0.0542
+    }
+  ],
+  "bands": [
+    {
+      "y": 0.0625,
+      "strength": 1
+    },
+    {
+      "y": 0.35,
+      "strength": 0.2081
+    },
+    {
+      "y": 0.475,
+      "strength": 0.4825
+    },
+    {
+      "y": 0.5375,
+      "strength": 0.473
+    },
+    {
+      "y": 0.7375,
+      "strength": 0.2163
+    },
+    {
+      "y": 0.7875,
+      "strength": 0.7457
+    },
+    {
+      "y": 0.85,
+      "strength": 1
+    },
+    {
+      "y": 0.9125,
+      "strength": 0.2504
+    },
+    {
+      "y": 0.95,
+      "strength": 0.4035
+    }
+  ],
+  "regions": [
+    {
+      "id": "top-charred-timber",
+      "kind": "texture",
+      "note": "Clean sample of the dark charred wood grain used across the top navigation beam.",
+      "grid": null,
+      "box": {
+        "x": 0.3531,
+        "y": 0.004,
+        "w": 0.2648,
+        "h": 0.0504
+      },
+      "px": {
+        "x": 560,
+        "y": 4,
+        "w": 420,
+        "h": 50
+      },
+      "aspect": 8.4,
+      "palette": [
+        {
+          "hex": "#242121",
+          "coverage": 0.9638
+        },
+        {
+          "hex": "#3b392b",
+          "coverage": 0.0337
+        },
+        {
+          "hex": "#100818",
+          "coverage": 0.0025
+        }
+      ],
+      "detail": {
+        "energy": 12.4524
+      },
+      "medium": "raster",
+      "plate": "assets/plates/top-charred-timber.png",
+      "text": null
+    },
+    {
+      "id": "panorama-art",
+      "kind": "image",
+      "note": "Uninterrupted illustrated landscape background; production uses the exact user-supplied Sakura artwork, preserving its maple, Fuji, sun, pagoda, lake and boat.",
+      "grid": null,
+      "bleed": true,
+      "box": {
+        "x": 0,
+        "y": 0.0585,
+        "w": 1,
+        "h": 0.7218
+      },
+      "px": {
+        "x": 0,
+        "y": 58,
+        "w": 1586,
+        "h": 716
+      },
+      "aspect": 2.2151,
+      "palette": [
+        {
+          "hex": "#111319",
+          "coverage": 0.3326
+        },
+        {
+          "hex": "#f0ece9",
+          "coverage": 0.3301
+        },
+        {
+          "hex": "#8a8581",
+          "coverage": 0.1375
+        },
+        {
+          "hex": "#c6bbb6",
+          "coverage": 0.1335
+        },
+        {
+          "hex": "#cb1916",
+          "coverage": 0.0663
+        }
+      ],
+      "detail": {
+        "energy": 51.5303
+      },
+      "medium": "raster",
+      "plate": "assets/plates/panorama-art.png",
+      "text": null
+    },
+    {
+      "id": "brand-wordmark",
+      "kind": "text",
+      "note": "Wide tracked ivory SAKURA wordmark on the timber beam.",
+      "grid": null,
+      "box": {
+        "x": 0.0492,
+        "y": 0.0161,
+        "w": 0.1255,
+        "h": 0.0292
+      },
+      "px": {
+        "x": 78,
+        "y": 16,
+        "w": 199,
+        "h": 29
+      },
+      "aspect": 6.8621,
+      "palette": [
+        {
+          "hex": "#201e1d",
+          "coverage": 0.8225
+        },
+        {
+          "hex": "#f1f0e9",
+          "coverage": 0.0728
+        },
+        {
+          "hex": "#5d5550",
+          "coverage": 0.0577
+        },
+        {
+          "hex": "#c0bcb3",
+          "coverage": 0.0243
+        },
+        {
+          "hex": "#8e897e",
+          "coverage": 0.0228
+        }
+      ],
+      "detail": {
+        "energy": 48.9964
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 6,
+          "capHeightPx": 20.7,
+          "inkIsDark": false,
+          "allCaps": true,
+          "advance": 0.856,
+          "advTall": 0.856,
+          "advX": null,
+          "gap": 0,
+          "xRatio": null,
+          "stemW": 0.1905,
+          "contrast": 1.9446,
+          "serif": null,
+          "densTall": 0.3955,
+          "densX": null,
+          "weight": 0.3955
+        },
+        "widthClass": "wide",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "nav-karya",
+      "kind": "control",
+      "note": "Karya in-page navigation link with a maple-red active rule.",
+      "grid": null,
+      "box": {
+        "x": 0.8121,
+        "y": 0.0121,
+        "w": 0.0467,
+        "h": 0.0433
+      },
+      "px": {
+        "x": 1288,
+        "y": 12,
+        "w": 74,
+        "h": 43
+      },
+      "aspect": 1.7209,
+      "palette": [
+        {
+          "hex": "#1f1d1d",
+          "coverage": 0.8034
+        },
+        {
+          "hex": "#a21e18",
+          "coverage": 0.057
+        },
+        {
+          "hex": "#e21818",
+          "coverage": 0.057
+        },
+        {
+          "hex": "#767473",
+          "coverage": 0.0427
+        },
+        {
+          "hex": "#f5f5f3",
+          "coverage": 0.0399
+        }
+      ],
+      "detail": {
+        "energy": 18.1448
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "nav-tentang",
+      "kind": "control",
+      "note": "Tentang in-page navigation link at the right of the top beam.",
+      "grid": null,
+      "box": {
+        "x": 0.8878,
+        "y": 0.0121,
+        "w": 0.0593,
+        "h": 0.0433
+      },
+      "px": {
+        "x": 1408,
+        "y": 12,
+        "w": 94,
+        "h": 43
+      },
+      "aspect": 2.186,
+      "palette": [
+        {
+          "hex": "#201d1c",
+          "coverage": 0.834
+        },
+        {
+          "hex": "#3e3d37",
+          "coverage": 0.0714
+        },
+        {
+          "hex": "#8a8987",
+          "coverage": 0.0378
+        },
+        {
+          "hex": "#f2f1ef",
+          "coverage": 0.0336
+        },
+        {
+          "hex": "#bcbcb5",
+          "coverage": 0.0231
+        }
+      ],
+      "detail": {
+        "energy": 23.1052
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "hero-headline",
+      "kind": "text",
+      "note": "Two-line ivory serif headline over the dark red maple canopy at the lower left.",
+      "grid": null,
+      "box": {
+        "x": 0.0391,
+        "y": 0.4244,
+        "w": 0.3644,
+        "h": 0.1119
+      },
+      "px": {
+        "x": 62,
+        "y": 421,
+        "w": 578,
+        "h": 111
+      },
+      "aspect": 5.2072,
+      "palette": [
+        {
+          "hex": "#130d0d",
+          "coverage": 0.4046
+        },
+        {
+          "hex": "#f2eee7",
+          "coverage": 0.2129
+        },
+        {
+          "hex": "#300b0b",
+          "coverage": 0.1463
+        },
+        {
+          "hex": "#c3b6b1",
+          "coverage": 0.1377
+        },
+        {
+          "hex": "#312a21",
+          "coverage": 0.0986
+        }
+      ],
+      "detail": {
+        "energy": 84.1481
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 29,
+          "capHeightPx": 44.5,
+          "inkIsDark": false,
+          "allCaps": false,
+          "advance": 0.6254,
+          "advTall": 0.5895,
+          "advX": 0.6254,
+          "gap": 0.0677,
+          "xRatio": 0.5893,
+          "stemW": 0.1571,
+          "contrast": 2.129,
+          "serif": 1.4705,
+          "densTall": 0.4366,
+          "densX": 0.5134,
+          "weight": 0.4366
+        },
+        "widthClass": "normal",
+        "weightClass": "regular",
+        "chosen": {
+          "family": "Cantata One",
+          "weight": 400,
+          "fontSizePx": 64,
+          "source": "catalog",
+          "estimatedSize": true,
+          "stamp": "a748081c33ea"
+        }
+      }
+    },
+    {
+      "id": "primary-action",
+      "kind": "control",
+      "note": "Square maple-red action plaque labelled Jelajahi panorama.",
+      "grid": null,
+      "box": {
+        "x": 0.0422,
+        "y": 0.5685,
+        "w": 0.1873,
+        "h": 0.0605
+      },
+      "px": {
+        "x": 67,
+        "y": 564,
+        "w": 297,
+        "h": 60
+      },
+      "aspect": 4.95,
+      "palette": [
+        {
+          "hex": "#bf1818",
+          "coverage": 0.9044
+        },
+        {
+          "hex": "#f8f5f4",
+          "coverage": 0.0424
+        },
+        {
+          "hex": "#d16f6c",
+          "coverage": 0.0222
+        },
+        {
+          "hex": "#e19a94",
+          "coverage": 0.0181
+        },
+        {
+          "hex": "#b93b37",
+          "coverage": 0.0129
+        }
+      ],
+      "detail": {
+        "energy": 30.9335
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": true,
+        "rules": false
+      }
+    },
+    {
+      "id": "view-rail-timber",
+      "kind": "texture",
+      "note": "Clean grain sample repeated across the dark timber sightline rail.",
+      "grid": null,
+      "box": {
+        "x": 0.8102,
+        "y": 0.7903,
+        "w": 0.1009,
+        "h": 0.0484
+      },
+      "px": {
+        "x": 1285,
+        "y": 784,
+        "w": 160,
+        "h": 48
+      },
+      "aspect": 3.3333,
+      "palette": [
+        {
+          "hex": "#1a1817",
+          "coverage": 0.919
+        },
+        {
+          "hex": "#584431",
+          "coverage": 0.0625
+        },
+        {
+          "hex": "#38291d",
+          "coverage": 0.0185
+        }
+      ],
+      "detail": {
+        "energy": 9.4264
+      },
+      "medium": "raster",
+      "plate": "assets/plates/view-rail-timber.png",
+      "text": null
+    },
+    {
+      "id": "view-cabang",
+      "kind": "control",
+      "note": "Cabang panorama focus control, centered in the left rail segment.",
+      "grid": null,
+      "box": {
+        "x": 0.2018,
+        "y": 0.7853,
+        "w": 0.1122,
+        "h": 0.0494
+      },
+      "px": {
+        "x": 320,
+        "y": 779,
+        "w": 178,
+        "h": 49
+      },
+      "aspect": 3.6327,
+      "palette": [
+        {
+          "hex": "#201d1b",
+          "coverage": 0.8417
+        },
+        {
+          "hex": "#382b1b",
+          "coverage": 0.0772
+        },
+        {
+          "hex": "#51453f",
+          "coverage": 0.0544
+        },
+        {
+          "hex": "#867f7d",
+          "coverage": 0.0138
+        },
+        {
+          "hex": "#f2f1ee",
+          "coverage": 0.0129
+        }
+      ],
+      "detail": {
+        "energy": 21.0965
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "view-puncak",
+      "kind": "control",
+      "note": "Puncak panorama focus control, centered in the middle rail segment.",
+      "grid": null,
+      "box": {
+        "x": 0.4483,
+        "y": 0.7853,
+        "w": 0.1103,
+        "h": 0.0494
+      },
+      "px": {
+        "x": 711,
+        "y": 779,
+        "w": 175,
+        "h": 49
+      },
+      "aspect": 3.5714,
+      "palette": [
+        {
+          "hex": "#221f1d",
+          "coverage": 0.8002
+        },
+        {
+          "hex": "#44362a",
+          "coverage": 0.1707
+        },
+        {
+          "hex": "#6a645d",
+          "coverage": 0.0151
+        },
+        {
+          "hex": "#f6f4f2",
+          "coverage": 0.008
+        },
+        {
+          "hex": "#e0ddd3",
+          "coverage": 0.006
+        }
+      ],
+      "detail": {
+        "energy": 20.9845
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "view-pagoda",
+      "kind": "control",
+      "note": "Pagoda panorama focus control, centered in the right rail segment.",
+      "grid": null,
+      "box": {
+        "x": 0.6942,
+        "y": 0.7853,
+        "w": 0.1122,
+        "h": 0.0494
+      },
+      "px": {
+        "x": 1101,
+        "y": 779,
+        "w": 178,
+        "h": 49
+      },
+      "aspect": 3.6327,
+      "palette": [
+        {
+          "hex": "#211e1e",
+          "coverage": 0.7592
+        },
+        {
+          "hex": "#332919",
+          "coverage": 0.1522
+        },
+        {
+          "hex": "#68594e",
+          "coverage": 0.0597
+        },
+        {
+          "hex": "#f4f4f4",
+          "coverage": 0.0179
+        },
+        {
+          "hex": "#918c88",
+          "coverage": 0.0109
+        }
+      ],
+      "detail": {
+        "energy": 22.4745
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      }
+    },
+    {
+      "id": "section-heading",
+      "kind": "text",
+      "note": "Large black serif section heading Memandang pelan on the paper field.",
+      "grid": null,
+      "box": {
+        "x": 0.1078,
+        "y": 0.8478,
+        "w": 0.2459,
+        "h": 0.0645
+      },
+      "px": {
+        "x": 171,
+        "y": 841,
+        "w": 390,
+        "h": 64
+      },
+      "aspect": 6.0938,
+      "palette": [
+        {
+          "hex": "#e5dcd1",
+          "coverage": 0.8177
+        },
+        {
+          "hex": "#0d0d0d",
+          "coverage": 0.1255
+        },
+        {
+          "hex": "#ada6a1",
+          "coverage": 0.0273
+        },
+        {
+          "hex": "#716f6a",
+          "coverage": 0.0231
+        },
+        {
+          "hex": "#423e3e",
+          "coverage": 0.0063
+        }
+      ],
+      "detail": {
+        "energy": 53.5438
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 1,
+          "glyphs": 15,
+          "capHeightPx": 33.2,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.6318,
+          "advTall": 0.4964,
+          "advX": 0.6318,
+          "gap": 0.1053,
+          "xRatio": 0.6017,
+          "stemW": 0.1622,
+          "contrast": 2.3664,
+          "serif": 1.3295,
+          "densTall": 0.5716,
+          "densX": 0.5016,
+          "weight": 0.5716
+        },
+        "widthClass": "normal",
+        "weightClass": "bold"
+      }
+    },
+    {
+      "id": "section-description",
+      "kind": "text",
+      "note": "Two-line factual description of the visible maple, Fuji, pagoda and boat.",
+      "grid": null,
+      "box": {
+        "x": 0.1078,
+        "y": 0.9294,
+        "w": 0.5448,
+        "h": 0.0524
+      },
+      "px": {
+        "x": 171,
+        "y": 922,
+        "w": 864,
+        "h": 52
+      },
+      "aspect": 16.6154,
+      "palette": [
+        {
+          "hex": "#eee8df",
+          "coverage": 0.8568
+        },
+        {
+          "hex": "#b7b1ac",
+          "coverage": 0.0429
+        },
+        {
+          "hex": "#514f4d",
+          "coverage": 0.0367
+        },
+        {
+          "hex": "#141211",
+          "coverage": 0.0365
+        },
+        {
+          "hex": "#7e7873",
+          "coverage": 0.0271
+        }
+      ],
+      "detail": {
+        "energy": 51.6054
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "type": {
+        "comp": {
+          "lines": 2,
+          "glyphs": 106,
+          "capHeightPx": 15.6,
+          "inkIsDark": true,
+          "allCaps": false,
+          "advance": 0.5785,
+          "advTall": 0.6098,
+          "advX": 0.5625,
+          "gap": 0.0643,
+          "xRatio": 0.6163,
+          "stemW": 0.1467,
+          "contrast": 1.4233,
+          "serif": 0.949,
+          "densTall": 0.4609,
+          "densX": 0.5444,
+          "weight": 0.4609
+        },
+        "widthClass": "condensed",
+        "weightClass": "regular"
+      }
+    },
+    {
+      "id": "shoji-paper",
+      "kind": "texture",
+      "note": "Clean warm paper sample repeated across the shoji wall surface.",
+      "grid": null,
+      "box": {
+        "x": 0.4098,
+        "y": 0.8659,
+        "w": 0.2018,
+        "h": 0.0524
+      },
+      "px": {
+        "x": 650,
+        "y": 859,
+        "w": 320,
+        "h": 52
+      },
+      "aspect": 6.1538,
+      "palette": [
+        {
+          "hex": "#ece7db",
+          "coverage": 1
+        }
+      ],
+      "detail": {
+        "energy": 4.7988
+      },
+      "medium": "raster",
+      "plate": "assets/plates/shoji-paper.png",
+      "text": null
+    },
+    {
+      "id": "shoji-lintel",
+      "kind": "texture",
+      "note": "Clean sample of the warm horizontal timber lintel above the shoji wall.",
+      "grid": null,
+      "box": {
+        "x": 0.4098,
+        "y": 0.8448,
+        "w": 0.2018,
+        "h": 0.0151
+      },
+      "px": {
+        "x": 650,
+        "y": 838,
+        "w": 320,
+        "h": 15
+      },
+      "aspect": 21.3333,
+      "palette": [
+        {
+          "hex": "#dfd2c5",
+          "coverage": 0.6206
+        },
+        {
+          "hex": "#c0afa0",
+          "coverage": 0.3794
+        }
+      ],
+      "detail": {
+        "energy": 12.8223
+      },
+      "medium": "raster",
+      "plate": "assets/plates/shoji-lintel.png",
+      "text": null
+    },
+    {
+      "id": "shoji-post",
+      "kind": "texture",
+      "note": "Clean sample of the warm vertical timber post beside the shoji wall.",
+      "grid": null,
+      "box": {
+        "x": 0.0492,
+        "y": 0.8649,
+        "w": 0.0088,
+        "h": 0.0403
+      },
+      "px": {
+        "x": 78,
+        "y": 858,
+        "w": 14,
+        "h": 40
+      },
+      "aspect": 0.35,
+      "palette": [
+        {
+          "hex": "#b9a898",
+          "coverage": 0.6143
+        },
+        {
+          "hex": "#8d7a69",
+          "coverage": 0.3
+        },
+        {
+          "hex": "#6b503d",
+          "coverage": 0.0857
+        }
+      ],
+      "detail": {
+        "energy": 1.1922
+      },
+      "medium": "raster",
+      "plate": "assets/plates/shoji-post.png",
+      "text": null
+    }
+  ],
+  "compSha256": "d880f9ecb29e59d46fa0537c616e245abb7841650230cbc6b3944ff1228410e5",
+  "regionsSource": {
+    "path": ".impeccable/build/regions.json",
+    "sha256": "c36d744d1099deb907a2b10f1e3c24b36eb52b1e4d2aacb91ebaa70c5bffe9c3"
+  }
+}
