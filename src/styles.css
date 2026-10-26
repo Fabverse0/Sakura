@@ -65,6 +65,7 @@ a {
   width: 100%;
   max-width: 100vw;
   aspect-ratio: 1586 / 992;
+  container-type: inline-size;
   margin-inline: auto;
   overflow: hidden;
   background: var(--ink);
@@ -72,22 +73,24 @@ a {
 }
 
 .top-beam {
+  --frame-vh: 0.62547cqw;
+
   position: absolute;
   inset: 0 0 auto;
   z-index: 5;
   height: var(--r-panorama-art-y);
   background-repeat: repeat-x;
-  background-position: 35.31vw 0.4vh;
-  background-size: 26.48vw 5.04vh;
+  background-position: 35.31vw calc(var(--frame-vh) * 0.4);
+  background-size: 26.48vw calc(var(--frame-vh) * 5.04);
 }
 
 .brand-wordmark {
   position: absolute;
-  top: 1.61vh;
+  top: calc(var(--frame-vh) * 1.61);
   left: 4.92%;
   display: flex;
   width: 12.55%;
-  height: 2.92vh;
+  height: calc(var(--frame-vh) * 2.92);
   align-items: center;
   color: #f1f0e9;
   font-family: "Cantata One", Georgia, serif;
@@ -106,9 +109,9 @@ a {
 
 .header-nav__link {
   position: absolute;
-  top: 1.21vh;
+  top: calc(var(--frame-vh) * 1.21);
   display: flex;
-  height: 4.33vh;
+  height: calc(var(--frame-vh) * 4.33);
   align-items: center;
   justify-content: center;
   color: #f5f5f3;
@@ -135,7 +138,7 @@ a {
   right: 0;
   bottom: 0;
   left: 0;
-  height: 0.32vh;
+  height: calc(var(--frame-vh) * 0.32);
   background: #d51e1a;
   content: "";
 }
@@ -216,6 +219,8 @@ a {
 }
 
 .view-rail {
+  --frame-vh: 0.62547cqw;
+
   position: absolute;
   inset-inline: 0;
   top: var(--r-view-rail-timber-y);
@@ -224,7 +229,7 @@ a {
   background-color: #1a1817;
   background-repeat: repeat-x;
   background-position: left center;
-  background-size: 25.2vw 6.35vh;
+  background-size: 25.2vw calc(var(--frame-vh) * 6.35);
 }
 
 .view-control {
@@ -276,6 +281,8 @@ a {
 }
 
 .shoji-wall {
+  --frame-vh: 0.62547cqw;
+
   position: absolute;
   inset-inline: 0;
   top: var(--r-shoji-wall-y);
@@ -285,21 +292,21 @@ a {
   overflow: hidden;
   background-color: var(--paper);
   background-repeat: repeat;
-  background-position: 40.98vw 2.21vh;
-  background-size: 20.18vw 5.24vh;
+  background-position: 40.98vw calc(var(--frame-vh) * 2.21);
+  background-size: 20.18vw calc(var(--frame-vh) * 5.24);
   color: #141211;
 }
 
 .shoji-lintel {
   position: absolute;
   inset-inline: 0;
-  top: 0.1vh;
+  top: calc(var(--frame-vh) * 0.1);
   z-index: 3;
-  height: 1.51vh;
+  height: calc(var(--frame-vh) * 1.51);
   border-top: 1px solid rgb(56 43 34 / 65%);
   background-repeat: repeat-x;
   background-position: 40.98vw 0;
-  background-size: 20.18vw 1.51vh;
+  background-size: 20.18vw calc(var(--frame-vh) * 1.51);
 }
 
 .shoji-lattice {
@@ -353,8 +360,8 @@ a {
   width: 0.88vw;
   height: 100%;
   background-repeat: repeat-y;
-  background-position: left 2.11vh;
-  background-size: 0.88vw 4.03vh;
+  background-position: left calc(var(--frame-vh) * 2.11);
+  background-size: 0.88vw calc(var(--frame-vh) * 4.03);
 }
 
 .shoji-post--left {
@@ -367,11 +374,11 @@ a {
 
 .section-heading {
   position: absolute;
-  top: 0.4vh;
+  top: calc(var(--frame-vh) * 0.4);
   left: 10.78%;
   z-index: 3;
   width: 24.59%;
-  height: 6.45vh;
+  height: calc(var(--frame-vh) * 6.45);
   margin: 0;
   color: #141211;
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -383,11 +390,11 @@ a {
 
 .section-description {
   position: absolute;
-  top: 8.56vh;
+  top: calc(var(--frame-vh) * 8.56);
   left: 10.78%;
   z-index: 3;
   width: 54.48%;
-  height: 5.24vh;
+  height: calc(var(--frame-vh) * 5.24);
   margin: 0;
   color: #141211;
   font-family: "Cormorant Garamond", Georgia, serif;
