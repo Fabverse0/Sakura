@@ -57,13 +57,14 @@ export default function App() {
             <br />
             Tiga cara memandang.
           </h1>
-          <a className="primary-action" href="#panorama">
+          <a className="primary-action" href="#view-controls">
             Jelajahi panorama
           </a>
         </section>
 
         <nav
           className="view-rail"
+          id="view-controls"
           aria-label="Pilih fokus panorama"
           style={{ backgroundImage: "url(" + railTimber + ")" }}
         >
