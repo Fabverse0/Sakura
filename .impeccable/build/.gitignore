@@ -1,0 +1,5 @@
+# Written by Impeccable: generated scratch and local runtime files are not committed.
+*
+!.gitignore
+!regions.json
+!spec.json
