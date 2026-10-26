@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-React with HTML, CSS, and JavaScript. The build tool is undecided.
+React with HTML, CSS, and JavaScript, using Vite as the build tool for the requested web page.
 
 ## Users
 
