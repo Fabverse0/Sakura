@@ -1,0 +1,8 @@
+node_modules/
+dist/
+
+# Local Impeccable alternatives and review output
+.impeccable/mocks/decision/
+.impeccable/mocks/engawa-sightline.png
+.impeccable/mocks/engawa-sightline.png.json
+.impeccable/review/diff/
