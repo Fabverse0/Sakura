@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 3,
+  "stage": "components",
+  "id": "components",
+  "title": "Plan and asset review · index.html",
+  "comp": {
+    "path": ".impeccable/mocks/engawa-route.png",
+    "width": 1586,
+    "height": 992
+  },
+  "specSha256": "913cb448aa068655db5abb428199018d49916a17f4dfb336dc8cf922186a6543",
+  "components": [
+    {
+      "id": "top-charred-timber",
+      "name": "Top charred timber",
+      "kind": "texture",
+      "role": "asset",
+      "box": {
+        "x": 0.3531,
+        "y": 0.004,
+        "w": 0.2648,
+        "h": 0.0504
+      },
+      "note": "Clean sample of the dark charred wood grain used across the top navigation beam.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/top-charred-timber.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "panorama-art",
+      "name": "Panorama art",
+      "kind": "image",
+      "role": "asset",
+      "box": {
+        "x": 0,
+        "y": 0.0585,
+        "w": 1,
+        "h": 0.7218
+      },
+      "note": "Uninterrupted illustrated landscape background; production uses the exact user-supplied Sakura artwork, preserving its maple, Fuji, sun, pagoda, lake and boat.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/panorama-art.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "view-rail-timber",
+      "name": "View rail timber",
+      "kind": "texture",
+      "role": "asset",
+      "box": {
+        "x": 0.8102,
+        "y": 0.7903,
+        "w": 0.1009,
+        "h": 0.0484
+      },
+      "note": "Clean grain sample repeated across the dark timber sightline rail.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/view-rail-timber.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "shoji-paper",
+      "name": "Shoji paper",
+      "kind": "texture",
+      "role": "asset",
+      "box": {
+        "x": 0.4098,
+        "y": 0.8659,
+        "w": 0.2018,
+        "h": 0.0524
+      },
+      "note": "Clean warm paper sample repeated across the shoji wall surface.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/shoji-paper.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "shoji-lintel",
+      "name": "Shoji lintel",
+      "kind": "texture",
+      "role": "asset",
+      "box": {
+        "x": 0.4098,
+        "y": 0.8448,
+        "w": 0.2018,
+        "h": 0.0151
+      },
+      "note": "Clean sample of the warm horizontal timber lintel above the shoji wall.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/shoji-lintel.png"
+      },
+      "dependencies": []
+    },
+    {
+      "id": "shoji-post",
+      "name": "Shoji post",
+      "kind": "texture",
+      "role": "asset",
+      "box": {
+        "x": 0.0492,
+        "y": 0.8649,
+        "w": 0.0088,
+        "h": 0.0403
+      },
+      "note": "Clean sample of the warm vertical timber post beside the shoji wall.",
+      "medium": "raster",
+      "preview": {
+        "kind": "image",
+        "path": "assets/plates/shoji-post.png"
+      },
+      "dependencies": []
+    }
+  ],
+  "codeRegions": [
+    {
+      "id": "brand-wordmark",
+      "name": "Brand wordmark",
+      "kind": "text",
+      "box": {
+        "x": 0.0492,
+        "y": 0.0161,
+        "w": 0.1255,
+        "h": 0.0292
+      },
+      "note": "Wide tracked ivory SAKURA wordmark on the timber beam."
+    },
+    {
+      "id": "nav-karya",
+      "name": "Nav karya",
+      "kind": "control",
+      "box": {
+        "x": 0.8121,
+        "y": 0.0121,
+        "w": 0.0467,
+        "h": 0.0433
+      },
+      "note": "Karya in-page navigation link with a maple-red active rule."
+    },
+    {
+      "id": "nav-tentang",
+      "name": "Nav tentang",
+      "kind": "control",
+      "box": {
+        "x": 0.8878,
+        "y": 0.0121,
+        "w": 0.0593,
+        "h": 0.0433
+      },
+      "note": "Tentang in-page navigation link at the right of the top beam."
+    },
+    {
+      "id": "hero-headline",
+      "name": "Hero headline",
+      "kind": "text",
+      "box": {
+        "x": 0.0391,
+        "y": 0.4244,
+        "w": 0.3644,
+        "h": 0.1119
+      },
+      "note": "Two-line ivory serif headline over the dark red maple canopy at the lower left."
+    },
+    {
+      "id": "primary-action",
+      "name": "Primary action",
+      "kind": "control",
+      "box": {
+        "x": 0.0422,
+        "y": 0.5685,
+        "w": 0.1873,
+        "h": 0.0605
+      },
+      "note": "Square maple-red action plaque labelled Jelajahi panorama."
+    },
+    {
+      "id": "view-cabang",
+      "name": "View cabang",
+      "kind": "control",
+      "box": {
+        "x": 0.2018,
+        "y": 0.7853,
+        "w": 0.1122,
+        "h": 0.0494
+      },
+      "note": "Cabang panorama focus control, centered in the left rail segment."
+    },
+    {
+      "id": "view-puncak",
+      "name": "View puncak",
+      "kind": "control",
+      "box": {
+        "x": 0.4483,
+        "y": 0.7853,
+        "w": 0.1103,
+        "h": 0.0494
+      },
+      "note": "Puncak panorama focus control, centered in the middle rail segment."
+    },
+    {
+      "id": "view-pagoda",
+      "name": "View pagoda",
+      "kind": "control",
+      "box": {
+        "x": 0.6942,
+        "y": 0.7853,
+        "w": 0.1122,
+        "h": 0.0494
+      },
+      "note": "Pagoda panorama focus control, centered in the right rail segment."
+    },
+    {
+      "id": "section-heading",
+      "name": "Section heading",
+      "kind": "text",
+      "box": {
+        "x": 0.1078,
+        "y": 0.8478,
+        "w": 0.2459,
+        "h": 0.0645
+      },
+      "note": "Large black serif section heading Memandang pelan on the paper field."
+    },
+    {
+      "id": "section-description",
+      "name": "Section description",
+      "kind": "text",
+      "box": {
+        "x": 0.1078,
+        "y": 0.9294,
+        "w": 0.5448,
+        "h": 0.0524
+      },
+      "note": "Two-line factual description of the visible maple, Fuji, pagoda and boat."
+    }
+  ]
+}
