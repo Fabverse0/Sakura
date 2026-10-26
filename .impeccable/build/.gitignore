@@ -3,3 +3,4 @@
 !.gitignore
 !regions.json
 !spec.json
+state.json
