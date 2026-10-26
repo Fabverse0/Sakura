@@ -16,7 +16,7 @@ People looking for a brief, contemplative visual pause online. This audience was
 
 ## Product Purpose
 
-Sakura is an art-led web experience built around the supplied Japanese landscape illustration. Visitors can pause with the scene and explore details within the same image. The user delegated the product concept and primary action. Sakura does not offer travel booking or claim that the illustration depicts a specific real destination.
+Sakura is an art-led web experience built around the supplied Japanese landscape illustration. Visitors can take an optional 30-second breathing pause with the scene and explore details within the same image. The user delegated the product concept and primary action. Sakura does not offer travel booking or claim that the illustration depicts a specific real destination.
 
 ## Positioning
 
@@ -32,6 +32,7 @@ The requested surface is a public web landing page. The primary action is “Jel
 - The page's theme should follow the artwork.
 - Sakura is the product name for this delegated concept.
 - The page uses the supplied artwork as its background and links its exploration controls to details visible in that artwork.
+- Visitors can start an optional 30-second pause paced by three cycles of four seconds inhaling and six seconds exhaling; they can end it at any time.
 - No travel service, real-world location, booking, or destination information is part of the concept.
 
 ## Brand Commitments
@@ -48,3 +49,4 @@ Use the user-supplied Japanese landscape artwork as the visual foundation and de
 - Let the supplied artwork carry the page's identity.
 - Keep the page's purpose clear without claiming facts about a real destination or service that the brief does not establish.
 - Use only confirmed product information for factual copy.
+- Start the breathing pause only after visitor activation, and keep its movement reduced for visitors who request reduced motion.
