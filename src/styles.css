@@ -281,6 +281,7 @@ a {
   top: var(--r-shoji-wall-y);
   z-index: 4;
   height: var(--r-shoji-wall-h);
+  isolation: isolate;
   overflow: hidden;
   background-color: var(--paper);
   background-repeat: repeat;
@@ -293,6 +294,7 @@ a {
   position: absolute;
   inset-inline: 0;
   top: 0.1vh;
+  z-index: 3;
   height: 1.51vh;
   border-top: 1px solid rgb(56 43 34 / 65%);
   background-repeat: repeat-x;
@@ -300,9 +302,54 @@ a {
   background-size: 20.18vw 1.51vh;
 }
 
+.shoji-lattice {
+  --lattice-cell: 40px;
+  --lattice-bar: 3px;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 5.7%;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 calc(var(--lattice-cell) - var(--lattice-bar)),
+      rgb(82 61 45 / 54%) calc(var(--lattice-cell) - var(--lattice-bar)) var(--lattice-cell)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 calc(var(--lattice-cell) - var(--lattice-bar)),
+      rgb(82 61 45 / 54%) calc(var(--lattice-cell) - var(--lattice-bar)) var(--lattice-cell)
+    );
+  background-size: var(--lattice-cell) var(--lattice-cell);
+  pointer-events: none;
+}
+
+.shoji-lattice--left {
+  left: 0;
+}
+
+.shoji-lattice--right {
+  right: 0;
+}
+
+.shoji-maple-shadow {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 32%;
+  height: auto;
+  opacity: 0.48;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
 .shoji-post {
   position: absolute;
   top: 0;
+  z-index: 3;
   width: 0.88vw;
   height: 100%;
   background-repeat: repeat-y;
@@ -322,6 +369,7 @@ a {
   position: absolute;
   top: 0.4vh;
   left: 10.78%;
+  z-index: 3;
   width: 24.59%;
   height: 6.45vh;
   margin: 0;
@@ -337,6 +385,7 @@ a {
   position: absolute;
   top: 8.56vh;
   left: 10.78%;
+  z-index: 3;
   width: 54.48%;
   height: 5.24vh;
   margin: 0;
@@ -503,6 +552,18 @@ a {
     padding: clamp(48px, 6vw, 70px) clamp(9vw, 11vw, 150px) clamp(42px, 5vw, 60px);
     background-position: center;
     background-size: 320px 80px;
+  }
+
+  .shoji-lattice {
+    --lattice-cell: clamp(18px, 5.2vw, 40px);
+    --lattice-bar: 2px;
+  }
+
+  .shoji-maple-shadow {
+    width: 52%;
+    max-height: 72%;
+    object-fit: contain;
+    object-position: right bottom;
   }
 
   .shoji-lintel {

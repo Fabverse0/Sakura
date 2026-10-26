@@ -6,6 +6,7 @@ import railTimber from "../assets/plates/view-rail-timber.png";
 import shojiPaper from "../assets/plates/shoji-paper.png";
 import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
+import shojiMapleShadow from "../assets/plates/shoji-maple-shadow.png";
 
 const views = [
   { id: "cabang", label: "Cabang", origin: "17% 52%" },
@@ -89,6 +90,15 @@ export default function App() {
             className="shoji-lintel"
             aria-hidden="true"
             style={{ backgroundImage: "url(" + shojiLintel + ")" }}
+          />
+          <div className="shoji-lattice shoji-lattice--left" aria-hidden="true" />
+          <div className="shoji-lattice shoji-lattice--right" aria-hidden="true" />
+          <img
+            className="shoji-maple-shadow"
+            src={shojiMapleShadow}
+            alt=""
+            aria-hidden="true"
+            draggable="false"
           />
           <div
             className="shoji-post shoji-post--left"
