@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "stage": "hero",
+  "id": "hero",
+  "title": "First viewport",
+  "comp": {
+    "path": ".impeccable/mocks/engawa-route.png",
+    "width": 1586,
+    "height": 992
+  },
+  "components": [
+    {
+      "id": "first-viewport",
+      "name": "First viewport",
+      "medium": "HTML / CSS",
+      "note": "Assembled Sakura landing page at the approved Engawa composition size.",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "preview": {
+        "kind": "page",
+        "path": "index.html"
+      },
+      "dependencies": [
+        "src/main.jsx",
+        "src/App.jsx",
+        "src/styles.css",
+        "assets/plates/panorama-art.png",
+        "assets/plates/top-charred-timber.png",
+        "assets/plates/view-rail-timber.png",
+        "assets/plates/shoji-paper.png",
+        "assets/plates/shoji-lintel.png",
+        "assets/plates/shoji-post.png",
+        "node_modules/@fontsource/cantata-one/latin-400.css",
+        "node_modules/@fontsource/cantata-one/files/cantata-one-latin-400-normal.woff2",
+        "node_modules/@fontsource/cormorant-garamond/latin-400.css",
+        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-400-normal.woff2",
+        "node_modules/@fontsource/cormorant-garamond/latin-500.css",
+        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-500-normal.woff2",
+        "node_modules/@fontsource/cormorant-garamond/latin-600.css",
+        "node_modules/@fontsource/cormorant-garamond/files/cormorant-garamond-latin-600-normal.woff2"
+      ]
+    }
+  ]
+}
