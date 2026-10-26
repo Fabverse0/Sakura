@@ -25,17 +25,23 @@
         "path": "dist/index.html"
       },
       "dependencies": [
-        "dist/assets/index-BGm12PSa.js",
-        "dist/assets/index-CEng-bnI.css",
+        "dist/assets/index-BtPJ1Y0X.js",
+        "dist/assets/index-C1Wq37uz.css",
+        "dist/assets/cantata-one-latin-400-normal-DQGyiieJ.woff",
+        "dist/assets/cantata-one-latin-400-normal-aP5POKto.woff2",
+        "dist/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
+        "dist/assets/cormorant-garamond-latin-400-normal-B7YtguxJ.woff",
+        "dist/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
+        "dist/assets/cormorant-garamond-latin-500-normal-zIXX3Q-H.woff",
+        "dist/assets/cormorant-garamond-latin-600-normal-Co1r35X9.woff2",
+        "dist/assets/cormorant-garamond-latin-600-normal-2CBVLo0M.woff",
+        "dist/assets/panorama-art-gT-wcdyZ.jpg",
         "dist/assets/panorama-art-BOvLHQRd.png",
         "dist/assets/top-charred-timber-Cxmsx97i.png",
         "dist/assets/view-rail-timber-DXTgdVL4.png",
         "dist/assets/shoji-paper-D1T7OYdQ.png",
         "dist/assets/shoji-lintel-n-PNvB6V.png",
-        "dist/assets/cantata-one-latin-400-normal-aP5POKto.woff2",
-        "dist/assets/cormorant-garamond-latin-400-normal-B-1hWBU7.woff2",
-        "dist/assets/cormorant-garamond-latin-500-normal-BsRWmXhO.woff2",
-        "dist/assets/cormorant-garamond-latin-600-normal-Co1r35X9.woff2"
+        "dist/assets/shoji-maple-shadow-zor-hnpZ.png"
       ]
     }
   ]
