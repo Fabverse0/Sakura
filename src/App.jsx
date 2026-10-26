@@ -57,7 +57,7 @@ export default function App() {
             <br />
             Tiga cara memandang.
           </h1>
-          <a className="primary-action" href="#tentang">
+          <a className="primary-action" href="#panorama">
             Jelajahi panorama
           </a>
         </section>
