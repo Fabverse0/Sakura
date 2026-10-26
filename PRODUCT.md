@@ -12,30 +12,31 @@ React with HTML, CSS, and JavaScript. The build tool is undecided.
 
 ## Users
 
-Open decision: the intended audience and its context were not provided.
+People looking for a brief, contemplative visual pause online. This audience was chosen under the user's instruction to freely define the product concept.
 
 ## Product Purpose
 
-Confirmed request: create a landing page using the supplied Japanese landscape artwork as its background, with the page style following the artwork. Assumption, not confirmed: visitors are meant to explore the visual landscape. A commercial offering or conversion goal has not been specified.
+Sakura is an art-led web experience built around the supplied Japanese landscape illustration. Visitors can pause with the scene and explore details within the same image. The user delegated the product concept and primary action. Sakura does not offer travel booking or claim that the illustration depicts a specific real destination.
 
 ## Positioning
 
-Open decision: no product mechanism, offering, or differentiator was provided.
+Sakura turns one supplied landscape illustration into a focused visual journey, using a small set of working viewpoints to guide attention through the same artwork.
 
 ## Operating Context
 
-The requested surface is a public web landing page. Its actual product, visitor journey, and primary action are undecided.
+The requested surface is a public web landing page. The primary action is “Jelajahi panorama,” which takes visitors from the opening view to the artwork's visual details.
 
 ## Capabilities and Constraints
 
 - The supplied artwork must be used as the landing page background.
 - The page's theme should follow the artwork.
-- The project workspace is named Sakura; whether Sakura is the product or brand name is undecided.
-- The product offering and primary call to action are undecided.
+- Sakura is the product name for this delegated concept.
+- The page uses the supplied artwork as its background and links its exploration controls to details visible in that artwork.
+- No travel service, real-world location, booking, or destination information is part of the concept.
 
 ## Brand Commitments
 
-Use the user-supplied Japanese landscape artwork as the visual foundation and derive the page theme from it. No product name, voice, or other brand identity has been confirmed.
+Use the user-supplied Japanese landscape artwork as the visual foundation and derive the page theme from it. Keep the voice concise and contemplative, in Indonesian. Sakura is the product name for this delegated concept.
 
 ## Evidence on Hand
 
