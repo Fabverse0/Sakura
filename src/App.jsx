@@ -1,4 +1,5 @@
 import { useState } from "react";
+import panoramaArtJpeg from "../assets/plates/panorama-art.jpg";
 import panoramaArt from "../assets/plates/panorama-art.png";
 import topTimber from "../assets/plates/top-charred-timber.png";
 import railTimber from "../assets/plates/view-rail-timber.png";
@@ -44,7 +45,8 @@ export default function App() {
         <section className="hero-stage" id="panorama" aria-labelledby="hero-title">
           <img
             className="panorama-art"
-            src={panoramaArt}
+            src={panoramaArtJpeg}
+            srcSet={`${panoramaArtJpeg} 1x, ${panoramaArt} 2x`}
             alt="Ilustrasi lanskap dengan maple merah, Gunung Fuji, matahari merah, pagoda, dan perahu di danau."
             draggable="false"
             fetchPriority="high"
