@@ -605,6 +605,15 @@ a {
   }
 }
 
+@media (max-width: 360px) {
+  .hero-headline {
+    left: 4%;
+    width: 92%;
+    font-size: 30px;
+    letter-spacing: -0.025em;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
