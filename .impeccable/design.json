@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-26T15:05:23Z",
+  "title": "Design System: Sakura",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#151619",
+        "tonalRamp": [
+          "oklch(15% 0.0062 271.10)",
+          "oklch(26.4% 0.0062 271.10)",
+          "oklch(37.9% 0.0062 271.10)",
+          "oklch(49.3% 0.0062 271.10)",
+          "oklch(60.7% 0.0062 271.10)",
+          "oklch(72.1% 0.0062 271.10)",
+          "oklch(83.6% 0.0062 271.10)",
+          "oklch(95% 0.0062 271.10)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Warm Paper",
+        "canonical": "#ede8e3",
+        "tonalRamp": [
+          "oklch(15% 0.0086 67.72)",
+          "oklch(26.4% 0.0086 67.72)",
+          "oklch(37.9% 0.0086 67.72)",
+          "oklch(49.3% 0.0086 67.72)",
+          "oklch(60.7% 0.0086 67.72)",
+          "oklch(72.1% 0.0086 67.72)",
+          "oklch(83.6% 0.0086 67.72)",
+          "oklch(95% 0.0086 67.72)"
+        ]
+      },
+      "maple": {
+        "role": "primary",
+        "displayName": "Maple Red",
+        "canonical": "#bf1818",
+        "tonalRamp": [
+          "oklch(15% 0.1982 27.93)",
+          "oklch(26.4% 0.1982 27.93)",
+          "oklch(37.9% 0.1982 27.93)",
+          "oklch(49.3% 0.1982 27.93)",
+          "oklch(60.7% 0.1982 27.93)",
+          "oklch(72.1% 0.1982 27.93)",
+          "oklch(83.6% 0.1982 27.93)",
+          "oklch(95% 0.1982 27.93)"
+        ]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Ivory",
+        "canonical": "#f2eee7",
+        "tonalRamp": [
+          "oklch(15% 0.0103 81.79)",
+          "oklch(26.4% 0.0103 81.79)",
+          "oklch(37.9% 0.0103 81.79)",
+          "oklch(49.3% 0.0103 81.79)",
+          "oklch(60.7% 0.0103 81.79)",
+          "oklch(72.1% 0.0103 81.79)",
+          "oklch(83.6% 0.0103 81.79)",
+          "oklch(95% 0.0103 81.79)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Cormorant Garamond Display",
+        "purpose": "Two-line hero headline over the panorama."
+      },
+      "title": {
+        "displayName": "Cormorant Garamond Title",
+        "purpose": "Heading for the shoji description section."
+      },
+      "body": {
+        "displayName": "Cormorant Garamond Body",
+        "purpose": "Short Indonesian description of visible artwork details."
+      },
+      "navigation": {
+        "displayName": "Cormorant Garamond Navigation",
+        "purpose": "Karya and Tentang links in the timber beam."
+      },
+      "view-label": {
+        "displayName": "Cormorant Garamond View Label",
+        "purpose": "Cabang, Puncak, and Pagoda focus controls."
+      },
+      "action": {
+        "displayName": "Cormorant Garamond Action",
+        "purpose": "Label of the primary panorama action."
+      },
+      "wordmark": {
+        "displayName": "Cantata One Wordmark",
+        "purpose": "SAKURA wordmark in the top beam."
+      }
+    },
+    "shadows": [
+      {
+        "name": "hero-text-contrast",
+        "value": "0 2px 8px rgb(17 12 10 / 28%)",
+        "purpose": "Text shadow behind the hero headline."
+      },
+      {
+        "name": "rail-label-contrast",
+        "value": "0 1px 3px rgb(0 0 0 / 55%)",
+        "purpose": "Text shadow on the timber focus rail labels."
+      }
+    ],
+    "motion": [
+      {
+        "name": "panorama-focus",
+        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Transform transition when a focus view is selected."
+      },
+      {
+        "name": "action-color",
+        "value": "180ms ease",
+        "purpose": "Background and text color transition on the primary action."
+      },
+      {
+        "name": "focus-label-color",
+        "value": "160ms ease",
+        "purpose": "Color transition on view rail controls."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration: 0.01ms !important; scroll-behavior: auto",
+        "purpose": "Reduced-motion treatment from the stylesheet."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet-and-below",
+        "value": "1100px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "SAKURA Wordmark",
+      "kind": "nav",
+      "refersTo": "wordmark",
+      "description": "Tracked Cantata One wordmark linking back to the top of the page.",
+      "html": "<a class=\"ds-wordmark\" href=\"#top\" aria-label=\"Sakura, awal halaman\">SAKURA</a>",
+      "css": ".ds-wordmark { position: absolute; top: 1.61vh; left: 4.92%; display: flex; width: 12.55%; height: 2.92vh; align-items: center; color: #f1f0e9; font-family: \"Cantata One\", Georgia, serif; font-size: 1.89vw; font-weight: 400; letter-spacing: 0.3em; line-height: 1; text-decoration: none; white-space: nowrap; } .ds-wordmark:hover { color: #fff; } .ds-wordmark:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-wordmark { position: static; width: auto; height: auto; font-size: clamp(20px, 2.5vw, 28px); letter-spacing: 0.22em; } } @media (max-width: 700px) { .ds-wordmark { font-size: 18px; letter-spacing: 0.18em; } }"
+    },
+    {
+      "name": "Primary Panorama Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Action anchor returning the visitor to the panorama.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#panorama\">Jelajahi panorama</a>",
+      "css": ".ds-btn-primary { position: absolute; top: 56.85%; left: 4.22%; z-index: 2; display: flex; width: 18.73%; height: 6.05%; align-items: center; justify-content: center; background: #bf1818; color: #f8f5f4; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.55vw; font-weight: 600; line-height: 1; text-align: center; text-decoration: none; transition: background-color 180ms ease, color 180ms ease; } .ds-btn-primary:hover { background: #a91616; color: #fff; } .ds-btn-primary:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-btn-primary { top: auto; bottom: 6.2%; left: clamp(30px, 6vw, 72px); width: max-content; min-width: 220px; height: 54px; padding-inline: 24px; font-size: 21px; } } @media (max-width: 700px) { .ds-btn-primary { bottom: 8%; left: 5%; min-width: 190px; height: 48px; padding-inline: 18px; font-size: 19px; } }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Two in-page links with a maple-red active rule on Karya.",
+      "html": "<nav class=\"ds-header-nav\" aria-label=\"Navigasi utama\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"#panorama\">Karya</a><a class=\"ds-nav-link\" href=\"#tentang\">Tentang</a></nav>",
+      "css": ".ds-header-nav { position: absolute; inset: 0; } .ds-nav-link { position: absolute; top: 1.21vh; display: flex; height: 4.33vh; align-items: center; justify-content: center; color: #f5f5f3; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.45vw; font-weight: 500; line-height: 1; text-decoration: none; white-space: nowrap; } .ds-nav-link-active { left: 81.21%; width: 4.67%; } .ds-nav-link:last-child { left: 88.78%; width: 5.93%; } .ds-nav-link:hover { color: #fff; } .ds-nav-link-active::after { position: absolute; right: 0; bottom: 0; left: 0; height: 0.32vh; background: #d51e1a; content: \"\"; } .ds-nav-link:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-header-nav { position: static; display: flex; align-items: center; gap: clamp(22px, 3.5vw, 40px); } .ds-nav-link { position: relative; inset: auto; width: auto; height: auto; padding-block: 14px; font-size: clamp(17px, 1.9vw, 21px); } .ds-nav-link:last-child { left: auto; width: auto; } .ds-nav-link-active::after { bottom: 4px; height: 2px; } } @media (max-width: 700px) { .ds-header-nav { gap: 18px; } .ds-nav-link { padding-block: 12px; font-size: 16px; } }"
+    },
+    {
+      "name": "Panorama Focus Controls",
+      "kind": "custom",
+      "refersTo": "view-control",
+      "description": "Three initially unpressed buttons over the raster timber rail select a focus origin on the same artwork.",
+      "html": "<nav class=\"ds-view-controls\" aria-label=\"Pilih fokus panorama\"><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Cabang</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Puncak</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Pagoda</button></nav>",
+      "css": ".ds-view-controls { position: absolute; inset-inline: 0; top: 78.02%; z-index: 3; height: 6.35%; background-color: #1a1817; } .ds-view-control { position: absolute; top: 8.03%; display: flex; height: 77.8%; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: #f2f1ee; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.15vw; font-weight: 500; line-height: 1; text-shadow: 0 1px 3px rgb(0 0 0 / 55%); transition: color 160ms ease; } .ds-view-control:nth-child(1) { left: 20.18%; width: 11.22%; } .ds-view-control:nth-child(2) { left: 44.83%; width: 11.03%; } .ds-view-control:nth-child(3) { left: 69.42%; width: 11.22%; } .ds-view-control:hover, .ds-view-control[aria-pressed=\"true\"] { color: #fff; } .ds-view-control[aria-pressed=\"true\"]::after { position: absolute; bottom: 0; width: 1.4em; height: 1px; background: #d51e1a; content: \"\"; } .ds-view-control:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-view-controls { position: relative; inset: auto; top: auto; display: grid; flex: 0 0 auto; min-height: 68px; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px clamp(30px, 10vw, 120px); } .ds-view-control { position: relative; top: auto; left: auto; width: auto; height: 100%; min-height: 48px; font-size: clamp(17px, 1.9vw, 20px); } } @media (max-width: 700px) { .ds-view-controls { min-height: 64px; padding: 6px 12px; } .ds-view-control { font-size: 18px; } }"
+    },
+    {
+      "name": "Shoji Description Copy",
+      "kind": "custom",
+      "description": "The heading and factual scene copy inside the paper section; the raster materials around it retain embedded origin and generation metadata.",
+      "html": "<section class=\"ds-shoji-copy\"><h2>Memandang pelan</h2><p>Pohon maple merah menaungi danau yang memantulkan Gunung Fuji, dengan pagoda di tepinya dan sebuah perahu kecil di permukaan air.</p></section>",
+      "css": ".ds-shoji-copy { color: #141211; font-family: \"Cormorant Garamond\", Georgia, serif; } .ds-shoji-copy h2 { margin: 0; font-size: 2.97vw; font-weight: 600; letter-spacing: -0.025em; line-height: 1; } .ds-shoji-copy p { margin: 0; font-size: 1.32vw; font-weight: 400; line-height: 1.18; } @media (max-width: 1100px) { .ds-shoji-copy h2 { margin: 0 0 10px; font-size: clamp(36px, 4.4vw, 52px); } .ds-shoji-copy p { font-size: clamp(18px, 1.8vw, 21px); line-height: 1.32; } } @media (max-width: 700px) { .ds-shoji-copy h2 { margin-bottom: 8px; font-size: clamp(34px, 9vw, 40px); } .ds-shoji-copy p { font-size: 18px; line-height: 1.3; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Engawa, Teras Menghadap Lanskap",
+    "overview": "One supplied Japanese landscape is the page's visual anchor. Charred timber forms a narrow upper beam and a sightline rail; warm shoji paper closes the composition below the art. The interface stays sparse and contemplative, with Cormorant Garamond for its working type and Cantata One only for the wordmark.\n\nProduct truth bounds the message: Sakura is a pause around the illustration, not a travel service. Keep prose in Indonesian and describe only what the illustration shows. The focus controls offer three viewpoints of the same image.",
+    "keyCharacteristics": [
+      "One supplied panorama is shown as a single, full-width view.",
+      "Dark timber textures frame the image; a warm paper texture carries the closing description.",
+      "Maple red marks the main action and selected navigation or focus states.",
+      "The visual depth comes from the image, raster materials, and one soft maple shadow on the shoji field."
+    ],
+    "rules": [],
+    "dos": [
+      "Do use the supplied landscape as the panorama and keep the JPEG/PNG source pair used by the page.",
+      "Do keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.",
+      "Do preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.",
+      "Do keep Indonesian copy limited to the visible illustration and confirmed product information.",
+      "Do preserve the embedded provenance metadata when replacing or re-encoding the raster plates."
+    ],
+    "donts": [
+      "Don't turn the illustration into a real-world destination, travel service, or booking offer; PRODUCT.md excludes those claims.",
+      "Don't invent spacing or radius scales; neither is defined in the source stylesheet.",
+      "Don't add panorama focus points or behavior beyond the three implemented views without updating the product and surface direction."
+    ]
+  }
+}
