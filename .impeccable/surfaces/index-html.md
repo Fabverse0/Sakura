@@ -22,4 +22,4 @@ FIRST VIEWPORT: A slim timber navigation beam sits above an uninterrupted panora
 
 FORM: Engawa, “Teras Menghadap Lanskap,” the assigned direction, candidate 7. SEED REFERENCE: `seed:d6dc681cf53f8b98`. Build path: comp-first. Signature interaction: selecting a rail label shifts the panorama to that view.
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+FINISH: the user accepted the rendered page and waived a mandatory comp screenshot. For asset-only work, verify the selected assets, their provenance, and the production build, then record the actual finish disposition without reopening the accepted hero, sections, motion, or responsive phases. Reopen visual review only when a change alters the rendered composition, copy, or motion. Keep DESIGN.md and shipped raster provenance current.
