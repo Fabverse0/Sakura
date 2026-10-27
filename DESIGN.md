@@ -133,7 +133,7 @@ The shoji maple shadow is positioned at the lower right, at `32%` width on deskt
 
 ### Raster asset provenance
 
-The eight current raster plates in `assets/plates` each carry an `impeccable:prompt` text entry. The panorama JPEG and PNG identify `public/images/sakura-landscape.jpg` as their user-supplied visual source; the timber and shoji material plates name their approved-comp sample regions; and the maple-shadow PNG retains its generation prompt. `PRODUCT.md` records the original user-supplied artwork path.
+The eight current raster plates in `assets/plates` each carry an `impeccable:prompt` text entry. The panorama JPEG and PNG identify `public/images/sakura-landscape.jpg` as their user-supplied visual source; the page serves that original JPEG directly, while the larger panorama plates remain provenance/reference files. The timber and shoji material plates name their approved-comp sample regions, and the maple-shadow PNG retains its generation prompt. `PRODUCT.md` records the original user-supplied artwork path.
 
 ## Shapes
 
@@ -181,7 +181,7 @@ The composition uses square-edged rectangular regions. No border-radius scale or
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use the supplied landscape as the panorama and keep the JPEG/PNG source pair used by the page.
+- **Do** use `public/images/sakura-landscape.jpg` as the served panorama and preserve the panorama plates as provenance/reference files.
 - **Do** keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.
 - **Do** preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.
 - **Do** keep Indonesian copy limited to the visible illustration and confirmed product information.
