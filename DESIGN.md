@@ -133,7 +133,7 @@ The shoji maple shadow is positioned at the lower right, at `32%` width on deskt
 
 ### Raster asset provenance
 
-The unchanged user-supplied panorama is preserved at `assets/originals/sakura-landscape.jpg`. Six responsive JPEG derivatives at 640, 960, 1280, 1920, 2880, and 3840 pixels are served from `public/images`; each embeds an `impeccable:prompt` comment naming its source and resize quality. The original panorama plates retain their provenance comments, which name the public path used when those plates were created. The shipped 1280×853 maple-shadow PNG carries the approved plate's `impeccable:prompt` text; the timber and shoji material plates keep their approved-comp sample provenance. `PRODUCT.md` records the original user-supplied artwork path.
+The unchanged user-supplied panorama is preserved at `assets/originals/sakura-landscape.jpg`. Seven responsive JPEG derivatives at 640, 960, 1280, 1536, 1920, 2880, and 3840 pixels are served from `public/images`; each embeds an `impeccable:prompt` comment naming its source and resize quality. The original panorama plates retain their provenance comments, which name the public path used when those plates were created. The shipped 1280×853 maple-shadow PNG carries the approved plate's `impeccable:prompt` text; the timber and shoji material plates keep their approved-comp sample provenance. `PRODUCT.md` records the original user-supplied artwork path.
 
 ## Shapes
 
