@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import topTimber from "../assets/plates/top-charred-timber.png";
 import railTimber from "../assets/plates/view-rail-timber.png";
 import shojiPaper from "../assets/plates/shoji-paper.png";
@@ -47,6 +47,9 @@ const inhaleSeconds = 4;
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
   const [guidedStepIndex, setGuidedStepIndex] = useState(null);
+  const routeFocusTarget = useRef(null);
+  const routeHeadingRef = useRef(null);
+  const routeStartButtonRef = useRef(null);
   const [isPauseRunning, setIsPauseRunning] = useState(false);
   const [pauseSecondsRemaining, setPauseSecondsRemaining] = useState(
     pauseDurationSeconds,
@@ -88,6 +91,16 @@ export default function App() {
     return () => window.clearInterval(intervalId);
   }, [isPauseRunning]);
 
+  useEffect(() => {
+    if (routeFocusTarget.current === "start") {
+      routeStartButtonRef.current?.focus();
+    } else if (routeFocusTarget.current === "heading") {
+      routeHeadingRef.current?.focus();
+    }
+
+    routeFocusTarget.current = null;
+  }, [guidedStepIndex]);
+
   function selectView(viewId, returnToPanorama = false) {
     setActiveView(viewId);
     setGuidedStepIndex(null);
@@ -98,22 +111,30 @@ export default function App() {
   }
 
   function startGuidedRoute() {
+    routeFocusTarget.current = "heading";
     setGuidedStepIndex(0);
     setActiveView(views[0].id);
   }
 
   function selectGuidedStep(stepIndex) {
+    routeFocusTarget.current = "heading";
     setGuidedStepIndex(stepIndex);
     setActiveView(views[stepIndex].id);
   }
 
   function advanceGuidedRoute() {
     if (guidedStepIndex === views.length - 1) {
+      routeFocusTarget.current = "heading";
       setGuidedStepIndex(views.length);
       return;
     }
 
     selectGuidedStep(guidedStepIndex + 1);
+  }
+
+  function endGuidedRoute() {
+    routeFocusTarget.current = "start";
+    setGuidedStepIndex(null);
   }
 
   const isGuidedRouteComplete = guidedStepIndex === views.length;
@@ -294,6 +315,7 @@ export default function App() {
                 <button
                   className="guided-route__button guided-route__button--primary"
                   type="button"
+                  ref={routeStartButtonRef}
                   onClick={startGuidedRoute}
                 >
                   Mulai rute pandang
@@ -301,7 +323,13 @@ export default function App() {
               </>
             ) : isGuidedRouteComplete ? (
               <div className="guided-route__completion">
-                <h3 className="guided-route__step-title">Rute selesai</h3>
+                <h3
+                  className="guided-route__step-title"
+                  ref={routeHeadingRef}
+                  tabIndex="-1"
+                >
+                  Rute selesai
+                </h3>
                 <p className="guided-route__status" role="status" aria-live="polite">
                   Rute pandang selesai.
                 </p>
@@ -357,7 +385,12 @@ export default function App() {
                     ))}
                   </ol>
                   <p className="guided-route__focus">{guidedView.label}</p>
-                  <h3 className="guided-route__step-title" id="guided-route-step-title">
+                  <h3
+                    className="guided-route__step-title"
+                    id="guided-route-step-title"
+                    ref={routeHeadingRef}
+                    tabIndex="-1"
+                  >
                     {guidedView.title}
                   </h3>
                   <p className="guided-route__prompt">{guidedView.routePrompt}</p>
@@ -381,7 +414,7 @@ export default function App() {
                     <button
                       className="guided-route__button guided-route__button--quiet"
                       type="button"
-                      onClick={() => setGuidedStepIndex(null)}
+                      onClick={endGuidedRoute}
                     >
                       Akhiri rute
                     </button>
