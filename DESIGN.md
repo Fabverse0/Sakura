@@ -129,11 +129,11 @@ The source has no spacing scale. It uses frame percentages, viewport units, pixe
 
 There are no box shadows. Depth is carried by the panorama, the repeated timber and paper textures, the layered shoji parts, and the decorative maple shadow image. The hero headline uses `text-shadow: 0 2px 8px rgb(17 12 10 / 28%)`; rail labels use `text-shadow: 0 1px 3px rgb(0 0 0 / 55%)` for contrast.
 
-The shoji maple shadow is positioned at the lower right, at `32%` width on desktop, with `opacity: 0.48` and `mix-blend-mode: multiply`. At `1100px` it grows to `52%` width, is capped at `72%` height, and uses `object-fit: contain`. It is decorative, has empty alternative text, and does not receive pointer events.
+The shoji maple shadow is positioned at the lower right, at `32%` width on desktop, with `opacity: 0.48` and `mix-blend-mode: multiply`. At `1100px` it grows to `52%` width, is capped at `72%` height, and uses `object-fit: contain`. The served 1280×853 PNG preserves the approved plate's transparency and prompt metadata. It is decorative, has empty alternative text, and does not receive pointer events.
 
 ### Raster asset provenance
 
-The eight current raster plates in `assets/plates` each carry an `impeccable:prompt` text entry. The panorama JPEG and PNG identify `public/images/sakura-landscape.jpg` as their user-supplied visual source; the page serves that original JPEG directly, while the larger panorama plates remain provenance/reference files. The timber and shoji material plates name their approved-comp sample regions, and the maple-shadow PNG retains its generation prompt. `PRODUCT.md` records the original user-supplied artwork path.
+The unchanged user-supplied panorama is preserved at `assets/originals/sakura-landscape.jpg`. Six responsive JPEG derivatives at 640, 960, 1280, 1920, 2880, and 3840 pixels are served from `public/images`; each embeds an `impeccable:prompt` comment naming its source and resize quality. The original panorama plates retain their provenance comments, which name the public path used when those plates were created. The shipped 1280×853 maple-shadow PNG carries the approved plate's `impeccable:prompt` text; the timber and shoji material plates keep their approved-comp sample provenance. `PRODUCT.md` records the original user-supplied artwork path.
 
 ## Shapes
 
@@ -181,7 +181,7 @@ The composition uses square-edged rectangular regions. No border-radius scale or
 ## Do's and Don'ts
 
 ### Do:
-- **Do** use `public/images/sakura-landscape.jpg` as the served panorama and preserve the panorama plates as provenance/reference files.
+- **Do** use the responsive panorama JPEG set in `public/images` and preserve the unchanged user source at `assets/originals/sakura-landscape.jpg`.
 - **Do** keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.
 - **Do** preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.
 - **Do** keep Indonesian copy limited to the visible illustration and confirmed product information.
