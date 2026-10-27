@@ -18,6 +18,7 @@ const views = [
     label: "Cabang",
     title: "Kanopi merah",
     description: "Ranting dan daun merah membingkai sisi kiri panorama.",
+    routePrompt: "Mulailah dari ranting dan daun merah di sisi kiri panorama.",
     origin: "17% 52%",
   },
   {
@@ -25,6 +26,7 @@ const views = [
     label: "Puncak",
     title: "Gunung Fuji",
     description: "Gunung Fuji berdiri di tengah, di bawah matahari merah.",
+    routePrompt: "Lanjutkan ke Gunung Fuji di tengah, tepat di bawah matahari merah.",
     origin: "52% 40%",
   },
   {
@@ -32,6 +34,7 @@ const views = [
     label: "Pagoda",
     title: "Pagoda di tepi air",
     description: "Pagoda bertingkat berdiri di tepi danau, dengan pantulan di permukaan air.",
+    routePrompt: "Akhiri dengan melihat pagoda bertingkat dan pantulannya di danau.",
     origin: "72% 57%",
   },
 ];
@@ -43,6 +46,7 @@ const inhaleSeconds = 4;
 
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
+  const [guidedStepIndex, setGuidedStepIndex] = useState(null);
   const [isPauseRunning, setIsPauseRunning] = useState(false);
   const [pauseSecondsRemaining, setPauseSecondsRemaining] = useState(
     pauseDurationSeconds,
@@ -86,11 +90,34 @@ export default function App() {
 
   function selectView(viewId, returnToPanorama = false) {
     setActiveView(viewId);
+    setGuidedStepIndex(null);
 
     if (returnToPanorama) {
       document.getElementById("panorama")?.scrollIntoView({ block: "start" });
     }
   }
+
+  function startGuidedRoute() {
+    setGuidedStepIndex(0);
+    setActiveView(views[0].id);
+  }
+
+  function selectGuidedStep(stepIndex) {
+    setGuidedStepIndex(stepIndex);
+    setActiveView(views[stepIndex].id);
+  }
+
+  function advanceGuidedRoute() {
+    if (guidedStepIndex === views.length - 1) {
+      setGuidedStepIndex(views.length);
+      return;
+    }
+
+    selectGuidedStep(guidedStepIndex + 1);
+  }
+
+  const isGuidedRouteComplete = guidedStepIndex === views.length;
+  const guidedView = views[guidedStepIndex];
 
   function startPause() {
     setPauseSecondsRemaining(pauseDurationSeconds);
@@ -240,7 +267,137 @@ export default function App() {
         </div>
       </section>
 
-      <section className="pause-experience" aria-labelledby="pause-title">
+      <section className="guided-route" aria-labelledby="guided-route-title">
+        <div className="guided-route__inner">
+          <div className="guided-route__intro">
+            <h2 className="guided-route__title" id="guided-route-title">
+              Rute pandang
+            </h2>
+            <p className="guided-route__description">
+              Ikuti tiga fokus panorama secara berurutan, satu perhatian pada satu waktu.
+            </p>
+          </div>
+
+          <div className="guided-route__panel">
+            {guidedStepIndex === null ? (
+              <>
+                <p className="guided-route__sequence">
+                  <span>Cabang</span>
+                  <span aria-hidden="true">→</span>
+                  <span>Puncak</span>
+                  <span aria-hidden="true">→</span>
+                  <span>Pagoda</span>
+                </p>
+                <p className="guided-route__prompt">
+                  Mulai dari sisi kiri, lalu ikuti pandangan melintasi panorama.
+                </p>
+                <button
+                  className="guided-route__button guided-route__button--primary"
+                  type="button"
+                  onClick={startGuidedRoute}
+                >
+                  Mulai rute pandang
+                </button>
+              </>
+            ) : isGuidedRouteComplete ? (
+              <div className="guided-route__completion">
+                <h3 className="guided-route__step-title">Rute selesai</h3>
+                <p className="guided-route__status" role="status" aria-live="polite">
+                  Rute pandang selesai.
+                </p>
+                <p className="guided-route__prompt">
+                  Tiga fokus telah dijelajahi. Kamu bisa melanjutkan dengan jeda 30 detik.
+                </p>
+                <div className="guided-route__actions">
+                  <a
+                    className="guided-route__button guided-route__button--primary"
+                    href="#pause-experience"
+                  >
+                    Lanjut ke jeda
+                  </a>
+                  <button
+                    className="guided-route__button guided-route__button--quiet"
+                    type="button"
+                    onClick={startGuidedRoute}
+                  >
+                    Ulangi rute
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="guided-route__step"
+                role="group"
+                aria-labelledby="guided-route-step-title"
+              >
+                <img
+                  className="guided-route__image"
+                  src={panoramaArt}
+                  srcSet={panoramaArtSrcSet}
+                  sizes="(max-width: 700px) 86vw, 34vw"
+                  alt=""
+                  aria-hidden="true"
+                  draggable="false"
+                  style={{ "--focus-origin": guidedView.origin }}
+                />
+                <div className="guided-route__step-content">
+                  <p className="guided-route__status" role="status" aria-live="polite" aria-atomic="true">
+                    Langkah {guidedStepIndex + 1} dari {views.length}: {guidedView.label}
+                  </p>
+                  <ol className="guided-route__progress" aria-label="Progres rute pandang">
+                    {views.map((view, index) => (
+                      <li
+                        className="guided-route__progress-step"
+                        key={view.id}
+                        aria-current={index === guidedStepIndex ? "step" : undefined}
+                        data-complete={index < guidedStepIndex}
+                      >
+                        {view.label}
+                      </li>
+                    ))}
+                  </ol>
+                  <p className="guided-route__focus">{guidedView.label}</p>
+                  <h3 className="guided-route__step-title" id="guided-route-step-title">
+                    {guidedView.title}
+                  </h3>
+                  <p className="guided-route__prompt">{guidedView.routePrompt}</p>
+                  <div className="guided-route__actions">
+                    {guidedStepIndex > 0 && (
+                      <button
+                        className="guided-route__button guided-route__button--quiet"
+                        type="button"
+                        onClick={() => selectGuidedStep(guidedStepIndex - 1)}
+                      >
+                        Sebelumnya
+                      </button>
+                    )}
+                    <button
+                      className="guided-route__button guided-route__button--primary"
+                      type="button"
+                      onClick={advanceGuidedRoute}
+                    >
+                      {guidedStepIndex === views.length - 1 ? "Selesaikan rute" : "Lanjut"}
+                    </button>
+                    <button
+                      className="guided-route__button guided-route__button--quiet"
+                      type="button"
+                      onClick={() => setGuidedStepIndex(null)}
+                    >
+                      Akhiri rute
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="pause-experience"
+        id="pause-experience"
+        aria-labelledby="pause-title"
+      >
         <div className="pause-experience__inner">
           <div className="pause-experience__copy">
             <h2 className="pause-experience__title" id="pause-title">
