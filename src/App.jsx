@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import panoramaArtJpeg from "../assets/plates/panorama-art.jpg";
-import panoramaArt from "../assets/plates/panorama-art.png";
 import topTimber from "../assets/plates/top-charred-timber.png";
 import railTimber from "../assets/plates/view-rail-timber.png";
 import shojiPaper from "../assets/plates/shoji-paper.png";
 import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
 import shojiMapleShadow from "../assets/plates/shoji-maple-shadow.png";
+
+const panoramaArt = `${import.meta.env.BASE_URL}images/sakura-landscape.jpg`;
 
 const views = [
   {
@@ -126,8 +126,7 @@ export default function App() {
           <section className="hero-stage" id="panorama" aria-labelledby="hero-title">
             <img
               className="panorama-art"
-              src={panoramaArtJpeg}
-              srcSet={`${panoramaArtJpeg} 1x, ${panoramaArt} 2x`}
+              src={panoramaArt}
               alt="Ilustrasi lanskap dengan maple merah, Gunung Fuji, matahari merah, pagoda, dan perahu di danau."
               draggable="false"
               fetchPriority="high"
