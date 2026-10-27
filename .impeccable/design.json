@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-26T15:05:23Z",
+  "generatedAt": "2026-10-27T13:36:18Z",
   "title": "Design System: Sakura",
   "extensions": {
     "colorMeta": {
@@ -196,7 +196,7 @@
     ],
     "rules": [],
     "dos": [
-      "Do use the supplied landscape as the panorama and keep the JPEG/PNG source pair used by the page.",
+      "Do use the responsive panorama JPEG set in public/images and preserve the unchanged user source at assets/originals/sakura-landscape.jpg.",
       "Do keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.",
       "Do preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.",
       "Do keep Indonesian copy limited to the visible illustration and confirmed product information.",
