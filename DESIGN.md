@@ -168,8 +168,14 @@ The composition uses square-edged rectangular regions. No border-radius scale or
 - **Interaction:** Selecting a card updates the shared focus state, marks the matching rail control and card with `aria-pressed`, then returns the visitor to the panorama.
 - **Responsive:** Cards form a three-column row on wide screens and adapt to narrower widths without horizontal overflow.
 
+### Guided route
+- **Style:** An ivory section follows the detail cards. Its paper panel pairs a focused crop of the current panorama view with a concise prompt and a three-step progress list.
+- **Interaction:** Visitors may start a self-paced route through Cabang, Puncak, and Pagoda. Previous and next controls keep the route step synchronized with the panorama focus. Manual focus selection ends the route; completion offers a link to the 30-second pause, and visitors can restart the route.
+- **Accessibility:** The current step is announced through a polite live status. Native buttons support keyboard activation, and progress uses `aria-current="step"`.
+- **Responsive:** The preview and route text sit side by side on wide screens and stack on small screens.
+
 ### Guided pause
-- **Style:** A dark ink section follows the panorama details. Its shoji pane and large timer keep the optional 30-second pause visually tied to the artwork.
+- **Style:** A dark ink section follows the guided route. Its shoji pane and large timer keep the optional 30-second pause visually tied to the artwork.
 - **Interaction:** Visitors start three cycles of four seconds inhaling and six seconds exhaling. The timer counts down, the status text gives each cue, the pane expands and contracts, and an end action remains available throughout.
 - **Reduced motion:** The pane stays still while the status text and timer continue to communicate the sequence.
 - **Responsive:** Text and controls use two columns on wide screens and stack on small screens.
@@ -184,6 +190,7 @@ The composition uses square-edged rectangular regions. No border-radius scale or
 - **Do** use the responsive panorama JPEG set in `public/images` and preserve the unchanged user source at `assets/originals/sakura-landscape.jpg`.
 - **Do** keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.
 - **Do** preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.
+- **Do** keep the guided route optional, self-paced, and synchronized with the same three implemented panorama views.
 - **Do** keep Indonesian copy limited to the visible illustration and confirmed product information.
 - **Do** preserve the embedded provenance metadata when replacing or re-encoding the raster plates.
 
