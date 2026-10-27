@@ -8,7 +8,7 @@ import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
 
 const panoramaImageBase = `${import.meta.env.BASE_URL}images/sakura-landscape-`;
 const panoramaArt = `${panoramaImageBase}3840.jpg`;
-const panoramaArtSrcSet = [640, 960, 1280, 1920, 2880, 3840]
+const panoramaArtSrcSet = [640, 960, 1280, 1536, 1920, 2880, 3840]
   .map((width) => `${panoramaImageBase}${width}.jpg ${width}w`)
   .join(", ");
 
