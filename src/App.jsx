@@ -6,7 +6,11 @@ import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
 import shojiMapleShadow from "../assets/plates/shoji-maple-shadow.png";
 
-const panoramaArt = `${import.meta.env.BASE_URL}images/sakura-landscape.jpg`;
+const panoramaImageBase = `${import.meta.env.BASE_URL}images/sakura-landscape-`;
+const panoramaArt = `${panoramaImageBase}3840.jpg`;
+const panoramaArtSrcSet = [640, 960, 1280, 1920, 2880, 3840]
+  .map((width) => `${panoramaImageBase}${width}.jpg ${width}w`)
+  .join(", ");
 
 const views = [
   {
@@ -127,6 +131,8 @@ export default function App() {
             <img
               className="panorama-art"
               src={panoramaArt}
+              srcSet={panoramaArtSrcSet}
+              sizes="112vw"
               alt="Ilustrasi lanskap dengan maple merah, Gunung Fuji, matahari merah, pagoda, dan perahu di danau."
               draggable="false"
               fetchPriority="high"
