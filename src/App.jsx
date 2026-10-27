@@ -4,7 +4,7 @@ import railTimber from "../assets/plates/view-rail-timber.png";
 import shojiPaper from "../assets/plates/shoji-paper.png";
 import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
-import shojiMapleShadow from "../assets/plates/shoji-maple-shadow.png";
+import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
 
 const panoramaImageBase = `${import.meta.env.BASE_URL}images/sakura-landscape-`;
 const panoramaArt = `${panoramaImageBase}3840.jpg`;
