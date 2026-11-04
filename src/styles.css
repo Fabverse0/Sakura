@@ -509,6 +509,14 @@ p {
   background: var(--ivory);
 }
 
+.detail-card:active {
+  transform: translateY(0);
+}
+
+.detail-card:focus-visible {
+  outline-offset: 2px;
+}
+
 .detail-card__label {
   margin-bottom: clamp(20px, 2vw, 28px);
   color: var(--maple);
