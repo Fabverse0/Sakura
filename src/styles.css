@@ -533,6 +533,7 @@ p {
 }
 
 .detail-card__description {
+  overflow-wrap: break-word;
   max-width: 38ch;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(17px, 1.4vw, 20px);
