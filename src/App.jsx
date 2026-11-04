@@ -92,6 +92,21 @@ export default function App() {
   }, [isPauseRunning]);
 
   useEffect(() => {
+    if (!isPauseRunning) return undefined;
+
+    function handleKeyDown(event) {
+      if (event.key === "Escape") {
+        setIsPauseRunning(false);
+        setPauseSecondsRemaining(pauseDurationSeconds);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isPauseRunning]);
+
+  useEffect(() => {
     if (routeFocusTarget.current === "start") {
       routeStartButtonRef.current?.focus();
     } else if (routeFocusTarget.current === "heading") {
