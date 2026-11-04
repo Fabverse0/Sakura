@@ -830,6 +830,10 @@ p {
   background: #a91616;
 }
 
+.pause-experience__button:active {
+  transform: translateY(1px);
+}
+
 @keyframes pause-breath-cycle {
   0%,
   100% {
