@@ -2,7 +2,11 @@
   "name": "sakura-panorama",
   "private": true,
   "version": "1.0.0",
+  "description": "Sakura: satu lanskap Jepang, tiga cara memandang.",
   "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
