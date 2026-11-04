@@ -250,6 +250,10 @@ p {
   color: #fff;
 }
 
+.primary-action:active {
+  background: #8f1212;
+}
+
 .view-rail {
   --frame-vh: 0.62547cqw;
 
