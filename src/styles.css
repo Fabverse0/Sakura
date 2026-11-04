@@ -307,13 +307,18 @@ p {
   color: #fff;
 }
 
-.view-control[aria-pressed="true"]::after {
+.view-control[aria-pressed="true"]::after,
+.view-control:hover::after {
   position: absolute;
   bottom: 0;
   width: 1.4em;
   height: 1px;
   background: #d51e1a;
   content: "";
+}
+
+.view-control:not([aria-pressed="true"]):hover::after {
+  opacity: 0.6;
 }
 
 .shoji-wall {
