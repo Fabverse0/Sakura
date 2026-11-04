@@ -64,6 +64,12 @@ a {
   width: 100%;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 .comp-frame {
   position: relative;
   width: 100%;
