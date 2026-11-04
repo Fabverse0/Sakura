@@ -1393,3 +1393,8 @@ p {
     color: #000;
   }
 }
+
+.panorama-art,
+.guided-route__image {
+  -webkit-user-drag: none;
+}
