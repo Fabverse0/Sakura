@@ -627,6 +627,10 @@ p {
   color: #fff;
 }
 
+.guided-route__button:active {
+  transform: translateY(1px);
+}
+
 .guided-route__button--quiet {
   background: transparent;
   color: var(--ink);
