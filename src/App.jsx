@@ -168,7 +168,11 @@ export default function App() {
             SAKURA
           </a>
           <nav className="header-nav" aria-label="Navigasi utama">
-            <a className="header-nav__link header-nav__link--active" href="#panorama">
+            <a
+              className="header-nav__link header-nav__link--active"
+              href="#panorama"
+              aria-current="page"
+            >
               Karya
             </a>
             <a className="header-nav__link" href="#tentang">
