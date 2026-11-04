@@ -892,10 +892,6 @@ p {
     flex-direction: column;
   }
 
-  .top-beam {
-    flex: 0 0 auto;
-  }
-
   .page-main {
     display: flex;
     flex: 1 0 auto;
@@ -905,6 +901,7 @@ p {
   .top-beam {
     position: relative;
     inset: auto;
+    flex: 0 0 auto;
     display: flex;
     height: clamp(68px, 7.2vw, 84px);
     align-items: center;
