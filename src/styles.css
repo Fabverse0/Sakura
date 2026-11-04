@@ -1351,4 +1351,12 @@ p {
     opacity: 1;
     transform: scale(1);
   }
+
+  .detail-card:hover {
+    transform: none;
+  }
+
+  .comp-frame[data-focus] .panorama-art {
+    transform: none;
+  }
 }
