@@ -831,6 +831,7 @@ p {
 }
 
 .pause-experience__button {
+  min-width: 15ch;
   min-height: 52px;
   padding: 12px 24px;
   border: 1px solid var(--maple);
