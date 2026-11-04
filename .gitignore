@@ -6,3 +6,9 @@ dist/
 .impeccable/mocks/engawa-sightline.png
 .impeccable/mocks/engawa-sightline.png.json
 .impeccable/review/diff/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
