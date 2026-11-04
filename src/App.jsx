@@ -152,6 +152,9 @@ export default function App() {
 
   return (
     <>
+      <a className="skip-link" href="#top">
+        Lewati ke konten utama
+      </a>
       <div
         className="comp-frame"
         data-focus={activeView}
