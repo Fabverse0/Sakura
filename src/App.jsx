@@ -388,6 +388,8 @@ export default function App() {
                   alt=""
                   aria-hidden="true"
                   draggable="false"
+                  loading="lazy"
+                  decoding="async"
                   style={{ "--focus-origin": guidedView.origin }}
                 />
                 <div className="guided-route__step-content">
