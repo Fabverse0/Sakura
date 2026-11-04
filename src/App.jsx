@@ -44,6 +44,14 @@ const pauseDurationSeconds = 30;
 const breathCycleSeconds = 10;
 const inhaleSeconds = 4;
 
+const petals = Array.from({ length: 12 }, (_, index) => ({
+  left: `${(index * 29 + 7) % 100}%`,
+  size: 0.7 + ((index * 37) % 60) / 100,
+  duration: `${14 + ((index * 13) % 10)}s`,
+  delay: `${-((index * 7) % 18)}s`,
+  drift: `${((index % 2 === 0 ? 1 : -1) * (40 + ((index * 17) % 80)))}px`,
+}));
+
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
   const [guidedStepIndex, setGuidedStepIndex] = useState(null);
@@ -115,6 +123,39 @@ export default function App() {
 
     routeFocusTarget.current = null;
   }, [guidedStepIndex]);
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+      return undefined;
+    }
+
+    const root = document.documentElement;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.setAttribute("data-revealed", "");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    document.querySelectorAll("[data-reveal]").forEach((element) => {
+      observer.observe(element);
+    });
+    root.classList.add("reveal-ready");
+
+    return () => {
+      observer.disconnect();
+      root.classList.remove("reveal-ready");
+    };
+  }, []);
 
   function selectView(viewId, returnToPanorama = false) {
     setActiveView(viewId);
@@ -207,6 +248,21 @@ export default function App() {
               draggable="false"
               fetchPriority="high"
             />
+            <div className="petals" aria-hidden="true">
+              {petals.map((petal, index) => (
+                <span
+                  className="petal"
+                  key={index}
+                  style={{
+                    "--petal-left": petal.left,
+                    "--petal-size": petal.size,
+                    "--petal-duration": petal.duration,
+                    "--petal-delay": petal.delay,
+                    "--petal-drift": petal.drift,
+                  }}
+                />
+              ))}
+            </div>
             <h1 className="hero-headline" id="hero-title">
               Satu lanskap.
               <br />
@@ -294,6 +350,7 @@ export default function App() {
             {views.map((view) => (
               <button
                 className="detail-card"
+                data-reveal
                 key={view.id}
                 type="button"
                 aria-pressed={activeView === view.id}
@@ -312,7 +369,7 @@ export default function App() {
 
       <section className="guided-route" aria-labelledby="guided-route-title">
         <div className="guided-route__inner">
-          <div className="guided-route__intro">
+          <div className="guided-route__intro" data-reveal>
             <h2 className="guided-route__title" id="guided-route-title">
               Rute pandang
             </h2>
@@ -321,7 +378,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="guided-route__panel">
+          <div className="guided-route__panel" data-reveal>
             {guidedStepIndex === null ? (
               <>
                 <p className="guided-route__sequence">
@@ -456,7 +513,7 @@ export default function App() {
         aria-labelledby="pause-title"
       >
         <div className="pause-experience__inner">
-          <div className="pause-experience__copy">
+          <div className="pause-experience__copy" data-reveal>
             <h2 className="pause-experience__title" id="pause-title">
               Jeda 30 detik
             </h2>
@@ -475,7 +532,7 @@ export default function App() {
             </p>
           </div>
 
-          <div className="pause-experience__practice">
+          <div className="pause-experience__practice" data-reveal>
             <div
               className="pause-experience__window"
               data-running={isPauseRunning}
@@ -494,6 +551,13 @@ export default function App() {
             >
               00:{String(pauseSecondsRemaining).padStart(2, "0")}
             </time>
+            <div className="pause-experience__progress" aria-hidden="true">
+              <span
+                style={{
+                  transform: `scaleX(${pauseSecondsRemaining / pauseDurationSeconds})`,
+                }}
+              />
+            </div>
             {isPauseRunning ? (
               <button
                 className="pause-experience__button"
