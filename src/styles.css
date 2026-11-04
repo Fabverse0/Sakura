@@ -1360,3 +1360,21 @@ p {
     transform: none;
   }
 }
+
+@media (forced-colors: active) {
+  .view-control[aria-pressed="true"]::after,
+  .header-nav__link--active::after {
+    background: Highlight;
+  }
+
+  .detail-card[aria-pressed="true"] {
+    border-color: Highlight;
+    border-width: 2px;
+  }
+
+  .guided-route__button,
+  .pause-experience__button,
+  .primary-action {
+    border: 1px solid ButtonText;
+  }
+}
