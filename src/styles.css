@@ -70,6 +70,10 @@ h3 {
   text-wrap: balance;
 }
 
+p {
+  text-wrap: pretty;
+}
+
 .comp-frame {
   position: relative;
   width: 100%;
