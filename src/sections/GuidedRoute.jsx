@@ -8,7 +8,7 @@ export function GuidedRoute({ route }) {
   const isGuidedRouteComplete = route.isComplete;
 
   return (
-    <section className="guided-route" aria-labelledby="guided-route-title">
+    <section className="guided-route" id="rute" aria-labelledby="guided-route-title">
       <div className="guided-route__inner">
         <div className="guided-route__intro">
           <h2 className="guided-route__title" id="guided-route-title">

@@ -5,6 +5,7 @@ export function PanoramaDetails({ activeView, onSelectView }) {
   return (
     <section
       className="panorama-details"
+      id="detail"
       aria-labelledby="details-title"
       style={{ backgroundImage: "url(" + shojiPaper + ")" }}
     >
