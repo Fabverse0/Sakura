@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import topTimber from "../assets/plates/top-charred-timber.png";
 import railTimber from "../assets/plates/view-rail-timber.png";
 import shojiPaper from "../assets/plates/shoji-paper.png";
@@ -8,29 +8,30 @@ import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
 import { panoramaAlt, panoramaArt, panoramaArtSrcSet } from "./data/panorama.js";
 import { createPetals } from "./data/particles.js";
 import { overviewNote, views } from "./data/views.js";
+import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 
 const petals = createPetals();
 
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
-  const [guidedStepIndex, setGuidedStepIndex] = useState(null);
-  const routeFocusTarget = useRef(null);
-  const routeHeadingRef = useRef(null);
-  const routeStartButtonRef = useRef(null);
+  const route = useGuidedRoute(setActiveView);
+  const guidedStepIndex = route.stepIndex;
+  const guidedView = route.currentView;
+  const isGuidedRouteComplete = route.isComplete;
+
+  function selectView(viewId, returnToPanorama = false) {
+    setActiveView(viewId);
+    route.reset();
+
+    if (returnToPanorama) {
+      document.getElementById("panorama")?.scrollIntoView({ block: "start" });
+    }
+  }
+
   const pause = usePauseTimer();
   const selectedView = views.find((view) => view.id === activeView);
   const activeOrigin = selectedView?.origin ?? "50% 50%";
-  useEffect(() => {
-    if (routeFocusTarget.current === "start") {
-      routeStartButtonRef.current?.focus();
-    } else if (routeFocusTarget.current === "heading") {
-      routeHeadingRef.current?.focus();
-    }
-
-    routeFocusTarget.current = null;
-  }, [guidedStepIndex]);
-
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -63,45 +64,6 @@ export default function App() {
       root.classList.remove("reveal-ready");
     };
   }, []);
-
-  function selectView(viewId, returnToPanorama = false) {
-    setActiveView(viewId);
-    setGuidedStepIndex(null);
-
-    if (returnToPanorama) {
-      document.getElementById("panorama")?.scrollIntoView({ block: "start" });
-    }
-  }
-
-  function startGuidedRoute() {
-    routeFocusTarget.current = "heading";
-    setGuidedStepIndex(0);
-    setActiveView(views[0].id);
-  }
-
-  function selectGuidedStep(stepIndex) {
-    routeFocusTarget.current = "heading";
-    setGuidedStepIndex(stepIndex);
-    setActiveView(views[stepIndex].id);
-  }
-
-  function advanceGuidedRoute() {
-    if (guidedStepIndex === views.length - 1) {
-      routeFocusTarget.current = "heading";
-      setGuidedStepIndex(views.length);
-      return;
-    }
-
-    selectGuidedStep(guidedStepIndex + 1);
-  }
-
-  function endGuidedRoute() {
-    routeFocusTarget.current = "start";
-    setGuidedStepIndex(null);
-  }
-
-  const isGuidedRouteComplete = guidedStepIndex === views.length;
-  const guidedView = views[guidedStepIndex];
 
   return (
     <>
@@ -291,8 +253,8 @@ export default function App() {
                 <button
                   className="guided-route__button guided-route__button--primary"
                   type="button"
-                  ref={routeStartButtonRef}
-                  onClick={startGuidedRoute}
+                  ref={route.startButtonRef}
+                  onClick={route.start}
                 >
                   Mulai rute pandang
                 </button>
@@ -301,7 +263,7 @@ export default function App() {
               <div className="guided-route__completion">
                 <h3
                   className="guided-route__step-title"
-                  ref={routeHeadingRef}
+                  ref={route.headingRef}
                   tabIndex="-1"
                 >
                   Rute selesai
@@ -322,7 +284,7 @@ export default function App() {
                   <button
                     className="guided-route__button guided-route__button--quiet"
                     type="button"
-                    onClick={startGuidedRoute}
+                    onClick={route.start}
                   >
                     Ulangi rute
                   </button>
@@ -366,7 +328,7 @@ export default function App() {
                   <h3
                     className="guided-route__step-title"
                     id="guided-route-step-title"
-                    ref={routeHeadingRef}
+                    ref={route.headingRef}
                     tabIndex="-1"
                   >
                     {guidedView.title}
@@ -377,7 +339,7 @@ export default function App() {
                       <button
                         className="guided-route__button guided-route__button--quiet"
                         type="button"
-                        onClick={() => selectGuidedStep(guidedStepIndex - 1)}
+                        onClick={route.back}
                       >
                         Sebelumnya
                       </button>
@@ -385,14 +347,14 @@ export default function App() {
                     <button
                       className="guided-route__button guided-route__button--primary"
                       type="button"
-                      onClick={advanceGuidedRoute}
+                      onClick={route.advance}
                     >
                       {guidedStepIndex === views.length - 1 ? "Selesaikan rute" : "Lanjut"}
                     </button>
                     <button
                       className="guided-route__button guided-route__button--quiet"
                       type="button"
-                      onClick={endGuidedRoute}
+                      onClick={route.end}
                     >
                       Akhiri rute
                     </button>
