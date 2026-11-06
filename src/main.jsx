@@ -5,10 +5,13 @@ import "@fontsource/cormorant-garamond/latin-400.css";
 import "@fontsource/cormorant-garamond/latin-500.css";
 import "@fontsource/cormorant-garamond/latin-600.css";
 import App from "./App.jsx";
+import { ToastProvider } from "./components/Toast.jsx";
 import "./styles/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
+    <ToastProvider>
+      <App />
+    </ToastProvider>
   </StrictMode>,
 );
