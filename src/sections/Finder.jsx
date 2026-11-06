@@ -1,8 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Particles } from "../components/Particles.jsx";
 import { Icon } from "../components/Icon.jsx";
 import { areas } from "../data/areas.js";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
-import { directionHint, isHit, pickRound } from "../lib/finder.js";
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
+import { directionHint, formatDuration, isHit, pickRound } from "../lib/finder.js";
 
 const roundSize = 6;
 
@@ -17,17 +19,36 @@ export function Finder() {
   const [misses, setMisses] = useState(0);
   const [feedback, setFeedback] = useState("Klik lukisan tepat di tempat benda itu berada.");
   const stageRef = useRef(null);
+  const startedAt = useRef(null);
+  const [elapsed, setElapsed] = useState(null);
+  const [celebrate, setCelebrate] = useState(false);
+  const [best, setBest] = useLocalStorage("sakura:temukan-rekor", null, (v) => v === null || typeof v === "number");
 
   const target = round[index];
   const isDone = index >= round.length;
 
+  useEffect(() => {
+    if (!celebrate) return undefined;
+    const timeout = window.setTimeout(() => setCelebrate(false), 4500);
+    return () => window.clearTimeout(timeout);
+  }, [celebrate]);
+
+  function finish() {
+    const time = Date.now() - (startedAt.current ?? Date.now());
+    setElapsed(time);
+    setCelebrate(true);
+    if (best === null || time < best) setBest(time);
+  }
+
   function guess(x, y) {
     if (isDone) return;
+    if (startedAt.current === null) startedAt.current = Date.now();
     if (isHit(target, x, y)) {
       setMarks((current) => [...current, { id: target.id, x: target.x, y: target.y, kind: "hit" }]);
       setFeedback(`Tepat. ${target.name} ditemukan.`);
       setIndex((current) => current + 1);
       setMisses(0);
+      if (index + 1 >= round.length) finish();
     } else {
       setMarks((current) => [...current, { id: `${target.id}-${Date.now()}`, x, y, kind: "miss" }]);
       const nextMisses = misses + 1;
@@ -50,6 +71,9 @@ export function Finder() {
     setIndex(0);
     setMarks([]);
     setMisses(0);
+    setElapsed(null);
+    setCelebrate(false);
+    startedAt.current = null;
     setFeedback("Ronde baru. Klik lukisan tepat di tempat benda itu berada.");
   }
 
@@ -89,6 +113,7 @@ export function Finder() {
                   }}
                 />
               )}
+              {celebrate && <Particles type="petal" count={70} className="finder__celebrate" />}
               {marks.map((mark) => (
                 <span
                   key={mark.id}
@@ -107,7 +132,13 @@ export function Finder() {
             </p>
 
             {isDone ? (
-              <p className="finder__prompt">Semua detail ditemukan.</p>
+              <p className="finder__prompt finder__prompt--done">
+                <span className="finder__target">Semua ditemukan</span>
+                <span className="finder__time">
+                  Waktu {formatDuration(elapsed ?? 0)}
+                  {best !== null && <> · Rekor {formatDuration(best)}</>}
+                </span>
+              </p>
             ) : (
               <p className="finder__prompt">
                 <span className="finder__prompt-label">Temukan</span>
