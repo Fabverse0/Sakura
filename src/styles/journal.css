@@ -223,3 +223,35 @@
     grid-column: 1 / -1;
   }
 }
+
+.journal__delete {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: color-mix(in srgb, var(--text-ink) 55%, transparent);
+  opacity: 0;
+  transition:
+    opacity var(--dur-feedback) ease,
+    color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease;
+}
+
+.journal__slip:hover .journal__delete,
+.journal__delete:focus-visible {
+  opacity: 1;
+}
+
+.journal__delete:hover {
+  border-color: var(--maple);
+  color: var(--maple);
+}
+
+.journal__slip {
+  padding-right: 60px;
+}

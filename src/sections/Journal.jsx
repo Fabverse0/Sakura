@@ -1,8 +1,11 @@
 import { useId, useState } from "react";
 import { Icon } from "../components/Icon.jsx";
+import { useToast } from "../components/Toast.jsx";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import {
   addNote,
+  removeNote,
+  restoreNote,
   createNote,
   formatNoteDate,
   isNoteList,
@@ -24,6 +27,19 @@ export function Journal({ activeView }) {
   const [error, setError] = useState(null);
   const ids = useId();
   const remaining = maxNoteLength - text.length;
+  const { show } = useToast();
+
+  function handleDelete(note) {
+    const index = notes.findIndex((item) => item.id === note.id);
+    setNotes((current) => removeNote(current, note.id));
+    show("Catatan dihapus.", {
+      duration: 6000,
+      action: {
+        label: "Urungkan",
+        onClick: () => setNotes((current) => restoreNote(current, note, index)),
+      },
+    });
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -128,6 +144,14 @@ export function Journal({ activeView }) {
                         {formatNoteDate(note.createdAt)}
                       </time>
                     </p>
+                    <button
+                      className="journal__delete"
+                      type="button"
+                      onClick={() => handleDelete(note)}
+                    >
+                      <Icon name="trash" size={18} />
+                      <span className="visually-hidden">Hapus catatan dari {formatNoteDate(note.createdAt)}</span>
+                    </button>
                   </li>
                 ))}
               </ol>
