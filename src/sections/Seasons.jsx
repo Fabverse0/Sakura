@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Particles } from "../components/Particles.jsx";
 import { useViewTransition } from "../hooks/useViewTransition.js";
 import { panoramaAt } from "../data/panorama.js";
@@ -11,6 +11,20 @@ export function Seasons() {
   const [seasonId, setSeasonId] = useState(defaultSeasonId);
   const season = findSeason(seasonId);
   const transition = useViewTransition();
+
+  const optionRefs = useRef([]);
+
+  function handleKeyDown(event, index) {
+    const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+    let next = null;
+    if (event.key in keys) next = (index + keys[event.key] + seasons.length) % seasons.length;
+    if (event.key === "Home") next = 0;
+    if (event.key === "End") next = seasons.length - 1;
+    if (next === null) return;
+    event.preventDefault();
+    optionRefs.current[next]?.focus();
+    choose(seasons[next].id);
+  }
 
   function choose(id) {
     if (id === seasonId) return;
@@ -62,14 +76,20 @@ export function Seasons() {
           </div>
         </div>
 
-        <div className="seasons__picker" role="group" aria-label="Pilih musim">
-          {seasons.map((item) => (
+        <div className="seasons__picker" role="radiogroup" aria-label="Pilih musim">
+          {seasons.map((item, index) => (
             <button
               key={item.id}
+              ref={(node) => {
+                optionRefs.current[index] = node;
+              }}
               className="seasons__option"
               type="button"
-              aria-pressed={item.id === season.id}
+              role="radio"
+              aria-checked={item.id === season.id}
+              tabIndex={item.id === season.id ? 0 : -1}
               onClick={() => choose(item.id)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
               style={{ "--option-tone": item.tone }}
             >
               <span className="seasons__swatch" aria-hidden="true" />
