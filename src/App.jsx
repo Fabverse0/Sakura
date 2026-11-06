@@ -6,6 +6,7 @@ import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 import { useViewTransition } from "./hooks/useViewTransition.js";
+import { Finder } from "./sections/Finder.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
 import { Haiku } from "./sections/Haiku.jsx";
 import { HeroComp } from "./sections/HeroComp.jsx";
@@ -64,6 +65,7 @@ export default function App() {
         <HeroComp activeView={activeView} onSelectView={selectView} onOpenRooms={openRooms} />
         <PanoramaDetails activeView={activeView} onSelectView={selectView} />
         <Lens />
+        <Finder />
         <Haiku activeView={activeView} onSelectView={selectView} />
         <GuidedRoute route={route} />
         <Seasons />

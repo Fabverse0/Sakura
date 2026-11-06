@@ -1,0 +1,179 @@
+.finder__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: 32px;
+}
+
+.finder__board {
+  grid-column: 1 / span 8;
+  padding: 14px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/view-rail-timber.png");
+  background-size: 300px 68px;
+  box-shadow: 0 30px 60px -32px rgb(21 22 25 / 55%);
+}
+
+.finder__stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  cursor: crosshair;
+}
+
+.finder__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.finder__mark {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  pointer-events: none;
+  translate: -50% -50%;
+}
+
+/* Found: an ink ring drawn around the detail */
+.finder__mark--hit {
+  border: 3px solid var(--maple);
+  box-shadow:
+    0 0 0 2px rgb(242 238 231 / 85%),
+    inset 0 0 0 2px rgb(242 238 231 / 85%);
+  animation: mark-hit 700ms var(--ease-out) both;
+}
+
+/* Missed: a small ripple that fades away */
+.finder__mark--miss {
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgb(242 238 231 / 90%);
+  animation: mark-miss 900ms ease-out both;
+}
+
+@keyframes mark-hit {
+  from {
+    opacity: 0;
+    scale: 2.2;
+    rotate: 45deg;
+  }
+}
+
+@keyframes mark-miss {
+  from {
+    opacity: 1;
+    scale: 0.4;
+  }
+
+  to {
+    opacity: 0;
+    scale: 1.6;
+  }
+}
+
+.finder__panel {
+  display: grid;
+  grid-column: 9 / span 4;
+  gap: 18px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.finder__progress {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+}
+
+.finder__count {
+  color: var(--maple);
+  font-size: 64px;
+  font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 0.9;
+}
+
+.finder__of {
+  font-size: 20px;
+}
+
+.finder__prompt {
+  display: grid;
+  gap: 4px;
+  min-height: 3.4em;
+  margin: 0;
+}
+
+.finder__prompt-label {
+  color: color-mix(in srgb, var(--text-ink) 66%, transparent);
+  font-size: var(--type-label);
+  letter-spacing: 0.04em;
+}
+
+.finder__target {
+  font-size: clamp(30px, 2.4vw, 40px);
+  font-weight: 600;
+  line-height: 1.05;
+  animation: readout-in var(--dur-layout) var(--ease-out);
+}
+
+.finder__feedback {
+  min-height: 2.8em;
+  margin: 0;
+  padding-left: 14px;
+  border-left: 1px solid var(--maple);
+  font-size: var(--type-body);
+  font-style: italic;
+}
+
+.finder__list {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.finder__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  color: color-mix(in srgb, var(--text-ink) 48%, transparent);
+  font-size: 19px;
+}
+
+.finder__item[data-state="current"] {
+  color: var(--text-ink);
+  font-weight: 600;
+}
+
+.finder__item[data-state="found"] {
+  color: var(--text-ink);
+}
+
+.finder__item[data-state="found"] .icon {
+  color: var(--maple);
+}
+
+@media (max-width: 1100px) {
+  .finder__board,
+  .finder__panel {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finder__mark,
+  .finder__target {
+    animation: none;
+  }
+
+  .finder__mark--miss {
+    opacity: 0;
+  }
+}
