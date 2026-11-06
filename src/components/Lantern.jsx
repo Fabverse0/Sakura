@@ -1,8 +1,11 @@
+import { useId } from "react";
+
 /**
  * A paper chochin lantern drawn in SVG: sumi caps, paper body with ribs and a
  * warm core. Decorative; it hangs from the beam and glows in night mode.
  */
 export function Lantern({ className = "", style }) {
+  const gradientId = useId();
   return (
     <svg
       className={`lantern ${className}`.trim()}
@@ -12,7 +15,7 @@ export function Lantern({ className = "", style }) {
       style={style}
     >
       <defs>
-        <radialGradient id="lantern-core" cx="50%" cy="55%" r="60%">
+        <radialGradient id={gradientId} cx="50%" cy="55%" r="60%">
           <stop offset="0%" stopColor="#fff2d6" />
           <stop offset="55%" stopColor="#e8c896" />
           <stop offset="100%" stopColor="#bf1818" />
@@ -22,7 +25,7 @@ export function Lantern({ className = "", style }) {
       <rect x="20" y="22" width="20" height="7" fill="#1e1a22" />
       <path
         d="M20 29 C 4 40, 4 88, 20 99 L 40 99 C 56 88, 56 40, 40 29 Z"
-        fill="url(#lantern-core)"
+        fill={`url(#${gradientId})`}
         stroke="#1e1a22"
         strokeWidth="1.2"
       />
