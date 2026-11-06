@@ -1,0 +1,181 @@
+.haiku__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  gap: 32px;
+}
+
+.haiku__intro {
+  grid-column: 1 / span 5;
+}
+
+.haiku__title {
+  max-width: 9ch;
+}
+
+.haiku__lead {
+  margin-top: 22px;
+}
+
+.haiku__tabs {
+  display: flex;
+  gap: 4px;
+  margin-top: 40px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+}
+
+.haiku__tab {
+  position: relative;
+  padding: 12px 18px 14px;
+  border: 0;
+  background: transparent;
+  color: color-mix(in srgb, var(--text-ink) 62%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  transition: color var(--dur-feedback) ease;
+}
+
+.haiku__tab::after {
+  position: absolute;
+  right: 12px;
+  bottom: -2px;
+  left: 12px;
+  height: 3px;
+  background: var(--maple);
+  content: "";
+  transform: scaleX(0);
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.haiku__tab:hover,
+.haiku__tab[aria-pressed="true"] {
+  color: var(--text-ink);
+}
+
+.haiku__tab[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+
+/* Kakejiku: hanging scroll with timber rods */
+.haiku__scroll {
+  position: relative;
+  grid-column: 7 / span 6;
+  margin: 0;
+  padding: 44px clamp(32px, 3.4vw, 56px) 52px;
+  background-color: var(--dusk-snow);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+  box-shadow:
+    0 30px 60px -30px rgb(21 22 25 / 45%),
+    0 2px 0 rgb(21 22 25 / 6%);
+  animation: scroll-unroll var(--dur-focal) var(--ease-out) both;
+  transform-origin: top center;
+}
+
+@keyframes scroll-unroll {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  to {
+    clip-path: inset(0 0 -40px 0);
+  }
+}
+
+.haiku__rod {
+  position: absolute;
+  left: -14px;
+  right: -14px;
+  height: 14px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/shoji-lintel.png");
+  background-size: 320px 14px;
+}
+
+.haiku__rod--top {
+  top: -7px;
+}
+
+.haiku__rod--bottom {
+  bottom: -7px;
+}
+
+.haiku__crop {
+  aspect-ratio: 21 / 9;
+  margin-bottom: 36px;
+  background-repeat: no-repeat;
+  background-size: 260%;
+  filter: grayscale(0.15) contrast(1.05);
+}
+
+.haiku__poem {
+  margin: 0;
+  color: var(--sumi);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(30px, 2.6vw, 44px);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.24;
+}
+
+.haiku__line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.08em;
+}
+
+.haiku__line > span {
+  display: block;
+  animation: line-rise 900ms var(--ease-out) backwards;
+  animation-delay: calc(320ms + var(--line) * 160ms);
+}
+
+.haiku__line:nth-child(2) {
+  padding-left: 1.4em;
+}
+
+.haiku__line:nth-child(3) {
+  padding-left: 0.7em;
+}
+
+.haiku__stroke {
+  width: 72%;
+  height: 26px;
+  margin: 20px 0 0;
+}
+
+.haiku__caption {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 22px;
+  color: color-mix(in srgb, var(--text-ink) 70%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-label);
+}
+
+.haiku__seal {
+  display: inline-grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  background: var(--maple);
+  color: var(--dusk-snow);
+  font-size: 22px;
+  line-height: 1;
+}
+
+@media (max-width: 1100px) {
+  .haiku__intro,
+  .haiku__scroll {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .haiku__scroll,
+  .haiku__line > span {
+    animation: none;
+  }
+}
