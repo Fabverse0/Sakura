@@ -19,7 +19,7 @@ import {
  * Jurnal Pandang: private notes kept only in this browser.
  */
 export function Journal({ activeView }) {
-  const [notes, setNotes] = useLocalStorage(journalKey, [], isNoteList);
+  const [notes, setNotes, isPersistent] = useLocalStorage(journalKey, [], isNoteList);
   const [text, setText] = useState("");
   const [tag, setTag] = useState(() =>
     noteTags.some((item) => item.id === activeView) ? activeView : "umum",
@@ -65,6 +65,13 @@ export function Journal({ activeView }) {
             tidak dikirim ke mana pun.
           </p>
         </div>
+
+        {!isPersistent && (
+          <p className="journal__notice" role="status">
+            Peramban ini tidak mengizinkan penyimpanan. Catatan tetap bisa ditulis, tetapi akan
+            hilang saat halaman ditutup.
+          </p>
+        )}
 
         <div className="journal__layout">
           <form className="journal__form" onSubmit={handleSubmit} noValidate>
@@ -132,7 +139,7 @@ export function Journal({ activeView }) {
                 yang diselipkan di bingkai shoji.
               </p>
             ) : (
-              <ol className="journal__list">
+              <ol className="journal__list" aria-label="Daftar catatan">
                 {notes.map((note) => (
                   <li className="journal__slip" key={note.id}>
                     <p className="journal__text">{note.text}</p>

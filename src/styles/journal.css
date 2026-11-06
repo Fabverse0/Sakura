@@ -304,3 +304,24 @@
     rotate: 0deg;
   }
 }
+
+.journal__notice {
+  margin: -16px 0 32px;
+  padding: 14px 18px;
+  border: 1px solid var(--maple);
+  background: color-mix(in srgb, var(--maple) 8%, var(--paper-50));
+  color: var(--maple-deep);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-body);
+  font-weight: 600;
+}
+
+@media (forced-colors: active) {
+  .journal__tag input:checked + span {
+    outline: 2px solid Highlight;
+  }
+
+  .journal__slip {
+    border: 1px solid CanvasText;
+  }
+}
