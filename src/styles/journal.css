@@ -1,0 +1,225 @@
+.journal__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: 32px;
+}
+
+.journal__form {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  grid-column: 1 / span 5;
+  gap: 12px;
+  padding: 32px;
+  border-top: 4px solid var(--maple);
+  background-color: var(--paper);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+  box-shadow: 0 24px 50px -30px rgb(21 22 25 / 45%);
+}
+
+.journal__label {
+  padding: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.journal__input {
+  width: 100%;
+  min-height: 160px;
+  padding: 14px 16px;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  background: color-mix(in srgb, var(--paper-50) 85%, transparent);
+  color: var(--text-ink);
+  caret-color: var(--maple);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 21px;
+  line-height: 1.45;
+  resize: vertical;
+  transition: border-color var(--dur-feedback) ease;
+}
+
+.journal__input::placeholder {
+  color: color-mix(in srgb, var(--text-ink) 52%, transparent);
+  font-style: italic;
+}
+
+.journal__input:hover {
+  border-color: color-mix(in srgb, var(--ink) 55%, transparent);
+}
+
+.journal__input:focus-visible {
+  border-color: var(--maple);
+  outline-offset: 2px;
+}
+
+.journal__input[aria-invalid="true"] {
+  border-color: var(--maple);
+}
+
+.journal__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-label);
+}
+
+.journal__count {
+  color: color-mix(in srgb, var(--text-ink) 66%, transparent);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.journal__count[data-low="true"] {
+  color: var(--maple);
+  font-weight: 600;
+}
+
+.journal__error {
+  color: var(--maple-deep);
+  font-weight: 600;
+}
+
+.journal__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 4px;
+  padding: 0;
+  border: 0;
+}
+
+.journal__tags legend {
+  margin-bottom: 8px;
+}
+
+.journal__tag {
+  position: relative;
+  cursor: pointer;
+}
+
+.journal__tag input {
+  position: absolute;
+  opacity: 0;
+}
+
+.journal__tag span {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  transition:
+    background-color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease,
+    color var(--dur-feedback) ease;
+}
+
+.journal__tag:hover span {
+  border-color: var(--maple);
+}
+
+.journal__tag input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.journal__tag input:focus-visible + span {
+  outline: 2px solid var(--maple-hover);
+  outline-offset: 3px;
+}
+
+.journal__submit {
+  justify-self: start;
+  margin-top: 8px;
+}
+
+.journal__notes {
+  grid-column: 7 / span 6;
+}
+
+.journal__notes-title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 20px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.journal__notes-count {
+  color: var(--maple);
+  font-size: 22px;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.journal__empty {
+  max-width: 46ch;
+  margin: 0;
+  padding: 28px 30px;
+  border: 1px dashed color-mix(in srgb, var(--ink) 30%, transparent);
+  color: color-mix(in srgb, var(--text-ink) 72%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-body);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.journal__list {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.journal__slip {
+  position: relative;
+  padding: 22px 24px 18px;
+  background: var(--paper);
+  box-shadow: 0 14px 30px -22px rgb(21 22 25 / 50%);
+}
+
+.journal__text {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.journal__info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 0;
+  color: color-mix(in srgb, var(--text-ink) 66%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+}
+
+.journal__tag-label {
+  padding: 2px 8px;
+  background: var(--ink);
+  color: var(--ivory);
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .journal__form,
+  .journal__notes {
+    position: static;
+    grid-column: 1 / -1;
+  }
+}

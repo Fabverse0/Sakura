@@ -3,6 +3,7 @@ import { useViewTransition } from "./hooks/useViewTransition.js";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
 import { Haiku } from "./sections/Haiku.jsx";
+import { Journal } from "./sections/Journal.jsx";
 import { Lens } from "./sections/Lens.jsx";
 import { NavPanel } from "./sections/NavPanel.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
@@ -73,6 +74,8 @@ export default function App() {
       <Palette />
 
       <PauseExperience pause={pause} />
+
+      <Journal activeView={activeView} />
     </>
   );
 }
