@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
-import { clampPosition, lensGeometry, nudgeZoom } from "../lib/lens.js";
+import { clampPosition, lensGeometry, nudgeZoom, stepPosition } from "../lib/lens.js";
 
 const lensSize = 240;
 
@@ -67,6 +67,24 @@ export function Lens() {
     schedulePaint();
   }
 
+  function handleKeyDown(event) {
+    if (event.key.startsWith("Arrow")) {
+      event.preventDefault();
+      position.current = stepPosition(position.current, event.key, event.shiftKey);
+    } else if (event.key === "+" || event.key === "=") {
+      setZoom((current) => nudgeZoom(current, 0.5));
+    } else if (event.key === "-" || event.key === "_") {
+      setZoom((current) => nudgeZoom(current, -0.5));
+    } else if (event.key === "Home") {
+      event.preventDefault();
+      position.current = { x: 50, y: 50 };
+    } else {
+      return;
+    }
+    if (!isActive) activate();
+    schedulePaint();
+  }
+
   return (
     <section className="room room--sumi lens" id="lensa" aria-labelledby="lens-title">
       <div className="room__inner">
@@ -87,7 +105,16 @@ export function Lens() {
             data-active={isActive}
             onPointerEnter={activate}
             onPointerMove={handlePointerMove}
-            onPointerLeave={() => setIsActive(false)}
+            onPointerLeave={(event) => {
+              if (document.activeElement !== event.currentTarget) setIsActive(false);
+            }}
+            tabIndex={0}
+            role="group"
+            aria-label="Lukisan dengan lensa pembesar"
+            aria-describedby="lens-help"
+            onFocus={activate}
+            onBlur={() => setIsActive(false)}
+            onKeyDown={handleKeyDown}
           >
             <img
               className="lens__art"
@@ -113,6 +140,10 @@ export function Lens() {
             </div>
           </div>
         </div>
+        <p className="lens__help" id="lens-help">
+          Panah untuk menggeser lensa, Shift + panah untuk langkah besar, + dan − untuk
+          perbesaran, Home untuk kembali ke tengah.
+        </p>
       </div>
     </section>
   );
