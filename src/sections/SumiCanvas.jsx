@@ -81,6 +81,37 @@ export function SumiCanvas() {
     }
   }
 
+  function handleSave() {
+    const source = canvasRef.current;
+    if (!source) return;
+    const out = document.createElement("canvas");
+    out.width = source.width;
+    out.height = source.height;
+    const ctx = out.getContext("2d");
+    ctx.fillStyle = "#f4edea";
+    ctx.fillRect(0, 0, out.width, out.height);
+    ctx.drawImage(source, 0, 0);
+    // a small maple seal in the corner, like a hanko on a finished sheet
+    const seal = Math.round(out.height * 0.07);
+    const margin = Math.round(seal * 0.6);
+    ctx.fillStyle = "#bf1818";
+    ctx.fillRect(out.width - seal - margin, out.height - seal - margin, seal, seal);
+    ctx.fillStyle = "#f4edea";
+    ctx.font = `${Math.round(seal * 0.62)}px serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("桜", out.width - margin - seal / 2, out.height - margin - seal / 2);
+    out.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `sakura-sumi-${new Date().toISOString().slice(0, 10)}.png`;
+      link.click();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }, "image/png");
+  }
+
   function handleClear() {
     if (!confirmClear) {
       setConfirmClear(true);
@@ -259,6 +290,15 @@ export function SumiCanvas() {
             >
               <Icon name="trash" size={18} />
               {confirmClear ? "Yakin bersihkan?" : "Bersihkan"}
+            </button>
+            <button
+              className="room-button sumi__tool"
+              type="button"
+              disabled={!history.strokes.length}
+              onClick={handleSave}
+            >
+              <Icon name="download" size={18} />
+              Simpan PNG
             </button>
           </div>
         </div>
