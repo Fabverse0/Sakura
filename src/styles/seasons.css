@@ -169,12 +169,10 @@
 @keyframes season-wipe {
   from {
     clip-path: inset(0 0 0 100%);
-    filter: drop-shadow(-14px 0 0 var(--rail-base));
   }
 
   to {
     clip-path: inset(0 0 0 0);
-    filter: drop-shadow(0 0 0 var(--rail-base));
   }
 }
 

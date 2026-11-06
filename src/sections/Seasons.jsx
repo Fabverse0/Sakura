@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Particles } from "../components/Particles.jsx";
 import { useViewTransition } from "../hooks/useViewTransition.js";
 import { panoramaAt } from "../data/panorama.js";
 import { defaultSeasonId, findSeason, seasons } from "../data/seasons.js";
@@ -52,6 +53,8 @@ export function Seasons() {
               }}
             />
           </div>
+
+          <Particles type={season.particle} count={season.particle === "snow" ? 90 : 26} />
 
           <div className="seasons__caption">
             <p className="seasons__name">{season.title}</p>
