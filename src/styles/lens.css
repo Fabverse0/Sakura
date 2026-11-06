@@ -25,3 +25,58 @@
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.lens__stage[data-active="true"] {
+  cursor: none;
+}
+
+/* Dim the painting around the lens so the magnified square reads as light. */
+.lens__stage::after {
+  position: absolute;
+  inset: 0;
+  background: rgb(15 16 19 / 0%);
+  content: "";
+  pointer-events: none;
+  transition: background-color var(--dur-layout) ease;
+}
+
+.lens__stage[data-active="true"]::after {
+  background: rgb(15 16 19 / 38%);
+}
+
+.lens__glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  border: 6px solid var(--rail-base);
+  outline: 1px solid rgb(242 238 231 / 55%);
+  outline-offset: -7px;
+  background-color: var(--ink-900);
+  background-repeat: no-repeat;
+  box-shadow:
+    0 24px 48px -16px rgb(0 0 0 / 75%),
+    0 0 0 1px rgb(0 0 0 / 60%);
+  opacity: 0;
+  pointer-events: none;
+  scale: 0.6;
+  transition:
+    opacity var(--dur-state) ease,
+    scale var(--dur-layout) var(--ease-out);
+  will-change: transform;
+}
+
+.lens__stage[data-active="true"] .lens__glass {
+  opacity: 1;
+  scale: 1;
+}
+
+/* Kumiko-style crosshair: thin timber bars at the centre */
+.lens__crosshair {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--maple-rule), var(--maple-rule)) center / 1px 18px no-repeat,
+    linear-gradient(var(--maple-rule), var(--maple-rule)) center / 18px 1px no-repeat;
+  opacity: 0.85;
+}
