@@ -26,9 +26,22 @@
   pointer-events: none;
 }
 
+/* Ink veil over the whole stage, deepest at the lower left behind the caption */
+.seasons__stage::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgb(15 16 19 / 78%) 0%, rgb(15 16 19 / 38%) 34%, rgb(15 16 19 / 0%) 62%),
+    linear-gradient(0deg, rgb(15 16 19 / 55%) 0%, rgb(15 16 19 / 0%) 45%);
+  content: "";
+  pointer-events: none;
+}
+
 .seasons__stage .particles {
   z-index: 1;
 }
+
 
 /* Caption sits on an ink veil in the lower left */
 .seasons__caption {
@@ -38,7 +51,6 @@
   z-index: 2;
   width: min(54%, 640px);
   padding: 120px clamp(28px, 3vw, 48px) clamp(28px, 3vw, 44px);
-  background: linear-gradient(to top right, rgb(15 16 19 / 88%) 30%, rgb(15 16 19 / 0%) 75%);
   color: var(--ivory);
   view-transition-name: season-caption;
 }
