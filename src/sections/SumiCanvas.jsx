@@ -171,6 +171,7 @@ export function SumiCanvas() {
 
   function handlePointerDown(event) {
     if (event.button !== 0) return;
+    event.currentTarget.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture(event.pointerId);
     const p = toPoint(event);
     live.current = {
@@ -308,6 +309,7 @@ export function SumiCanvas() {
             className="sumi__canvas"
             ref={canvasRef}
             role="img"
+            tabIndex={0}
             aria-label={`Kanvas tinta dengan ${history.strokes.length} goresan.`}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
