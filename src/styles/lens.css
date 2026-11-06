@@ -154,3 +154,32 @@
   min-width: 64px;
   font-variant-numeric: lining-nums tabular-nums;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .lens__glass {
+    scale: 1;
+    transition: opacity var(--dur-feedback) linear;
+  }
+
+  .lens__readout-name {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .lens__glass {
+    border-color: CanvasText;
+  }
+
+  .lens__crosshair {
+    background:
+      linear-gradient(Highlight, Highlight) center / 2px 18px no-repeat,
+      linear-gradient(Highlight, Highlight) center / 18px 2px no-repeat;
+  }
+}
+
+@media (max-width: 1100px) {
+  .lens__frame {
+    padding: 10px;
+  }
+}
