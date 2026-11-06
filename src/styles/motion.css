@@ -94,12 +94,35 @@
     animation: none;
   }
 
-  .petals {
+  /* Fewer, slower petals instead of none: the scene still breathes. */
+  .petal:nth-child(n + 5) {
     display: none;
+  }
+
+  .petal {
+    animation-name: petal-drift-gentle;
+    animation-duration: calc(var(--petal-duration) * 2.5);
   }
 
 }
 
 .petals[data-paused="true"] .petal {
   animation-play-state: paused;
+}
+
+@keyframes petal-drift-gentle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+
+  15%,
+  85% {
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: translate3d(calc(var(--petal-drift) * 0.3), 30cqh, 0);
+  }
 }
