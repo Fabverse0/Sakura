@@ -60,6 +60,11 @@
   }
 }
 
+/* the content box fills the dialog, so backdrop clicks land on ::backdrop only */
+.nav-panel > * {
+  position: relative;
+}
+
 .nav-panel__head {
   display: flex;
   align-items: center;
@@ -101,19 +106,21 @@
   gap: 2px;
   padding: 14px 12px 14px 16px;
   border-bottom: 1px solid color-mix(in srgb, var(--ink) 16%, transparent);
-  border-left: 3px solid transparent;
   color: var(--text-ink);
   text-decoration: none;
   transition:
     background-color var(--dur-feedback) ease,
-    border-color var(--dur-feedback) ease,
     padding-left var(--dur-state) var(--ease-out);
 }
 
 .nav-panel__link:hover,
 .nav-panel__link[aria-current="location"] {
-  border-left-color: var(--maple);
+  padding-left: 24px;
   background: color-mix(in srgb, var(--ivory) 70%, transparent);
+}
+
+.nav-panel__link[aria-current="location"] .nav-panel__label {
+  color: var(--maple);
 }
 
 .nav-panel__label {

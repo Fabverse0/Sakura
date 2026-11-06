@@ -23,6 +23,10 @@ export function NavPanel({ isOpen, onClose, activeId }) {
       ref={dialogRef}
       aria-labelledby="nav-panel-title"
       onClose={onClose}
+      onClick={(event) => {
+        // A click on the dialog box itself (not its content) is the backdrop.
+        if (event.target === event.currentTarget) onClose();
+      }}
       style={{ backgroundImage: `url(${shojiPaper})` }}
     >
       <div className="nav-panel__head">
