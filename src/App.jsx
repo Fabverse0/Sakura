@@ -8,11 +8,7 @@ import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
 import { panoramaAlt, panoramaArt, panoramaArtSrcSet } from "./data/panorama.js";
 import { createPetals } from "./data/particles.js";
 import { overviewNote, views } from "./data/views.js";
-import {
-  breathCycleSeconds,
-  inhaleSeconds,
-  pauseDurationSeconds,
-} from "./data/pause.js";
+import { usePauseTimer } from "./hooks/usePauseTimer.js";
 
 const petals = createPetals();
 
@@ -22,62 +18,9 @@ export default function App() {
   const routeFocusTarget = useRef(null);
   const routeHeadingRef = useRef(null);
   const routeStartButtonRef = useRef(null);
-  const [isPauseRunning, setIsPauseRunning] = useState(false);
-  const [pauseSecondsRemaining, setPauseSecondsRemaining] = useState(
-    pauseDurationSeconds,
-  );
+  const pause = usePauseTimer();
   const selectedView = views.find((view) => view.id === activeView);
   const activeOrigin = selectedView?.origin ?? "50% 50%";
-  const elapsedPauseSeconds = pauseDurationSeconds - pauseSecondsRemaining;
-  const isInhalePhase = elapsedPauseSeconds % breathCycleSeconds < inhaleSeconds;
-  const pausePhase = isPauseRunning
-    ? isInhalePhase
-      ? "inhale"
-      : "exhale"
-    : "rest";
-  const pauseStatus = isPauseRunning
-    ? isInhalePhase
-      ? "Tarik napas pelan."
-      : "Hembuskan perlahan."
-    : pauseSecondsRemaining === 0
-      ? "Jeda selesai. Lanjutkan saat siap."
-      : "Pandang panorama, lalu mulai kapan pun kamu siap.";
-
-  useEffect(() => {
-    if (!isPauseRunning) return undefined;
-
-    const endsAt = Date.now() + pauseDurationSeconds * 1000;
-    const intervalId = window.setInterval(() => {
-      const nextSecondsRemaining = Math.max(
-        0,
-        Math.ceil((endsAt - Date.now()) / 1000),
-      );
-
-      setPauseSecondsRemaining(nextSecondsRemaining);
-
-      if (nextSecondsRemaining === 0) {
-        setIsPauseRunning(false);
-      }
-    }, 1000);
-
-    return () => window.clearInterval(intervalId);
-  }, [isPauseRunning]);
-
-  useEffect(() => {
-    if (!isPauseRunning) return undefined;
-
-    function handleKeyDown(event) {
-      if (event.key === "Escape") {
-        setIsPauseRunning(false);
-        setPauseSecondsRemaining(pauseDurationSeconds);
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isPauseRunning]);
-
   useEffect(() => {
     if (routeFocusTarget.current === "start") {
       routeStartButtonRef.current?.focus();
@@ -159,16 +102,6 @@ export default function App() {
 
   const isGuidedRouteComplete = guidedStepIndex === views.length;
   const guidedView = views[guidedStepIndex];
-
-  function startPause() {
-    setPauseSecondsRemaining(pauseDurationSeconds);
-    setIsPauseRunning(true);
-  }
-
-  function endPause() {
-    setIsPauseRunning(false);
-    setPauseSecondsRemaining(pauseDurationSeconds);
-  }
 
   return (
     <>
@@ -492,15 +425,15 @@ export default function App() {
               aria-live="polite"
               aria-atomic="true"
             >
-              {pauseStatus}
+              {pause.status}
             </p>
           </div>
 
           <div className="pause-experience__practice" data-reveal>
             <div
               className="pause-experience__window"
-              data-running={isPauseRunning}
-              data-phase={pausePhase}
+              data-running={pause.isRunning}
+              data-phase={pause.phase}
               aria-hidden="true"
             >
               <span
@@ -510,24 +443,24 @@ export default function App() {
             </div>
             <time
               className="pause-experience__timer"
-              dateTime={`PT${pauseSecondsRemaining}S`}
-              aria-label={`${pauseSecondsRemaining} detik tersisa`}
+              dateTime={`PT${pause.secondsRemaining}S`}
+              aria-label={`${pause.secondsRemaining} detik tersisa`}
             >
-              00:{String(pauseSecondsRemaining).padStart(2, "0")}
+              00:{String(pause.secondsRemaining).padStart(2, "0")}
             </time>
             <div className="pause-experience__progress" aria-hidden="true">
               <span
                 style={{
-                  transform: `scaleX(${pauseSecondsRemaining / pauseDurationSeconds})`,
+                  transform: `scaleX(${pause.progress})`,
                 }}
               />
             </div>
-            {isPauseRunning ? (
+            {pause.isRunning ? (
               <button
                 className="pause-experience__button"
                 type="button"
                 aria-controls="pause-status"
-                onClick={endPause}
+                onClick={pause.end}
               >
                 Akhiri jeda
               </button>
@@ -536,9 +469,9 @@ export default function App() {
                 className="pause-experience__button"
                 type="button"
                 aria-controls="pause-status"
-                onClick={startPause}
+                onClick={pause.start}
               >
-                {pauseSecondsRemaining === 0
+                {pause.secondsRemaining === 0
                   ? "Ulangi jeda"
                   : "Mulai jeda 30 detik"}
               </button>
