@@ -70,7 +70,12 @@ export default function App() {
       />
 
       <main id="top">
-        <HeroComp activeView={activeView} onSelectView={selectView} onOpenRooms={openRooms} />
+        <HeroComp
+          activeView={activeView}
+          onSelectView={selectView}
+          onOpenRooms={openRooms}
+          isNight={night.isNight}
+        />
         <PanoramaDetails activeView={activeView} onSelectView={selectView} />
         <Lens />
         <Finder />

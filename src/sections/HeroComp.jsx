@@ -1,4 +1,6 @@
 import { useRef } from "react";
+import { Lantern } from "../components/Lantern.jsx";
+import { Particles } from "../components/Particles.jsx";
 import { useInView } from "../hooks/useInView.js";
 import topTimber from "../../assets/plates/top-charred-timber.png";
 import railTimber from "../../assets/plates/view-rail-timber.png";
@@ -16,7 +18,7 @@ const petals = createPetals();
  * The approved engawa comp: timber beam, panorama, focus rail and shoji wall.
  * Desktop geometry is percentage based and must stay pixel-stable.
  */
-export function HeroComp({ activeView, onSelectView, onOpenRooms }) {
+export function HeroComp({ activeView, onSelectView, onOpenRooms, isNight = false }) {
   const heroRef = useRef(null);
   const isHeroVisible = useInView(heroRef);
   const selectedView = findView(activeView);
@@ -70,6 +72,10 @@ export function HeroComp({ activeView, onSelectView, onOpenRooms }) {
             draggable="false"
             fetchPriority="high"
           />
+          <span className="hero-night" aria-hidden="true" />
+          {isNight && <Particles type="firefly" count={22} className="hero-fireflies" />}
+          <Lantern className="hero-lantern hero-lantern--one" />
+          <Lantern className="hero-lantern hero-lantern--two" />
           <div className="petals" aria-hidden="true" data-paused={!isHeroVisible}>
             {petals.map((petal, index) => (
               <span
