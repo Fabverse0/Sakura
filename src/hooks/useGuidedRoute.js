@@ -33,22 +33,18 @@ export function useGuidedRoute(onSelectView) {
   const start = useCallback(() => goTo(0), [goTo]);
 
   const advance = useCallback(() => {
-    setStepIndex((current) => {
-      const next = current === null ? 0 : current + 1;
+    const next = stepIndex === null ? 0 : stepIndex + 1;
+    if (next >= views.length) {
       focusTarget.current = "heading";
-      if (next < views.length) onSelectView(views[next].id);
-      return Math.min(next, views.length);
-    });
-  }, [onSelectView]);
+      setStepIndex(views.length);
+      return;
+    }
+    goTo(next);
+  }, [stepIndex, goTo]);
 
   const back = useCallback(() => {
-    setStepIndex((current) => {
-      const prev = Math.max(0, (current ?? 0) - 1);
-      focusTarget.current = "heading";
-      onSelectView(views[prev].id);
-      return prev;
-    });
-  }, [onSelectView]);
+    goTo(Math.max(0, (stepIndex ?? 0) - 1));
+  }, [stepIndex, goTo]);
 
   const end = useCallback(() => {
     focusTarget.current = "start";
