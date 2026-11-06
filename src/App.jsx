@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useViewTransition } from "./hooks/useViewTransition.js";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
@@ -8,10 +9,15 @@ import { usePauseTimer } from "./hooks/usePauseTimer.js";
 
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
-  const route = useGuidedRoute(setActiveView);
+  const transition = useViewTransition();
+  const changeView = useCallback(
+    (viewId) => transition(() => setActiveView(viewId), ["focus"]),
+    [transition],
+  );
+  const route = useGuidedRoute(changeView);
 
   function selectView(viewId, returnToPanorama = false) {
-    setActiveView(viewId);
+    changeView(viewId);
     route.reset();
 
     if (returnToPanorama) {

@@ -1,0 +1,40 @@
+/* View transitions: only named regions morph; the page itself never crossfades,
+   so the panorama keeps its own 900ms focus zoom running live underneath. */
+:root {
+  view-transition-name: none;
+}
+
+::view-transition-group(root) {
+  animation: none;
+}
+
+.section-description {
+  view-transition-name: shoji-note;
+}
+
+::view-transition-old(shoji-note) {
+  animation: note-out var(--dur-layout) var(--ease-in-out) both;
+}
+
+::view-transition-new(shoji-note) {
+  animation: note-in var(--dur-focal) var(--ease-out) both;
+}
+
+@keyframes note-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes note-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.2;
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
