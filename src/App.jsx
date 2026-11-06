@@ -6,6 +6,7 @@ import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
 import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
 import { panoramaAlt, panoramaArt, panoramaArtSrcSet } from "./data/panorama.js";
+import { createPetals } from "./data/particles.js";
 import { overviewNote, views } from "./data/views.js";
 import {
   breathCycleSeconds,
@@ -13,13 +14,7 @@ import {
   pauseDurationSeconds,
 } from "./data/pause.js";
 
-const petals = Array.from({ length: 12 }, (_, index) => ({
-  left: `${(index * 29 + 7) % 100}%`,
-  size: 0.7 + ((index * 37) % 60) / 100,
-  duration: `${14 + ((index * 13) % 10)}s`,
-  delay: `${-((index * 7) % 18)}s`,
-  drift: `${((index % 2 === 0 ? 1 : -1) * (40 + ((index * 17) % 80)))}px`,
-}));
+const petals = createPetals();
 
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
