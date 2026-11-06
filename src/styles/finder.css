@@ -230,10 +230,7 @@
   opacity: 0;
   pointer-events: none;
   translate: -50% -50%;
-  transition:
-    left var(--dur-feedback) linear,
-    top var(--dur-feedback) linear,
-    opacity var(--dur-feedback) ease;
+  transition: opacity var(--dur-feedback) ease;
 }
 
 .finder__reticle::before,
