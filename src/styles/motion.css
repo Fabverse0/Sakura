@@ -28,7 +28,7 @@
 .petals {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: var(--z-petals);
   overflow: hidden;
   pointer-events: none;
 }
@@ -39,8 +39,8 @@
   left: var(--petal-left);
   width: calc(11px * var(--petal-size));
   height: calc(15px * var(--petal-size));
-  border-radius: 100% 0 100% 0;
-  background: linear-gradient(135deg, #f2c4c8, #d98a93);
+  clip-path: polygon(50% 0, 78% 12%, 96% 42%, 88% 78%, 62% 100%, 50% 90%, 38% 100%, 12% 78%, 4% 42%, 22% 12%);
+  background: var(--petal-tone, var(--maple));
   opacity: 0;
   animation: petal-fall var(--petal-duration) linear var(--petal-delay) infinite;
 }

@@ -73,6 +73,7 @@ export function HeroComp({ activeView, onSelectView }) {
                   "--petal-duration": petal.duration,
                   "--petal-delay": petal.delay,
                   "--petal-drift": petal.drift,
+                  "--petal-tone": petal.tone,
                 }}
               />
             ))}
