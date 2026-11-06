@@ -1,20 +1,34 @@
 import shojiPaper from "../../assets/plates/shoji-paper.png";
+import { Icon } from "../components/Icon.jsx";
+import { panoramaAt } from "../data/panorama.js";
 
+/**
+ * Jeda 30 detik: three breaths with the painting dimmed behind a shoji window.
+ * The window brightens and opens on the inhale (4 s) and settles on the
+ * exhale (6 s), like light through paper.
+ */
 export function PauseExperience({ pause }) {
   return (
     <section
-      className="pause-experience"
+      className="room room--sumi pause-experience"
       id="pause-experience"
       aria-labelledby="pause-title"
+      data-running={pause.isRunning}
     >
-      <div className="pause-experience__inner">
+      <span
+        className="pause-experience__scene"
+        aria-hidden="true"
+        style={{ backgroundImage: `url(${panoramaAt(1920)})` }}
+      />
+
+      <div className="room__inner pause-experience__inner">
         <div className="pause-experience__copy">
-          <h2 className="pause-experience__title" id="pause-title">
+          <h2 className="room__title pause-experience__title" id="pause-title">
             Jeda 30 detik
           </h2>
-          <p className="pause-experience__description">
-            Tarik napas selama empat detik, lalu hembuskan selama enam detik.
-            Ulangi tiga kali, atau cukup memandang panorama.
+          <p className="room__lead pause-experience__description">
+            Tarik napas selama empat detik, lalu hembuskan selama enam detik. Ulangi tiga kali,
+            atau cukup memandang panorama.
           </p>
           <p
             className="pause-experience__status"
@@ -34,11 +48,12 @@ export function PauseExperience({ pause }) {
             data-phase={pause.phase}
             aria-hidden="true"
           >
-            <span
-              className="pause-experience__pane"
-              style={{ backgroundImage: "url(" + shojiPaper + ")" }}
-            />
+            <span className="pause-experience__pane" style={{ backgroundImage: `url(${shojiPaper})` }}>
+              <span className="pause-experience__light" />
+              <span className="pause-experience__kumiko" />
+            </span>
           </div>
+
           <time
             className="pause-experience__timer"
             dateTime={`PT${pause.secondsRemaining}S`}
@@ -47,32 +62,27 @@ export function PauseExperience({ pause }) {
             00:{String(pause.secondsRemaining).padStart(2, "0")}
           </time>
           <div className="pause-experience__progress" aria-hidden="true">
-            <span
-              style={{
-                transform: `scaleX(${pause.progress})`,
-              }}
-            />
+            <span style={{ transform: `scaleX(${pause.progress})` }} />
           </div>
-          {pause.isRunning ? (
-            <button
-              className="pause-experience__button"
-              type="button"
-              aria-controls="pause-status"
-              onClick={pause.end}
-            >
-              Akhiri jeda
-            </button>
-          ) : (
-            <button
-              className="pause-experience__button"
-              type="button"
-              aria-controls="pause-status"
-              onClick={pause.start}
-            >
-              {pause.secondsRemaining === 0
+
+          <button
+            className="room-button pause-experience__button"
+            type="button"
+            aria-controls="pause-status"
+            onClick={pause.isRunning ? pause.end : pause.start}
+          >
+            {pause.isRunning
+              ? "Akhiri jeda"
+              : pause.secondsRemaining === 0
                 ? "Ulangi jeda"
                 : "Mulai jeda 30 detik"}
-            </button>
+          </button>
+
+          {pause.isComplete && (
+            <a className="pause-experience__return" href="#panorama">
+              <Icon name="arrow-up" size={18} />
+              Kembali memandang panorama
+            </a>
           )}
         </div>
       </div>

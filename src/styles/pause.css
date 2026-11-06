@@ -1,166 +1,210 @@
+/* Jeda 30 detik: the painting dimmed behind a large breathing shoji window */
 .pause-experience {
-  padding: clamp(68px, 8vw, 112px) clamp(24px, 7vw, 120px);
-  border-top: 1px solid color-mix(in srgb, var(--ivory) 22%, transparent);
-  background: var(--ink);
-  color: var(--ivory);
+  overflow: hidden;
+}
+
+.pause-experience__scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-position: 50% 45%;
+  background-size: cover;
+  filter: grayscale(0.4) brightness(0.32) blur(1px);
+  scale: 1.04;
+  transition:
+    filter 2400ms ease,
+    scale 6000ms var(--ease-settle);
+}
+
+.pause-experience[data-running="true"] .pause-experience__scene {
+  filter: grayscale(0.15) brightness(0.42) blur(0);
+  scale: 1;
 }
 
 .pause-experience__inner {
   display: grid;
-  width: min(100%, 1220px);
-  grid-template-columns: minmax(0, 1fr) minmax(250px, 320px);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: center;
-  gap: clamp(48px, 8vw, 120px);
-  margin-inline: auto;
+  gap: 32px;
 }
 
 .pause-experience__copy {
-  max-width: 64ch;
+  grid-column: 1 / span 6;
 }
 
 .pause-experience__title {
-  max-width: 11ch;
-  margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(42px, 5.2vw, 72px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 0.96;
+  max-width: 8ch;
+  color: var(--ivory);
 }
 
 .pause-experience__description {
-  max-width: 54ch;
-  margin: 20px 0 24px;
-  color: color-mix(in srgb, var(--ivory) 88%, transparent);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(19px, 1.7vw, 24px);
-  line-height: 1.4;
+  margin-top: 22px;
 }
 
 .pause-experience__status {
-  min-height: 1.35em;
-  margin: 0;
+  min-height: 1.3em;
+  margin: 36px 0 0;
   color: var(--ivory);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(23px, 2.4vw, 32px);
+  font-size: clamp(30px, 2.8vw, 46px);
+  font-style: italic;
   font-weight: 500;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .pause-experience__practice {
   display: grid;
+  grid-column: 8 / span 5;
   justify-items: center;
+  gap: 18px;
   text-align: center;
 }
 
+/* The window: timber frame, paper pane, kumiko lattice, light behind */
 .pause-experience__window {
   display: grid;
-  width: clamp(168px, 18vw, 224px);
+  width: clamp(300px, 26vw, 420px);
   aspect-ratio: 1;
   place-items: center;
-  margin-bottom: 18px;
-  padding: 12px;
-  border: 1px solid color-mix(in srgb, var(--ivory) 46%, transparent);
+  padding: 16px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/view-rail-timber.png");
+  background-size: 300px 68px;
+  box-shadow: 0 40px 80px -30px rgb(0 0 0 / 80%);
 }
 
 .pause-experience__pane {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
-  border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
-  background-color: var(--paper);
-  background-repeat: repeat;
+  overflow: hidden;
+  background-color: var(--dusk-snow);
   background-size: 260px 65px;
-  opacity: 0.82;
-  transform: scale(0.92);
+  scale: 0.8;
+  transition: scale 1200ms var(--ease-settle);
 }
 
+.pause-experience__light {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 55%, rgb(255 242 214 / 95%), rgb(232 200 150 / 35%) 45%, rgb(232 200 150 / 0%) 70%);
+  opacity: 0.15;
+  transition: opacity 1200ms ease;
+}
+
+.pause-experience__kumiko {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 calc(25% - 3px), rgb(70 52 38 / 75%) calc(25% - 3px) 25%),
+    repeating-linear-gradient(0deg, transparent 0 calc(25% - 3px), rgb(70 52 38 / 75%) calc(25% - 3px) 25%);
+}
+
+/* Breath: 4 s in (open + brighten), 6 s out (settle + dim), three cycles */
 .pause-experience__window[data-running="true"] .pause-experience__pane {
-  animation: pause-breath-cycle 10s ease-in-out 3 both;
+  animation: breath-pane 10s linear 3 both;
 }
 
-.pause-experience__timer {
-  margin-bottom: 16px;
-  color: var(--ivory);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 38px;
-  font-variant-numeric: tabular-nums;
-  line-height: 1;
+.pause-experience__window[data-running="true"] .pause-experience__light {
+  animation: breath-light 10s linear 3 both;
 }
 
-.pause-experience__button {
-  min-width: 15ch;
-  min-height: 52px;
-  padding: 12px 24px;
-  border: 1px solid var(--maple);
-  background: var(--maple);
-  color: var(--ivory);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 20px;
-  font-weight: 600;
-  transition: background-color var(--dur-feedback) ease;
-}
+@keyframes breath-pane {
+  0% {
+    scale: 0.8;
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  }
 
-.pause-experience__button:hover {
-  border-color: var(--maple-hover);
-  background: var(--maple-hover);
-}
+  40% {
+    scale: 1;
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  }
 
-.pause-experience__button:active {
-  transform: translateY(1px);
-}
-
-@keyframes pause-breath-cycle {
-  0%,
   100% {
-    opacity: 0.82;
-    transform: scale(0.92);
+    scale: 0.8;
+  }
+}
+
+@keyframes breath-light {
+  0% {
+    opacity: 0.15;
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
   }
 
   40% {
     opacity: 1;
-    transform: scale(1);
+    animation-timing-function: cubic-bezier(0.37, 0, 0.63, 1);
+  }
+
+  100% {
+    opacity: 0.15;
   }
 }
 
+.pause-experience__timer {
+  color: var(--ivory);
+  font-size: clamp(64px, 5.4vw, 88px);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.pause-experience__progress {
+  width: clamp(300px, 26vw, 420px);
+  height: 2px;
+  background: color-mix(in srgb, var(--ivory) 22%, transparent);
+}
+
+.pause-experience__progress span {
+  display: block;
+  height: 100%;
+  background: var(--focus-ring);
+  transform-origin: left center;
+  transition: transform 1s linear;
+}
+
+.pause-experience__button {
+  min-width: 15ch;
+  margin-top: 6px;
+}
+
+.pause-experience__return {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: color-mix(in srgb, var(--ivory) 82%, transparent);
+  font-size: 19px;
+  text-underline-offset: 0.25em;
+  animation: hero-rise var(--dur-focal) var(--ease-out) both;
+}
+
+.pause-experience__return:hover {
+  color: var(--white);
+}
 
 @media (max-width: 1100px) {
-  .pause-experience__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
-    gap: 40px;
+  .pause-experience__copy,
+  .pause-experience__practice {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 700px) {
-  .pause-experience {
-    padding: 56px 7% 64px;
+@media (prefers-reduced-motion: reduce) {
+  .pause-experience__window[data-running="true"] .pause-experience__pane,
+  .pause-experience__window[data-running="true"] .pause-experience__light {
+    animation: none;
   }
 
-  .pause-experience__inner {
-    grid-template-columns: 1fr;
-    gap: 36px;
+  .pause-experience__pane {
+    scale: 1;
   }
 
-  .pause-experience__title {
-    font-size: clamp(40px, 10vw, 48px);
+  .pause-experience__window[data-phase="inhale"] .pause-experience__light {
+    opacity: 0.85;
   }
 
-  .pause-experience__description {
-    margin: 16px 0 20px;
-    font-size: 19px;
-  }
-
-  .pause-experience__status {
-    min-height: 1.2em;
-    font-size: 26px;
-  }
-
-  .pause-experience__practice {
-    justify-items: start;
-    text-align: left;
-  }
-
-  .pause-experience__window {
-    width: 176px;
+  .pause-experience__scene {
+    transition: none;
   }
 }
