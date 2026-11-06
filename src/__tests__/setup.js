@@ -22,3 +22,8 @@ HTMLDialogElement.prototype.showModal ??= function showModal() {
 HTMLDialogElement.prototype.close ??= function close() {
   this.open = false;
 };
+
+import { cleanup } from "@testing-library/react";
+import { afterEach } from "vitest";
+
+afterEach(() => cleanup());
