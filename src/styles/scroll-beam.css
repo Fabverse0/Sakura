@@ -1,0 +1,135 @@
+.scroll-beam {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-scroll-beam);
+  display: flex;
+  height: 60px;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+  padding-inline: var(--gutter, clamp(24px, 4.9vw, 96px));
+  background-color: var(--rail-base);
+  background-repeat: repeat-x;
+  background-size: 360px 60px;
+  box-shadow: 0 10px 24px -14px rgb(0 0 0 / 70%);
+  color: var(--ivory);
+  transform: translateY(-110%);
+  transition: transform var(--dur-layout) var(--ease-out);
+}
+
+.scroll-beam[data-shown="true"] {
+  transform: translateY(0);
+}
+
+.scroll-beam__wordmark {
+  color: var(--wordmark);
+  font-family: "Cantata One", Georgia, serif;
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.scroll-beam__nav {
+  flex: 1;
+  min-width: 0;
+}
+
+.scroll-beam__list {
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 1.6vw, 28px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scroll-beam__link {
+  position: relative;
+  display: inline-flex;
+  padding-block: 18px;
+  color: color-mix(in srgb, var(--link-on-timber) 78%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--dur-feedback) ease;
+}
+
+.scroll-beam__link::after {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  height: 2px;
+  background: var(--maple-rule);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur-state) var(--ease-out);
+}
+
+.scroll-beam__link:hover,
+.scroll-beam__link[aria-current="location"] {
+  color: var(--white);
+}
+
+.scroll-beam__link[aria-current="location"]::after {
+  transform: scaleX(1);
+}
+
+.scroll-beam__link:focus-visible {
+  outline-offset: -2px;
+}
+
+.scroll-beam__tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scroll-beam__rooms,
+.beam-toggle {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: 1px solid color-mix(in srgb, var(--ivory) 32%, transparent);
+  background: rgb(21 22 25 / 35%);
+  color: var(--ivory);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  transition:
+    background-color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease;
+}
+
+.scroll-beam__rooms:hover,
+.beam-toggle:hover {
+  border-color: var(--maple-rule);
+  background: rgb(191 24 24 / 30%);
+}
+
+@media (max-width: 1100px) {
+  .scroll-beam__nav {
+    display: none;
+  }
+
+  .scroll-beam {
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-beam {
+    transition-property: opacity;
+    opacity: 0;
+    transform: none;
+  }
+
+  .scroll-beam[data-shown="true"] {
+    opacity: 1;
+  }
+}

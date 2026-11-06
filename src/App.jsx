@@ -1,5 +1,8 @@
 import { useCallback, useState } from "react";
 import { useViewTransition } from "./hooks/useViewTransition.js";
+import { sections } from "./data/sections.js";
+import { useActiveSection } from "./hooks/useActiveSection.js";
+import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
@@ -7,6 +10,8 @@ import { PauseExperience } from "./sections/PauseExperience.jsx";
 import { HeroComp } from "./sections/HeroComp.jsx";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
+
+const sectionIds = sections.map((section) => section.id);
 
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
@@ -27,6 +32,8 @@ export default function App() {
   }
 
   const pause = usePauseTimer();
+  const activeSection = useActiveSection(sectionIds);
+  const [isRoomsOpen, setIsRoomsOpen] = useState(false);
 
   return (
     <>
@@ -34,6 +41,7 @@ export default function App() {
         Lewati ke konten utama
       </a>
       <ShojiDoors />
+      <ScrollBeam activeId={activeSection} onOpenRooms={() => setIsRoomsOpen(true)} />
       <HeroComp activeView={activeView} onSelectView={selectView} />
 
       <PanoramaDetails activeView={activeView} onSelectView={selectView} />
