@@ -48,9 +48,9 @@
   color: var(--ink);
   text-align: left;
   transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background-color 180ms ease;
+    transform var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease,
+    background-color var(--dur-feedback) ease;
 }
 
 .detail-card:hover {

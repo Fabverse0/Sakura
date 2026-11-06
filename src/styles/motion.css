@@ -49,7 +49,7 @@
 }
 
 .primary-action {
-  animation: hero-rise 900ms var(--ease-out) calc(var(--intro-delay) + 420ms) backwards;
+  animation: hero-rise var(--dur-focal) var(--ease-out) calc(var(--intro-delay) + 420ms) backwards;
 }
 
 /* The panorama settles as the doors pass; uses the scale property so the

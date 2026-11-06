@@ -98,7 +98,7 @@
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 20px;
   font-weight: 600;
-  transition: background-color 180ms ease;
+  transition: background-color var(--dur-feedback) ease;
 }
 
 .pause-experience__button:hover {

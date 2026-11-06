@@ -77,9 +77,9 @@
   text-align: center;
   text-decoration: none;
   transition:
-    background-color 180ms ease,
-    color 180ms ease,
-    border-color 180ms ease;
+    background-color var(--dur-feedback) ease,
+    color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease;
 }
 
 .guided-route__button--primary {
