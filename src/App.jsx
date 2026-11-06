@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useViewTransition } from "./hooks/useViewTransition.js";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
+import { Lens } from "./sections/Lens.jsx";
 import { NavPanel } from "./sections/NavPanel.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
@@ -55,6 +56,8 @@ export default function App() {
       />
 
       <PanoramaDetails activeView={activeView} onSelectView={selectView} />
+
+      <Lens />
 
       <GuidedRoute route={route} />
 
