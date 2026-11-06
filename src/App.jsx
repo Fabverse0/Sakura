@@ -5,44 +5,13 @@ import shojiPaper from "../assets/plates/shoji-paper.png";
 import shojiLintel from "../assets/plates/shoji-lintel.png";
 import shojiPost from "../assets/plates/shoji-post.png";
 import shojiMapleShadow from "../assets/plates/shoji-maple-shadow-1280.png";
-
-const panoramaImageBase = `${import.meta.env.BASE_URL}images/sakura-landscape-`;
-const panoramaArt = `${panoramaImageBase}3840.jpg`;
-const panoramaArtSrcSet = [640, 960, 1280, 1536, 1920, 2880, 3840]
-  .map((width) => `${panoramaImageBase}${width}.jpg ${width}w`)
-  .join(", ");
-
-const views = [
-  {
-    id: "cabang",
-    label: "Cabang",
-    title: "Kanopi merah",
-    description: "Ranting dan daun merah membingkai sisi kiri panorama.",
-    routePrompt: "Mulailah dari ranting dan daun merah di sisi kiri panorama.",
-    origin: "17% 52%",
-  },
-  {
-    id: "puncak",
-    label: "Puncak",
-    title: "Gunung Fuji",
-    description: "Gunung Fuji berdiri di tengah, di bawah matahari merah.",
-    routePrompt: "Lanjutkan ke Gunung Fuji di tengah, tepat di bawah matahari merah.",
-    origin: "52% 40%",
-  },
-  {
-    id: "pagoda",
-    label: "Pagoda",
-    title: "Pagoda di tepi air",
-    description: "Pagoda bertingkat berdiri di tepi danau, dengan pantulan di permukaan air.",
-    routePrompt: "Akhiri dengan melihat pagoda bertingkat dan pantulannya di danau.",
-    origin: "72% 57%",
-  },
-];
-
-const overviewNote = "Pilih satu fokus untuk membaca detail yang terlihat di panorama.";
-const pauseDurationSeconds = 30;
-const breathCycleSeconds = 10;
-const inhaleSeconds = 4;
+import { panoramaAlt, panoramaArt, panoramaArtSrcSet } from "./data/panorama.js";
+import { overviewNote, views } from "./data/views.js";
+import {
+  breathCycleSeconds,
+  inhaleSeconds,
+  pauseDurationSeconds,
+} from "./data/pause.js";
 
 const petals = Array.from({ length: 12 }, (_, index) => ({
   left: `${(index * 29 + 7) % 100}%`,
@@ -244,7 +213,7 @@ export default function App() {
               src={panoramaArt}
               srcSet={panoramaArtSrcSet}
               sizes="112vw"
-              alt="Ilustrasi lanskap dengan maple merah, Gunung Fuji, matahari merah, pagoda, dan perahu di danau."
+              alt={panoramaAlt}
               draggable="false"
               fetchPriority="high"
             />
