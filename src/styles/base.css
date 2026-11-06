@@ -88,3 +88,9 @@ p {
   text-wrap: pretty;
 }
 
+
+.icon {
+  display: inline-block;
+  flex: none;
+  vertical-align: middle;
+}

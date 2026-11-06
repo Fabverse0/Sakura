@@ -50,7 +50,7 @@
   font-weight: 600;
 }
 
-.guided-route__sequence span[aria-hidden="true"] {
+.guided-route__sequence .guided-route__arrow {
   color: var(--maple);
   font-weight: 400;
 }

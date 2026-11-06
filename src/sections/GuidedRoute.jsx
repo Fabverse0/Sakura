@@ -1,3 +1,4 @@
+import { Icon } from "../components/Icon.jsx";
 import { panoramaArt, panoramaArtSrcSet } from "../data/panorama.js";
 import { views } from "../data/views.js";
 
@@ -23,9 +24,9 @@ export function GuidedRoute({ route }) {
             <>
               <p className="guided-route__sequence">
                 <span>Cabang</span>
-                <span aria-hidden="true">→</span>
+                <Icon name="arrow-right" size={18} className="guided-route__arrow" />
                 <span>Puncak</span>
-                <span aria-hidden="true">→</span>
+                <Icon name="arrow-right" size={18} className="guided-route__arrow" />
                 <span>Pagoda</span>
               </p>
               <p className="guided-route__prompt">
