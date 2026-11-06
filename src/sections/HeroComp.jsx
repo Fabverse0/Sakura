@@ -36,7 +36,7 @@ export function HeroComp({ activeView, onSelectView }) {
           >
             Karya
           </a>
-          <a className="header-nav__link" href="#tentang">
+          <a className="header-nav__link header-nav__link--tentang" href="#tentang">
             Tentang
           </a>
         </nav>
