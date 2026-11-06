@@ -103,3 +103,53 @@
   letter-spacing: 0.02em;
 }
 
+
+@media (max-width: 1100px) {
+  .panorama-details {
+    padding: 64px clamp(24px, 6vw, 76px) 76px;
+    background-size: 300px 76px;
+  }
+
+  .detail-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 14px;
+  }
+
+  .detail-card {
+    min-height: 230px;
+  }
+}
+
+@media (max-width: 700px) {
+  .panorama-details {
+    padding: 52px 7% 64px;
+    background-size: 260px 68px;
+  }
+
+  .panorama-details__title {
+    font-size: clamp(36px, 10vw, 44px);
+  }
+
+  .panorama-details__intro {
+    margin: 12px 0 24px;
+    font-size: 18px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .detail-card {
+    min-height: 0;
+    padding: 22px;
+  }
+
+  .detail-card__label {
+    margin-bottom: 14px;
+  }
+
+  .detail-card__action {
+    padding-top: 16px;
+  }
+}

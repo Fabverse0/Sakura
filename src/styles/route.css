@@ -190,3 +190,90 @@
   margin-top: 16px;
 }
 
+
+@media (max-width: 1100px) {
+  .guided-route {
+    padding: 64px clamp(24px, 6vw, 76px) 76px;
+  }
+
+  .guided-route__inner {
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  .guided-route__panel {
+    padding: 22px;
+  }
+
+  .guided-route__step {
+    grid-template-columns: minmax(100px, 0.72fr) minmax(0, 1.28fr);
+    gap: 16px;
+  }
+
+  .guided-route__progress {
+    gap: 7px;
+  }
+
+  .guided-route__progress-step {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .guided-route {
+    padding: 52px 7% 64px;
+  }
+
+  .guided-route__inner {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .guided-route__title {
+    font-size: clamp(36px, 10vw, 44px);
+  }
+
+  .guided-route__description {
+    margin-top: 12px;
+    font-size: 18px;
+  }
+
+  .guided-route__panel {
+    padding: 20px;
+  }
+
+  .guided-route__sequence {
+    gap: 8px;
+    font-size: 20px;
+  }
+
+  .guided-route__step {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .guided-route__image,
+  .guided-route__step-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .guided-route__image {
+    aspect-ratio: 16 / 10;
+  }
+
+  .guided-route__step-title {
+    font-size: 34px;
+  }
+
+  .guided-route__actions {
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .guided-route__button {
+    min-height: 44px;
+    padding: 10px 15px;
+    font-size: 17px;
+  }
+}

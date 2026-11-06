@@ -123,3 +123,44 @@
   }
 }
 
+
+@media (max-width: 1100px) {
+  .pause-experience__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 280px);
+    gap: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .pause-experience {
+    padding: 56px 7% 64px;
+  }
+
+  .pause-experience__inner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .pause-experience__title {
+    font-size: clamp(40px, 10vw, 48px);
+  }
+
+  .pause-experience__description {
+    margin: 16px 0 20px;
+    font-size: 19px;
+  }
+
+  .pause-experience__status {
+    min-height: 1.2em;
+    font-size: 26px;
+  }
+
+  .pause-experience__practice {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .pause-experience__window {
+    width: 176px;
+  }
+}
