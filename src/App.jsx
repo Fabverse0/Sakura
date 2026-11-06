@@ -6,6 +6,7 @@ import { Haiku } from "./sections/Haiku.jsx";
 import { Lens } from "./sections/Lens.jsx";
 import { NavPanel } from "./sections/NavPanel.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
+import { Palette } from "./sections/Palette.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
@@ -68,6 +69,8 @@ export default function App() {
       <GuidedRoute route={route} />
 
       <Seasons />
+
+      <Palette />
 
       <PauseExperience pause={pause} />
     </>

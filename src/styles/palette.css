@@ -1,0 +1,213 @@
+.palette__layout {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  gap: 32px;
+}
+
+.palette__source {
+  position: sticky;
+  top: 96px;
+  grid-column: 1 / span 6;
+  margin: 0;
+}
+
+.palette__art {
+  position: relative;
+  overflow: hidden;
+  border: 12px solid var(--rail-base);
+  box-shadow: 0 30px 60px -32px rgb(21 22 25 / 55%);
+}
+
+.palette__art img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Sample marker: a square loupe ring that lands on the colour's origin */
+.palette__marker {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--ivory);
+  background: var(--marker-color);
+  box-shadow:
+    0 0 0 1px rgb(15 16 19 / 70%),
+    0 10px 24px -6px rgb(15 16 19 / 70%);
+  translate: -50% -50%;
+  animation: marker-land var(--dur-layout) var(--ease-out) both;
+}
+
+.palette__marker::after {
+  position: absolute;
+  inset: -12px;
+  border: 1px solid var(--ivory);
+  content: "";
+  animation: marker-ring 1400ms var(--ease-out) 200ms both;
+}
+
+@keyframes marker-land {
+  from {
+    opacity: 0;
+    scale: 1.8;
+  }
+}
+
+@keyframes marker-ring {
+  from {
+    opacity: 0.9;
+    scale: 0.6;
+  }
+
+  to {
+    opacity: 0;
+    scale: 1.6;
+  }
+}
+
+.palette__caption {
+  display: grid;
+  gap: 4px;
+  margin-top: 22px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.palette__caption-name {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.palette__caption-note {
+  color: color-mix(in srgb, var(--text-ink) 74%, transparent);
+  font-size: var(--type-body);
+}
+
+.palette__swatches {
+  display: grid;
+  grid-column: 7 / span 6;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.palette__swatches li {
+  animation: swatch-rise var(--dur-focal) var(--ease-out) backwards;
+  animation-delay: calc(var(--i) * 45ms);
+  animation-timeline: view();
+  animation-range: entry 0% entry 80%;
+}
+
+@keyframes swatch-rise {
+  from {
+    opacity: 0;
+    clip-path: inset(100% 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+.palette__swatch {
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: 132px;
+  align-content: end;
+  gap: 2px;
+  padding: 16px 18px;
+  overflow: hidden;
+  border: 0;
+  background: var(--swatch);
+  color: var(--swatch-label);
+  text-align: left;
+  transition: translate var(--dur-state) var(--ease-out);
+}
+
+.palette__chip {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--swatch-label) 10%, transparent);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path var(--dur-layout) var(--ease-out);
+}
+
+.palette__swatch:hover,
+.palette__swatch[aria-pressed="true"] {
+  translate: 0 -4px;
+}
+
+.palette__swatch:hover .palette__chip,
+.palette__swatch[aria-pressed="true"] .palette__chip {
+  clip-path: inset(0 0 0 0);
+}
+
+.palette__swatch:active {
+  translate: 0 0;
+}
+
+.palette__name {
+  position: relative;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.palette__hex {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 17px;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: 0.06em;
+  opacity: 0.86;
+}
+
+.palette__swatch:focus-visible {
+  outline-offset: 3px;
+}
+
+@supports not (animation-timeline: view()) {
+  .palette__swatches li {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .palette__source,
+  .palette__swatches {
+    position: static;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .palette__swatches li,
+  .palette__marker,
+  .palette__marker::after {
+    animation: none;
+  }
+
+  .palette__swatch {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .palette__swatch {
+    border: 1px solid CanvasText;
+    forced-color-adjust: none;
+  }
+
+  .palette__swatch[aria-pressed="true"] {
+    outline: 3px solid Highlight;
+  }
+}
