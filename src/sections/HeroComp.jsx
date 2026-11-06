@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { useInView } from "../hooks/useInView.js";
 import topTimber from "../../assets/plates/top-charred-timber.png";
 import railTimber from "../../assets/plates/view-rail-timber.png";
 import shojiPaper from "../../assets/plates/shoji-paper.png";
@@ -15,6 +17,8 @@ const petals = createPetals();
  * Desktop geometry is percentage based and must stay pixel-stable.
  */
 export function HeroComp({ activeView, onSelectView }) {
+  const heroRef = useRef(null);
+  const isHeroVisible = useInView(heroRef);
   const selectedView = findView(activeView);
   const activeOrigin = selectedView?.origin ?? "50% 50%";
 
@@ -43,7 +47,12 @@ export function HeroComp({ activeView, onSelectView }) {
       </header>
 
       <main className="page-main" id="top">
-        <section className="hero-stage" id="panorama" aria-labelledby="hero-title">
+        <section
+          className="hero-stage"
+          id="panorama"
+          aria-labelledby="hero-title"
+          ref={heroRef}
+        >
           <img
             className="panorama-art"
             src={panoramaArt}
@@ -53,7 +62,7 @@ export function HeroComp({ activeView, onSelectView }) {
             draggable="false"
             fetchPriority="high"
           />
-          <div className="petals" aria-hidden="true">
+          <div className="petals" aria-hidden="true" data-paused={!isHeroVisible}>
             {petals.map((petal, index) => (
               <span
                 className="petal"

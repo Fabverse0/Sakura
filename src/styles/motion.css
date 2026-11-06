@@ -99,3 +99,7 @@
   }
 
 }
+
+.petals[data-paused="true"] .petal {
+  animation-play-state: paused;
+}
