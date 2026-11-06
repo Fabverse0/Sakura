@@ -27,7 +27,7 @@ export function ScrollBeam({ activeId, onOpenRooms, children }) {
     <header
       className="scroll-beam"
       data-shown={isShown}
-      inert={isShown ? undefined : ""}
+      inert={!isShown}
       style={{ backgroundImage: `url(${topTimber})` }}
     >
       <a className="scroll-beam__wordmark" href="#top" aria-label="Sakura, kembali ke panorama">

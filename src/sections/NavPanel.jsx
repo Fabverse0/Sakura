@@ -30,32 +30,32 @@ export function NavPanel({ isOpen, onClose, activeId }) {
       style={{ backgroundImage: `url(${shojiPaper})` }}
     >
       <div className="nav-panel__inner">
-      <div className="nav-panel__head">
-        <h2 className="nav-panel__title" id="nav-panel-title">
-          Ruang
-        </h2>
-        <button className="nav-panel__close" type="button" onClick={onClose}>
-          <Icon name="close" size={20} />
-          <span className="visually-hidden">Tutup daftar ruang</span>
-        </button>
+        <div className="nav-panel__head">
+          <h2 className="nav-panel__title" id="nav-panel-title">
+            Ruang
+          </h2>
+          <button className="nav-panel__close" type="button" onClick={onClose}>
+            <Icon name="close" size={20} />
+            <span className="visually-hidden">Tutup daftar ruang</span>
+          </button>
       </div>
-      <nav aria-label="Semua ruang">
-        <ol className="nav-panel__list">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <a
-                className="nav-panel__link"
-                href={sectionHref(section.id)}
-                aria-current={activeId === section.id ? "location" : undefined}
-                onClick={onClose}
-              >
-                <span className="nav-panel__label">{section.label}</span>
-                <span className="nav-panel__summary">{section.summary}</span>
-              </a>
-            </li>
-          ))}
-        </ol>
-      </nav>
+        <nav aria-label="Semua ruang">
+          <ol className="nav-panel__list">
+            {sections.map((section) => (
+              <li key={section.id}>
+                <a
+                  className="nav-panel__link"
+                  href={sectionHref(section.id)}
+                  aria-current={activeId === section.id ? "location" : undefined}
+                  onClick={onClose}
+                >
+                  <span className="nav-panel__label">{section.label}</span>
+                  <span className="nav-panel__summary">{section.summary}</span>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
       </div>
     </dialog>
   );
