@@ -9,6 +9,7 @@ import { panoramaAlt, panoramaArt, panoramaArtSrcSet } from "./data/panorama.js"
 import { createPetals } from "./data/particles.js";
 import { overviewNote, views } from "./data/views.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
+import { usePrefersReducedMotion } from "./hooks/usePrefersReducedMotion.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 
 const petals = createPetals();
@@ -30,14 +31,11 @@ export default function App() {
   }
 
   const pause = usePauseTimer();
+  const reducedMotion = usePrefersReducedMotion();
   const selectedView = views.find((view) => view.id === activeView);
   const activeOrigin = selectedView?.origin ?? "50% 50%";
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-
-    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    if (reducedMotion || !("IntersectionObserver" in window)) {
       return undefined;
     }
 
@@ -63,7 +61,7 @@ export default function App() {
       observer.disconnect();
       root.classList.remove("reveal-ready");
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <>
