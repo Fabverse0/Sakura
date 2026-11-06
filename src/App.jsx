@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import { useViewTransition } from "./hooks/useViewTransition.js";
+import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
@@ -32,6 +33,7 @@ export default function App() {
       <a className="skip-link" href="#top">
         Lewati ke konten utama
       </a>
+      <ShojiDoors />
       <HeroComp activeView={activeView} onSelectView={selectView} />
 
       <PanoramaDetails activeView={activeView} onSelectView={selectView} />
