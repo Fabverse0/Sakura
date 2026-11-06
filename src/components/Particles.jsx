@@ -94,6 +94,7 @@ export function Particles({ type = "petal", count = 24, className = "" }) {
     const canvas = canvasRef.current;
     if (!canvas || !isVisible) return undefined;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return undefined;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const total = reducedMotion ? Math.min(6, count) : count;
     const speed = reducedMotion ? 0.35 : 1;

@@ -88,6 +88,7 @@ export function SumiCanvas() {
     out.width = source.width;
     out.height = source.height;
     const ctx = out.getContext("2d");
+    if (!ctx) return;
     ctx.fillStyle = "#f4edea";
     ctx.fillRect(0, 0, out.width, out.height);
     ctx.drawImage(source, 0, 0);
@@ -125,6 +126,7 @@ export function SumiCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     const { width, height } = size.current;
     ctx.clearRect(0, 0, width, height);
     for (const stroke of strokes) {
@@ -140,6 +142,7 @@ export function SumiCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return undefined;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return undefined;
     const observer = new ResizeObserver(() => {
       const rect = canvas.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -185,6 +188,7 @@ export function SumiCanvas() {
     const current = live.current;
     if (!current) return;
     const ctx = canvasRef.current.getContext("2d");
+    if (!ctx) return;
     const { width, height } = size.current;
     const events = event.nativeEvent.getCoalescedEvents?.() ?? [event.nativeEvent];
 
