@@ -35,6 +35,16 @@ The requested surface is a public web landing page. The primary action is “Jel
 - Visitors can follow an optional, self-paced route through Cabang, Puncak, and Pagoda. Each step selects the matching view of the same artwork, and the completed route can lead to the breathing pause.
 - Visitors can start an optional 30-second pause paced by three cycles of four seconds inhaling and six seconds exhaling; they can end it at any time.
 - No travel service, real-world location, booking, or destination information is part of the concept.
+- Every additional section is another way of reading the same artwork, never a new subject:
+  - **Lensa Pandang:** a magnifier over the panorama.
+  - **Temukan Detail:** a small game for finding things visible in the painting.
+  - **Haiku:** three original short poems, one per focus.
+  - **Empat Musim:** an imagined recolouring of the same painting through four seasons, presented as interpretation, not fact.
+  - **Palet Lukisan:** colours sampled from the painting.
+  - **Jurnal Pandang:** private notes stored only in the visitor's browser.
+  - **Kanvas Sumi:** a free ink drawing surface.
+- An optional night mode re-lights the same page. Optional ambient sound is synthesized in the browser and only starts after the visitor turns it on.
+- The site targets desktop browsers. Smaller widths keep a simple single-column fallback without new features.
 
 ## Brand Commitments
 
