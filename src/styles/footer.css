@@ -1,0 +1,91 @@
+.site-footer {
+  position: relative;
+  padding: clamp(72px, 7vw, 112px) var(--gutter) 40px;
+  background-color: var(--ink-900);
+  background-blend-mode: multiply;
+  background-repeat: repeat;
+  background-size: 360px 60px;
+  color: var(--ivory);
+}
+
+.site-footer::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(15 16 19 / 72%), rgb(15 16 19 / 94%));
+  content: "";
+}
+
+.site-footer > * {
+  position: relative;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 32px;
+  width: min(100%, var(--content-max));
+  margin-inline: auto;
+}
+
+.site-footer__brand {
+  grid-column: 1 / span 5;
+}
+
+.site-footer__wordmark {
+  margin: 0;
+  color: var(--wordmark);
+  font-family: "Cantata One", Georgia, serif;
+  font-size: clamp(34px, 3vw, 48px);
+  letter-spacing: 0.3em;
+}
+
+.site-footer__line {
+  margin: 12px 0 0;
+  color: color-mix(in srgb, var(--ivory) 76%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-lead);
+  font-style: italic;
+}
+
+.site-footer__nav {
+  grid-column: 7 / span 6;
+}
+
+.site-footer__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__link {
+  display: inline-flex;
+  padding-block: 6px;
+  color: color-mix(in srgb, var(--ivory) 82%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  background: linear-gradient(var(--maple-rule), var(--maple-rule)) left bottom / 0 1px no-repeat;
+  transition:
+    color var(--dur-feedback) ease,
+    background-size var(--dur-state) var(--ease-out);
+}
+
+.site-footer__link:hover {
+  color: var(--white);
+  background-size: 100% 1px;
+}
+
+@media (max-width: 1100px) {
+  .site-footer__brand,
+  .site-footer__nav {
+    grid-column: 1 / -1;
+  }
+
+  .site-footer__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

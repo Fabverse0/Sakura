@@ -9,6 +9,7 @@ import { NavPanel } from "./sections/NavPanel.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
 import { Palette } from "./sections/Palette.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
+import { SiteFooter } from "./sections/SiteFooter.jsx";
 import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
@@ -76,6 +77,8 @@ export default function App() {
       <PauseExperience pause={pause} />
 
       <Journal activeView={activeView} />
+
+      <SiteFooter />
     </>
   );
 }
