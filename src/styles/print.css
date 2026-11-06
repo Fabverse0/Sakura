@@ -13,3 +13,31 @@
   }
 }
 
+
+@media print {
+  .scroll-beam,
+  .nav-panel,
+  .shoji-doors,
+  .toast-region,
+  .particles,
+  .lens__glass,
+  .lens__controls,
+  .seasons__picker,
+  .journal__form,
+  .journal__delete,
+  .site-footer__top {
+    display: none !important;
+  }
+
+  .room,
+  .site-footer {
+    padding-block: 32px;
+    background: #fff !important;
+    color: #000 !important;
+    break-inside: avoid;
+  }
+
+  .room::before {
+    display: none;
+  }
+}
