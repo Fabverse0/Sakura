@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import shojiPaper from "../../assets/plates/shoji-paper.png";
 import railTimber from "../../assets/plates/view-rail-timber.png";
 
@@ -28,7 +28,7 @@ function markPlayed() {
 export function ShojiDoors() {
   const [isPlaying, setIsPlaying] = useState(() => !hasPlayed());
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!isPlaying) return undefined;
     const root = document.documentElement;
     root.dataset.intro = "playing";
