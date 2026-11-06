@@ -133,3 +133,32 @@
     opacity: 1;
   }
 }
+
+/* Reading progress: scroll-driven where supported, JS custom property otherwise. */
+.scroll-beam__progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: var(--maple-rule);
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-beam__progress {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}

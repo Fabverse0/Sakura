@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import topTimber from "../../assets/plates/top-charred-timber.png";
 import { Icon } from "../components/Icon.jsx";
+import { useScrollProgressFallback } from "../hooks/useScrollProgressFallback.js";
 import { sectionHref, sections } from "../data/sections.js";
 
 /**
@@ -9,6 +10,7 @@ import { sectionHref, sections } from "../data/sections.js";
  */
 export function ScrollBeam({ activeId, onOpenRooms, children }) {
   const [isShown, setIsShown] = useState(false);
+  useScrollProgressFallback();
 
   useEffect(() => {
     const frame = document.querySelector(".comp-frame");
