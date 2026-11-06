@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Ambience } from "../lib/ambience.js";
 
 /**
  * Opt-in ambience. Sound never starts on its own: the AudioContext is only
@@ -11,12 +10,19 @@ export function useAmbience(isNight) {
   const [isOn, setIsOn] = useState(false);
   const [volume, setVolume] = useState(0.6);
 
-  const toggle = useCallback(() => {
-    if (!engine.current) engine.current = new Ambience();
+  const toggle = useCallback(async () => {
     if (isOn) {
-      engine.current.stop();
+      engine.current?.stop();
       setIsOn(false);
-    } else if (engine.current.start()) {
+      return;
+    }
+    // The engine is only downloaded when the visitor asks for sound. The
+    // AudioContext is created right after, still inside the click's task chain.
+    if (!engine.current) {
+      const { Ambience } = await import("../lib/ambience.js");
+      engine.current = new Ambience();
+    }
+    if (engine.current.start()) {
       engine.current.setNight(isNight);
       setIsOn(true);
     }
