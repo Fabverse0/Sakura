@@ -27,6 +27,18 @@ export function SiteFooter() {
           </ul>
         </nav>
       </div>
+
+      <div className="site-footer__base">
+        <p className="site-footer__colophon">
+          Ilustrasi lanskap disediakan oleh pemilik proyek. Huruf: Cormorant Garamond dan Cantata
+          One. Dibangun dengan React dan Vite. Semua sajak, warna, dan tafsir musim adalah bacaan
+          atas lukisan yang sama, bukan gambaran tempat nyata.
+        </p>
+        <a className="site-footer__top" href="#top">
+          <Icon name="arrow-up" size={18} />
+          Kembali ke panorama
+        </a>
+      </div>
     </footer>
   );
 }
