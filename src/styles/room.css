@@ -1,0 +1,159 @@
+/* Shared frame for every room below the hero: a timber lintel on top, one
+   gutter, one heading scale. Keeps the engawa world running past the comp. */
+:root {
+  --content-max: 1320px;
+  --gutter: max(4.9vw, calc((100vw - var(--content-max)) / 2));
+  --room-pad: clamp(96px, 9vw, 150px);
+
+  /* Desktop type scale */
+  --type-display: clamp(52px, 5.2vw, 86px);
+  --type-title: clamp(44px, 4.2vw, 70px);
+  --type-lead: clamp(20px, 1.45vw, 24px);
+  --type-body: clamp(18px, 1.2vw, 20px);
+  --type-label: 17px;
+}
+
+.room {
+  position: relative;
+  padding: var(--room-pad) var(--gutter);
+  color: var(--text-ink);
+  isolation: isolate;
+}
+
+.room::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 16px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/shoji-lintel.png");
+  background-repeat: repeat-x;
+  background-size: 320px 16px;
+  box-shadow: 0 4px 10px -6px rgb(0 0 0 / 55%);
+  content: "";
+}
+
+.room--paper {
+  background-color: var(--paper);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+}
+
+.room--ivory {
+  background: var(--paper-50);
+}
+
+.room--mist {
+  background: var(--mist);
+}
+
+.room--ink {
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.room--sumi {
+  background: var(--sumi);
+  color: var(--ivory);
+}
+
+.room__inner {
+  width: min(100%, var(--content-max));
+  margin-inline: auto;
+}
+
+.room__head {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: end;
+  gap: 24px 32px;
+  margin-bottom: clamp(40px, 4vw, 64px);
+}
+
+.room__title {
+  grid-column: 1 / span 6;
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-title);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.96;
+}
+
+.room__lead {
+  grid-column: 7 / span 6;
+  max-width: 52ch;
+  margin: 0;
+  color: color-mix(in srgb, currentColor 80%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-lead);
+  line-height: 1.45;
+}
+
+.room-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid var(--maple);
+  background: var(--maple);
+  color: var(--action-text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease,
+    color var(--dur-feedback) ease;
+}
+
+.room-button:hover {
+  border-color: var(--maple-hover);
+  background: var(--maple-hover);
+}
+
+.room-button:active {
+  background: var(--maple-active);
+}
+
+.room-button--quiet {
+  border-color: color-mix(in srgb, currentColor 45%, transparent);
+  background: transparent;
+  color: inherit;
+}
+
+.room-button--quiet:hover {
+  border-color: var(--maple);
+  background: color-mix(in srgb, var(--maple) 10%, transparent);
+}
+
+.room-button[aria-pressed="true"] {
+  border-color: var(--maple);
+  background: var(--maple);
+  color: var(--action-text);
+}
+
+.room-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+@media (max-width: 1100px) {
+  .room__title,
+  .room__lead {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (forced-colors: active) {
+  .room::before {
+    background: CanvasText;
+  }
+
+  .room-button[aria-pressed="true"] {
+    outline: 2px solid Highlight;
+  }
+}
