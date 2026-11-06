@@ -177,3 +177,22 @@
     opacity: 0;
   }
 }
+
+/* After three misses the area around the target is lit, the rest dims. */
+.finder__hint {
+  position: absolute;
+  width: var(--hint-size);
+  aspect-ratio: 1;
+  box-shadow: 0 0 0 200vmax rgb(15 16 19 / 42%);
+  outline: 1px dashed rgb(242 238 231 / 80%);
+  pointer-events: none;
+  translate: -50% -50%;
+  animation: hint-in 900ms var(--ease-out) both;
+}
+
+@keyframes hint-in {
+  from {
+    opacity: 0;
+    scale: 2.4;
+  }
+}

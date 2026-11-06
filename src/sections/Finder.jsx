@@ -14,6 +14,7 @@ export function Finder() {
   const [round, setRound] = useState(() => pickRound(areas, roundSize));
   const [index, setIndex] = useState(0);
   const [marks, setMarks] = useState([]);
+  const [misses, setMisses] = useState(0);
   const [feedback, setFeedback] = useState("Klik lukisan tepat di tempat benda itu berada.");
   const stageRef = useRef(null);
 
@@ -26,9 +27,16 @@ export function Finder() {
       setMarks((current) => [...current, { id: target.id, x: target.x, y: target.y, kind: "hit" }]);
       setFeedback(`Tepat. ${target.name} ditemukan.`);
       setIndex((current) => current + 1);
+      setMisses(0);
     } else {
       setMarks((current) => [...current, { id: `${target.id}-${Date.now()}`, x, y, kind: "miss" }]);
-      setFeedback(`Belum. ${directionHint(target, x, y)}`);
+      const nextMisses = misses + 1;
+      setMisses(nextMisses);
+      setFeedback(
+        nextMisses >= 2
+          ? `Belum. ${directionHint(target, x, y)} Petunjuk: ${target.hint}.`
+          : `Belum. ${directionHint(target, x, y)}`,
+      );
     }
   }
 
@@ -41,6 +49,7 @@ export function Finder() {
     setRound(pickRound(areas, roundSize));
     setIndex(0);
     setMarks([]);
+    setMisses(0);
     setFeedback("Ronde baru. Klik lukisan tepat di tempat benda itu berada.");
   }
 
@@ -69,6 +78,17 @@ export function Finder() {
                 decoding="async"
                 draggable="false"
               />
+              {!isDone && misses >= 3 && (
+                <span
+                  className="finder__hint"
+                  aria-hidden="true"
+                  style={{
+                    left: `${target.x}%`,
+                    top: `${target.y}%`,
+                    "--hint-size": `${target.radius * 4}%`,
+                  }}
+                />
+              )}
               {marks.map((mark) => (
                 <span
                   key={mark.id}
