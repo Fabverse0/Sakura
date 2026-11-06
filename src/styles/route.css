@@ -1,66 +1,71 @@
-.guided-route {
-  padding: clamp(64px, 8vw, 112px) clamp(24px, 7vw, 120px);
-  border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);
-  background: var(--ivory);
-  color: var(--ink);
-}
-
+/* Rute pandang: a self-paced walk through the three focuses. */
 .guided-route__inner {
   display: grid;
-  width: min(100%, 1220px);
-  grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
-  gap: clamp(36px, 6vw, 88px);
-  margin-inline: auto;
+  gap: 32px;
+}
+
+.guided-route__intro {
+  position: sticky;
+  top: 110px;
+  grid-column: 1 / span 4;
 }
 
 .guided-route__title {
-  max-width: 10ch;
-  margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(38px, 4.2vw, 64px);
-  font-weight: 600;
-  letter-spacing: -0.025em;
-  line-height: 0.98;
+  max-width: 8ch;
 }
 
 .guided-route__description {
-  max-width: 34ch;
-  margin: 18px 0 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(18px, 1.5vw, 22px);
-  line-height: 1.4;
+  margin-top: 22px;
 }
 
 .guided-route__panel {
+  position: relative;
+  grid-column: 6 / span 7;
   min-width: 0;
-  padding: clamp(22px, 2.8vw, 40px);
-  border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
-  background: var(--paper);
+  padding: clamp(28px, 3vw, 48px);
+  background-color: var(--paper);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+  color: var(--text-ink);
+  box-shadow: 0 30px 60px -36px rgb(21 22 25 / 55%);
+}
+
+/* Kumiko strip down the panel's left edge, like the shoji wall above */
+.guided-route__panel::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -22px;
+  width: 22px;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 19px, rgb(70 52 38 / 70%) 19px 22px),
+    linear-gradient(90deg, rgb(70 52 38 / 70%) 0 3px, transparent 3px);
+  background-color: var(--dusk-snow);
+  content: "";
 }
 
 .guided-route__sequence {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   margin: 0 0 18px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(19px, 1.8vw, 25px);
+  font-size: clamp(26px, 2.2vw, 34px);
   font-weight: 600;
 }
 
 .guided-route__sequence .guided-route__arrow {
   color: var(--maple);
-  font-weight: 400;
 }
 
 .guided-route__prompt {
   max-width: 44ch;
   margin: 0 0 24px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(18px, 1.5vw, 21px);
-  line-height: 1.4;
+  color: color-mix(in srgb, var(--text-ink) 84%, transparent);
+  font-size: var(--type-lead);
+  line-height: 1.45;
 }
 
 .guided-route__button {
@@ -68,13 +73,12 @@
   min-height: 48px;
   align-items: center;
   justify-content: center;
-  padding: 11px 20px;
+  gap: 8px;
+  padding: 10px 20px;
   border: 1px solid var(--maple);
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
   line-height: 1.1;
-  text-align: center;
   text-decoration: none;
   transition:
     background-color var(--dur-feedback) ease,
@@ -84,14 +88,12 @@
 
 .guided-route__button--primary {
   background: var(--maple);
-  color: var(--ivory);
-  cursor: pointer;
+  color: var(--action-text);
 }
 
 .guided-route__button--primary:hover {
   border-color: var(--maple-hover);
   background: var(--maple-hover);
-  color: var(--white);
 }
 
 .guided-route__button:active {
@@ -99,80 +101,95 @@
 }
 
 .guided-route__button--quiet {
+  border-color: color-mix(in srgb, currentColor 40%, transparent);
   background: transparent;
-  color: var(--ink);
-  cursor: pointer;
+  color: var(--text-ink);
 }
 
 .guided-route__button--quiet:hover {
-  background: var(--ivory);
+  border-color: var(--maple);
+  background: color-mix(in srgb, var(--maple) 8%, transparent);
 }
 
 .guided-route__step {
   display: grid;
-  grid-template-columns: minmax(120px, 0.78fr) minmax(0, 1.22fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
-  gap: 18px clamp(20px, 2.4vw, 34px);
+  gap: clamp(24px, 2.6vw, 40px);
 }
 
+/* A real crop: the painting zoomed to the step's focus, morphing between steps */
 .guided-route__image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  grid-column: 1;
-  grid-row: 1;
-  object-fit: cover;
-  object-position: var(--focus-origin);
+  aspect-ratio: 4 / 5;
+  background-position: var(--focus-origin);
+  background-repeat: no-repeat;
+  background-size: 360%;
+  box-shadow: 0 0 0 10px var(--rail-base);
+  view-transition-name: route-crop;
 }
 
 .guided-route__step-content {
   min-width: 0;
-  grid-column: 2;
 }
 
 .guided-route__status {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: var(--maple);
-  font-size: 16px;
+  font-size: var(--type-label);
   font-weight: 600;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 
 .guided-route__progress {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   padding: 0;
   list-style: none;
 }
 
 .guided-route__progress-step {
-  padding-top: 8px;
-  border-top: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
-  color: color-mix(in srgb, var(--ink) 72%, var(--paper));
-  font-size: 15px;
-  line-height: 1.2;
+  position: relative;
+  padding-top: 10px;
+  color: color-mix(in srgb, var(--text-ink) 60%, transparent);
+  font-size: 17px;
+}
+
+.guided-route__progress-step::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: color-mix(in srgb, var(--text-ink) 25%, transparent);
+  content: "";
+}
+
+.guided-route__progress-step::after {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--maple);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-layout) var(--ease-out);
 }
 
 .guided-route__progress-step[data-complete="true"],
 .guided-route__progress-step[aria-current="step"] {
-  border-color: var(--maple);
-  color: var(--ink);
+  color: var(--text-ink);
   font-weight: 600;
 }
 
-.guided-route__focus {
-  margin: 0 0 4px;
-  color: var(--maple);
-  font-size: 16px;
-  font-weight: 600;
+.guided-route__progress-step[data-complete="true"]::after,
+.guided-route__progress-step[aria-current="step"]::after {
+  transform: scaleX(1);
 }
 
 .guided-route__step-title {
   max-width: 14ch;
-  margin: 0 0 12px;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(30px, 3vw, 40px);
+  margin: 0 0 14px;
+  font-size: clamp(34px, 3vw, 48px);
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1;
@@ -183,97 +200,37 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 28px;
 }
 
 .guided-route__completion .guided-route__status {
   margin-top: 16px;
 }
 
-
-@media (max-width: 1100px) {
-  .guided-route {
-    padding: 64px clamp(24px, 6vw, 76px) 76px;
-  }
-
-  .guided-route__inner {
-    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
-    gap: clamp(24px, 4vw, 48px);
-  }
-
-  .guided-route__panel {
-    padding: 22px;
-  }
-
-  .guided-route__step {
-    grid-template-columns: minmax(100px, 0.72fr) minmax(0, 1.28fr);
-    gap: 16px;
-  }
-
-  .guided-route__progress {
-    gap: 7px;
-  }
-
-  .guided-route__progress-step {
-    font-size: 14px;
-  }
+::view-transition-old(route-crop) {
+  animation: note-out var(--dur-layout) var(--ease-in-out) both;
 }
 
-@media (max-width: 700px) {
-  .guided-route {
-    padding: 52px 7% 64px;
-  }
+::view-transition-new(route-crop) {
+  animation: season-wipe var(--dur-focal) var(--ease-slide) both;
+}
 
-  .guided-route__inner {
-    grid-template-columns: 1fr;
-    gap: 26px;
-  }
-
-  .guided-route__title {
-    font-size: clamp(36px, 10vw, 44px);
-  }
-
-  .guided-route__description {
-    margin-top: 12px;
-    font-size: 18px;
-  }
-
+@media (max-width: 1100px) {
+  .guided-route__intro,
   .guided-route__panel {
-    padding: 20px;
+    position: static;
+    grid-column: 1 / -1;
   }
 
-  .guided-route__sequence {
-    gap: 8px;
-    font-size: 20px;
+  .guided-route__panel::before {
+    display: none;
   }
 
   .guided-route__step {
     grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .guided-route__image,
-  .guided-route__step-content {
-    grid-column: 1;
-    grid-row: auto;
   }
 
   .guided-route__image {
-    aspect-ratio: 16 / 10;
-  }
-
-  .guided-route__step-title {
-    font-size: 34px;
-  }
-
-  .guided-route__actions {
-    gap: 8px;
-    margin-top: 22px;
-  }
-
-  .guided-route__button {
-    min-height: 44px;
-    padding: 10px 15px;
-    font-size: 17px;
+    aspect-ratio: 16 / 9;
   }
 }

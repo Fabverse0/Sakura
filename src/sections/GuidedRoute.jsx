@@ -1,5 +1,5 @@
 import { Icon } from "../components/Icon.jsx";
-import { panoramaArt, panoramaArtSrcSet } from "../data/panorama.js";
+import { panoramaAt } from "../data/panorama.js";
 import { views } from "../data/views.js";
 
 export function GuidedRoute({ route }) {
@@ -8,13 +8,17 @@ export function GuidedRoute({ route }) {
   const isGuidedRouteComplete = route.isComplete;
 
   return (
-    <section className="guided-route" id="rute" aria-labelledby="guided-route-title">
-      <div className="guided-route__inner">
+    <section
+      className="room room--ivory guided-route"
+      id="rute"
+      aria-labelledby="guided-route-title"
+    >
+      <div className="room__inner guided-route__inner">
         <div className="guided-route__intro">
-          <h2 className="guided-route__title" id="guided-route-title">
+          <h2 className="room__title guided-route__title" id="guided-route-title">
             Rute pandang
           </h2>
-          <p className="guided-route__description">
+          <p className="room__lead guided-route__description">
             Ikuti tiga fokus panorama secara berurutan, satu perhatian pada satu waktu.
           </p>
         </div>
@@ -78,17 +82,13 @@ export function GuidedRoute({ route }) {
               role="group"
               aria-labelledby="guided-route-step-title"
             >
-              <img
+              <div
                 className="guided-route__image"
-                src={panoramaArt}
-                srcSet={panoramaArtSrcSet}
-                sizes="(max-width: 700px) 86vw, 34vw"
-                alt=""
                 aria-hidden="true"
-                draggable="false"
-                loading="lazy"
-                decoding="async"
-                style={{ "--focus-origin": guidedView.origin }}
+                style={{
+                  backgroundImage: `url(${panoramaAt(1536)})`,
+                  "--focus-origin": guidedView.origin,
+                }}
               />
               <div className="guided-route__step-content">
                 <p className="guided-route__status" role="status" aria-live="polite" aria-atomic="true">
@@ -106,7 +106,6 @@ export function GuidedRoute({ route }) {
                     </li>
                   ))}
                 </ol>
-                <p className="guided-route__focus">{guidedView.label}</p>
                 <h3
                   className="guided-route__step-title"
                   id="guided-route-step-title"
