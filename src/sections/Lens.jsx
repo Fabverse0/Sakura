@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { nearestArea } from "../data/areas.js";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
 import { clampPosition, lensGeometry, nudgeZoom, stepPosition } from "../lib/lens.js";
 
@@ -16,6 +17,8 @@ export function Lens() {
   const [isActive, setIsActive] = useState(false);
   const [hasHiRes, setHasHiRes] = useState(false);
   const [zoom, setZoom] = useState(3);
+  const [areaName, setAreaName] = useState("");
+  const [announcement, setAnnouncement] = useState("");
 
   // Wheel zoom needs a non-passive listener so the page does not scroll
   // while the lens is in use.
@@ -41,6 +44,8 @@ export function Lens() {
     lens.style.transform = `translate3d(${g.tx}px, ${g.ty}px, 0)`;
     lens.style.backgroundSize = `${g.bgWidth}px ${g.bgHeight}px`;
     lens.style.backgroundPosition = `${g.bgX}px ${g.bgY}px`;
+    const { area, distance } = nearestArea(position.current.x, position.current.y);
+    setAreaName(distance <= area.radius * 1.6 ? area.name : "Bidang lukisan");
   }, [zoom]);
 
   const schedulePaint = useCallback(() => {
@@ -49,7 +54,10 @@ export function Lens() {
 
   useEffect(() => {
     schedulePaint();
-    return () => window.cancelAnimationFrame(frame.current);
+    return () => {
+      window.cancelAnimationFrame(frame.current);
+      frame.current = 0;
+    };
   }, [schedulePaint, isActive]);
 
   function activate() {
@@ -83,6 +91,10 @@ export function Lens() {
     }
     if (!isActive) activate();
     schedulePaint();
+    window.requestAnimationFrame(() => {
+      const { area, distance } = nearestArea(position.current.x, position.current.y);
+      setAnnouncement(distance <= area.radius * 1.6 ? area.name : "Bidang lukisan");
+    });
   }
 
   return (
@@ -140,6 +152,16 @@ export function Lens() {
             </div>
           </div>
         </div>
+        <p className="lens__readout" aria-hidden="true" data-shown={isActive && areaName !== ""}>
+          <span className="lens__readout-label">Di bawah lensa</span>
+          <span className="lens__readout-name" key={areaName}>
+            {areaName}
+          </span>
+          <span className="lens__readout-zoom">{zoom.toFixed(1)}×</span>
+        </p>
+        <p className="visually-hidden" role="status" aria-live="polite">
+          {announcement}
+        </p>
         <p className="lens__help" id="lens-help">
           Panah untuk menggeser lensa, Shift + panah untuk langkah besar, + dan − untuk
           perbesaran, Home untuk kembali ke tengah.

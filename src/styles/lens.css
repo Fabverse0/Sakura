@@ -93,3 +93,49 @@
 .lens__stage:focus-visible {
   outline: 2px solid var(--focus-ring);
 }
+
+.lens__readout {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-height: 1.4em;
+  margin: 26px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  opacity: 0.35;
+  transition: opacity var(--dur-state) ease;
+}
+
+.lens__readout[data-shown="true"] {
+  opacity: 1;
+}
+
+.lens__readout-label {
+  color: var(--dusk-ash);
+  font-size: var(--type-label);
+  letter-spacing: 0.04em;
+}
+
+.lens__readout-name {
+  color: var(--ivory);
+  font-size: clamp(28px, 2.4vw, 40px);
+  font-weight: 600;
+  line-height: 1;
+  animation: readout-in var(--dur-layout) var(--ease-out);
+}
+
+.lens__readout-zoom {
+  margin-left: auto;
+  color: var(--maple-rule);
+  font-size: 24px;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+@keyframes readout-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
