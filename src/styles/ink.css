@@ -1,0 +1,45 @@
+/* Brush strokes "write" themselves: dash length = 1 via pathLength. Final
+   state (fully drawn) is the default, so nothing stays hidden if motion is off. */
+.ink-stroke {
+  display: block;
+  overflow: visible;
+  color: var(--maple);
+}
+
+.ink-stroke__path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  filter: url("#ink-bleed");
+}
+
+.ink-stroke[data-writing="true"] .ink-stroke__path {
+  animation: ink-write 1400ms var(--ease-settle) both;
+}
+
+@keyframes ink-write {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ink-stroke[data-writing="true"] .ink-stroke__path {
+    animation: ink-fade 400ms ease-out both;
+  }
+
+  @keyframes ink-fade {
+    from {
+      opacity: 0;
+    }
+  }
+}
+
+.ink-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+}

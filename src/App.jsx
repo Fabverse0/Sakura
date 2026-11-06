@@ -5,6 +5,7 @@ import { useActiveSection } from "./hooks/useActiveSection.js";
 import { Lens } from "./sections/Lens.jsx";
 import { NavPanel } from "./sections/NavPanel.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
+import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
@@ -42,6 +43,7 @@ export default function App() {
       <a className="skip-link" href="#top">
         Lewati ke konten utama
       </a>
+      <InkFilters />
       <ShojiDoors />
       <NavPanel
         isOpen={isRoomsOpen}
