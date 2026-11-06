@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useViewTransition } from "../hooks/useViewTransition.js";
 import { panoramaAt } from "../data/panorama.js";
 import { defaultSeasonId, findSeason, seasons } from "../data/seasons.js";
 
@@ -8,6 +9,12 @@ import { defaultSeasonId, findSeason, seasons } from "../data/seasons.js";
 export function Seasons() {
   const [seasonId, setSeasonId] = useState(defaultSeasonId);
   const season = findSeason(seasonId);
+  const transition = useViewTransition();
+
+  function choose(id) {
+    if (id === seasonId) return;
+    transition(() => setSeasonId(id), ["season"]);
+  }
 
   return (
     <section className="room room--ink seasons" id="musim" aria-labelledby="seasons-title">
@@ -59,7 +66,7 @@ export function Seasons() {
               className="seasons__option"
               type="button"
               aria-pressed={item.id === season.id}
-              onClick={() => setSeasonId(item.id)}
+              onClick={() => choose(item.id)}
               style={{ "--option-tone": item.tone }}
             >
               <span className="seasons__swatch" aria-hidden="true" />

@@ -147,3 +147,40 @@
     width: 100%;
   }
 }
+
+/* Season change: the new season slides in like a shoji panel over the old one,
+   with a timber edge leading the wipe. */
+::view-transition-old(season-art) {
+  animation: none;
+}
+
+::view-transition-new(season-art) {
+  animation: season-wipe 1100ms var(--ease-slide) both;
+}
+
+::view-transition-old(season-caption) {
+  animation: note-out var(--dur-layout) var(--ease-in-out) both;
+}
+
+::view-transition-new(season-caption) {
+  animation: season-caption-in var(--dur-focal) var(--ease-out) 260ms both;
+}
+
+@keyframes season-wipe {
+  from {
+    clip-path: inset(0 0 0 100%);
+    filter: drop-shadow(-14px 0 0 var(--rail-base));
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+    filter: drop-shadow(0 0 0 var(--rail-base));
+  }
+}
+
+@keyframes season-caption-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
