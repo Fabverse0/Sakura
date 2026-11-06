@@ -16,7 +16,7 @@ const petals = createPetals();
  * The approved engawa comp: timber beam, panorama, focus rail and shoji wall.
  * Desktop geometry is percentage based and must stay pixel-stable.
  */
-export function HeroComp({ activeView, onSelectView }) {
+export function HeroComp({ activeView, onSelectView, onOpenRooms }) {
   const heroRef = useRef(null);
   const isHeroVisible = useInView(heroRef);
   const selectedView = findView(activeView);
@@ -33,6 +33,14 @@ export function HeroComp({ activeView, onSelectView }) {
           SAKURA
         </a>
         <nav className="header-nav" aria-label="Navigasi utama">
+          <button
+            className="header-nav__link header-nav__link--ruang"
+            type="button"
+            aria-haspopup="dialog"
+            onClick={onOpenRooms}
+          >
+            Ruang
+          </button>
           <a
             className="header-nav__link header-nav__link--active"
             href="#panorama"

@@ -42,7 +42,11 @@ export default function App() {
       </a>
       <ShojiDoors />
       <ScrollBeam activeId={activeSection} onOpenRooms={() => setIsRoomsOpen(true)} />
-      <HeroComp activeView={activeView} onSelectView={selectView} />
+      <HeroComp
+        activeView={activeView}
+        onSelectView={selectView}
+        onOpenRooms={() => setIsRoomsOpen(true)}
+      />
 
       <PanoramaDetails activeView={activeView} onSelectView={selectView} />
 

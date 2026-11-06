@@ -66,6 +66,14 @@
   width: 4.67%;
 }
 
+.header-nav__link--ruang {
+  left: 73.2%;
+  width: 5.4%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
 .header-nav__link--tentang {
   left: 88.78%;
   width: 5.93%;
@@ -412,6 +420,7 @@
     font-size: clamp(17px, 1.9vw, 21px);
   }
 
+  .header-nav__link--ruang,
   .header-nav__link--tentang {
     left: auto;
     width: auto;
