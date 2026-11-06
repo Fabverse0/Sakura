@@ -2,6 +2,7 @@ import { useCallback, useState } from "react";
 import { useViewTransition } from "./hooks/useViewTransition.js";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
+import { NavPanel } from "./sections/NavPanel.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
@@ -41,6 +42,11 @@ export default function App() {
         Lewati ke konten utama
       </a>
       <ShojiDoors />
+      <NavPanel
+        isOpen={isRoomsOpen}
+        onClose={() => setIsRoomsOpen(false)}
+        activeId={activeSection}
+      />
       <ScrollBeam activeId={activeSection} onOpenRooms={() => setIsRoomsOpen(true)} />
       <HeroComp
         activeView={activeView}
