@@ -58,6 +58,19 @@ export function ScrollBeam({ activeId, onOpenRooms, isNight, onToggleNight, soun
           <Icon name={sound.isOn ? "sound" : "sound-off"} size={18} />
           <span>Suara</span>
         </button>
+        {sound.isOn && (
+          <label className="beam-volume">
+            <span className="visually-hidden">Volume suara</span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={sound.volume}
+              onChange={(event) => sound.setVolume(Number(event.target.value))}
+            />
+          </label>
+        )}
         <button
           className="beam-toggle"
           type="button"

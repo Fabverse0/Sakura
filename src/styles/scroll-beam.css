@@ -167,3 +167,14 @@
   border-color: var(--maple-rule);
   background: rgb(191 24 24 / 32%);
 }
+
+.beam-volume {
+  display: inline-flex;
+  align-items: center;
+  animation: hero-rise var(--dur-layout) var(--ease-out) both;
+}
+
+.beam-volume input {
+  width: 96px;
+  accent-color: var(--maple-rule);
+}
