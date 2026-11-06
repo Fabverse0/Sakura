@@ -34,10 +34,9 @@ export function ShojiDoors() {
     root.dataset.intro = "playing";
     // Safety net: never leave the doors mounted if animationend is missed.
     const timeout = window.setTimeout(() => setIsPlaying(false), 3200);
-    return () => {
-      window.clearTimeout(timeout);
-      delete root.dataset.intro;
-    };
+    // data-intro stays set: the hero sequence keys its delays off it, and
+    // removing it mid-animation would make the timing jump.
+    return () => window.clearTimeout(timeout);
   }, [isPlaying]);
 
   if (!isPlaying) return null;

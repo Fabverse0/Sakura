@@ -79,9 +79,12 @@ export function HeroComp({ activeView, onSelectView }) {
             ))}
           </div>
           <h1 className="hero-headline" id="hero-title">
-            Satu lanskap.
-            <br />
-            Tiga cara memandang.
+            <span className="hero-headline__line">
+              <span>Satu lanskap.</span>
+            </span>
+            <span className="hero-headline__line">
+              <span>Tiga cara memandang.</span>
+            </span>
           </h1>
           <a className="primary-action" href="#view-controls">
             Jelajahi panorama

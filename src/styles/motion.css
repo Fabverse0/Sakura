@@ -16,12 +16,63 @@
   }
 }
 
-.hero-headline {
-  animation: hero-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms backwards;
+:root {
+  --intro-delay: 150ms;
+}
+
+:root[data-intro="playing"] {
+  --intro-delay: 1050ms;
+}
+
+/* Headline lines rise out of a mask, one after the other. Padding keeps
+   Cormorant's long descenders from being clipped. */
+.hero-headline__line {
+  display: block;
+  overflow: clip;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+.hero-headline__line > span {
+  display: block;
+  animation: line-rise 1000ms var(--ease-out) var(--intro-delay) backwards;
+}
+
+.hero-headline__line + .hero-headline__line > span {
+  animation-delay: calc(var(--intro-delay) + 120ms);
+}
+
+@keyframes line-rise {
+  from {
+    transform: translateY(105%);
+  }
 }
 
 .primary-action {
-  animation: hero-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) 380ms backwards;
+  animation: hero-rise 900ms var(--ease-out) calc(var(--intro-delay) + 420ms) backwards;
+}
+
+/* The panorama settles as the doors pass; uses the scale property so the
+   focus zoom (transform) keeps working independently. */
+:root[data-intro="playing"] .panorama-art {
+  animation: art-settle 1600ms var(--ease-settle) 640ms backwards;
+}
+
+@keyframes art-settle {
+  from {
+    scale: 1.06;
+    opacity: 0.6;
+  }
+}
+
+.petals {
+  animation: petals-in 1200ms ease-out calc(var(--intro-delay) + 600ms) backwards;
+}
+
+@keyframes petals-in {
+  from {
+    opacity: 0;
+  }
 }
 
 /* Falling petals */
@@ -90,8 +141,10 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-headline,
-  .primary-action {
-    animation: none;
+  .primary-action,
+  .hero-headline__line > span,
+  .panorama-art {
+    animation: none !important;
   }
 
   /* Fewer, slower petals instead of none: the scene still breathes. */
