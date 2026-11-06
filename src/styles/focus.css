@@ -8,3 +8,10 @@
   outline-color: var(--maple-hover);
 }
 
+
+/* The comp beam clips its overflow; keep focus rings inside it. */
+.header-nav__link:focus-visible,
+.brand-wordmark:focus-visible,
+.view-control:focus-visible {
+  outline-offset: -4px;
+}
