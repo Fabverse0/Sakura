@@ -29,6 +29,7 @@ export function NavPanel({ isOpen, onClose, activeId }) {
       }}
       style={{ backgroundImage: `url(${shojiPaper})` }}
     >
+      <div className="nav-panel__inner">
       <div className="nav-panel__head">
         <h2 className="nav-panel__title" id="nav-panel-title">
           Ruang
@@ -55,6 +56,7 @@ export function NavPanel({ isOpen, onClose, activeId }) {
           ))}
         </ol>
       </nav>
+      </div>
     </dialog>
   );
 }

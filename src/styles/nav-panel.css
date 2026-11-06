@@ -60,9 +60,9 @@
   }
 }
 
-/* the content box fills the dialog, so backdrop clicks land on ::backdrop only */
-.nav-panel > * {
-  position: relative;
+/* The inner box fills the dialog, so only clicks outside it reach the dialog element. */
+.nav-panel__inner {
+  min-height: 100%;
 }
 
 .nav-panel__head {
@@ -148,5 +148,31 @@
   from {
     opacity: 0;
     transform: translateX(24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-panel,
+  .nav-panel[open] {
+    transform: none;
+  }
+
+  .nav-panel__list li {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .nav-panel {
+    border-left-color: CanvasText;
+  }
+
+  .nav-panel__link[aria-current="location"] {
+    outline: 2px solid Highlight;
+  }
+
+  .scroll-beam__link[aria-current="location"]::after,
+  .scroll-beam__progress {
+    background: Highlight;
   }
 }
