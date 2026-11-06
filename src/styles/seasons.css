@@ -1,0 +1,149 @@
+.seasons__stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  background: var(--ink-900);
+  box-shadow: 0 50px 90px -50px rgb(0 0 0 / 85%);
+}
+
+.seasons__art {
+  position: absolute;
+  inset: 0;
+  view-transition-name: season-art;
+}
+
+.seasons__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+}
+
+.seasons__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.seasons__stage .particles {
+  z-index: 1;
+}
+
+/* Caption sits on an ink veil in the lower left */
+.seasons__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: min(54%, 640px);
+  padding: 120px clamp(28px, 3vw, 48px) clamp(28px, 3vw, 44px);
+  background: linear-gradient(to top right, rgb(15 16 19 / 88%) 30%, rgb(15 16 19 / 0%) 75%);
+  color: var(--ivory);
+  view-transition-name: season-caption;
+}
+
+.seasons__name {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 0.9;
+}
+
+.seasons__name::after {
+  display: block;
+  width: 2.4em;
+  height: 3px;
+  margin-top: 18px;
+  background: var(--season-tone, var(--maple));
+  content: "";
+}
+
+.seasons__note {
+  max-width: 44ch;
+  margin: 18px 0 0;
+  color: color-mix(in srgb, var(--ivory) 86%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-lead);
+  line-height: 1.42;
+}
+
+.seasons__picker {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 2px;
+  background: var(--rail-base);
+  background-image: url("../../assets/plates/view-rail-timber.png");
+  background-size: 300px 68px;
+}
+
+.seasons__option {
+  position: relative;
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  border-right: 1px solid rgb(0 0 0 / 45%);
+  background: transparent;
+  color: color-mix(in srgb, var(--ivory) 70%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 55%);
+  transition:
+    color var(--dur-feedback) ease,
+    background-color var(--dur-state) ease;
+}
+
+.seasons__option:last-child {
+  border-right: 0;
+}
+
+.seasons__option::after {
+  position: absolute;
+  right: 30%;
+  bottom: 12px;
+  left: 30%;
+  height: 3px;
+  background: var(--option-tone);
+  content: "";
+  transform: scaleX(0);
+  transition: transform var(--dur-layout) var(--ease-out);
+}
+
+.seasons__option:hover,
+.seasons__option[aria-pressed="true"],
+.seasons__option[aria-checked="true"] {
+  background: rgb(242 238 231 / 6%);
+  color: var(--white);
+}
+
+.seasons__option[aria-pressed="true"]::after,
+.seasons__option[aria-checked="true"]::after {
+  transform: scaleX(1);
+}
+
+.seasons__option:focus-visible {
+  outline-offset: -6px;
+}
+
+.seasons__swatch {
+  width: 14px;
+  height: 14px;
+  background: var(--option-tone);
+  box-shadow: 0 0 0 1px rgb(242 238 231 / 40%);
+}
+
+@media (max-width: 1100px) {
+  .seasons__stage {
+    aspect-ratio: 4 / 3;
+  }
+
+  .seasons__caption {
+    width: 100%;
+  }
+}

@@ -5,6 +5,7 @@ import { useActiveSection } from "./hooks/useActiveSection.js";
 import { Haiku } from "./sections/Haiku.jsx";
 import { Lens } from "./sections/Lens.jsx";
 import { NavPanel } from "./sections/NavPanel.jsx";
+import { Seasons } from "./sections/Seasons.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
@@ -65,6 +66,8 @@ export default function App() {
       <Haiku activeView={activeView} onSelectView={selectView} />
 
       <GuidedRoute route={route} />
+
+      <Seasons />
 
       <PauseExperience pause={pause} />
     </>
