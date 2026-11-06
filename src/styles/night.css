@@ -1,0 +1,25 @@
+/* Night mode: the same engawa after dark. Light rooms turn to sumi and ink,
+   text turns to warm ivory, maple stays the action colour. Colours come from
+   the painting (sumi, pagoda shadow, dusk snow). */
+:root[data-mode="night"] {
+  color-scheme: dark;
+  --text-ink: #ece4df;
+  --paper: #1e1a22;
+  --paper-50: #241f29;
+  --mist: #1a171e;
+  --dusk-snow: #2b2630;
+  --ivory: #f2eee7;
+  --night-glow: #e8c896;
+}
+
+:root[data-mode="night"] .room--paper,
+:root[data-mode="night"] .room--ivory,
+:root[data-mode="night"] .room--mist {
+  background-color: var(--paper);
+  background-blend-mode: multiply;
+  color: var(--text-ink);
+}
+
+:root[data-mode="night"] .room--ivory {
+  background: var(--paper-50);
+}
