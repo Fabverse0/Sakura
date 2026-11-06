@@ -113,9 +113,6 @@
   }
 }
 
-.detail-card:hover {
-  box-shadow: 0 14px 28px -16px rgb(21 22 25 / 40%);
-}
 
 /* Pause progress */
 .pause-experience__progress {
