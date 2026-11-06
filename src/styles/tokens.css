@@ -20,6 +20,27 @@
   --wordmark: #f1f0e9;
   --action-text: #f8f5f4;
 
+  /* Extended palette: sampled from the painting (k-means on the 640px plate). */
+  --sumi: #1e1a22;
+  --sky-white: #fcfcfc;
+  --mist: #e7ddd9;
+  --dusk-snow: #f4edea;
+  --rose-mist: #d5c6c2;
+  --fuji-grey: #8a8381;
+  --dusk-ash: #baa6a2;
+  --maple-deep: #a62728;
+  --pagoda-shadow: #524246;
+  --petal: #c66661;
+
+  /* Ink ramp for dark rooms, paper ramp for light rooms */
+  --ink-900: #0f1013;
+  --ink-800: var(--ink);
+  --ink-700: #1e1a22;
+  --ink-600: #2b2630;
+  --paper-50: #f7f3ee;
+  --paper-100: var(--ivory);
+  --paper-200: var(--paper);
+
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-slide: cubic-bezier(0.7, 0, 0.2, 1);
