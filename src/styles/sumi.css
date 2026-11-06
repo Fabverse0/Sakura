@@ -1,0 +1,19 @@
+.sumi__frame {
+  position: relative;
+  padding: 16px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/view-rail-timber.png");
+  background-size: 300px 68px;
+  box-shadow: 0 34px 70px -36px rgb(21 22 25 / 60%);
+}
+
+.sumi__canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2.4 / 1;
+  background-color: var(--dusk-snow);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+  cursor: crosshair;
+  touch-action: none;
+}

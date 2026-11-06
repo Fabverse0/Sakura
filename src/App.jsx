@@ -19,6 +19,7 @@ import { PauseExperience } from "./sections/PauseExperience.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
 import { SiteFooter } from "./sections/SiteFooter.jsx";
+import { SumiCanvas } from "./sections/SumiCanvas.jsx";
 
 const sectionIds = sections.map((section) => section.id);
 
@@ -72,6 +73,7 @@ export default function App() {
         <Palette />
         <PauseExperience pause={pause} />
         <Journal activeView={activeView} />
+        <SumiCanvas />
       </main>
 
       <SiteFooter />
