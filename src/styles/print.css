@@ -8,7 +8,7 @@
 
   body,
   .pause-experience {
-    background: #fff;
+    background: var(--white);
     color: #000;
   }
 }

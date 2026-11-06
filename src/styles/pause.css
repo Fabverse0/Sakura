@@ -102,8 +102,8 @@
 }
 
 .pause-experience__button:hover {
-  border-color: #a91616;
-  background: #a91616;
+  border-color: var(--maple-hover);
+  background: var(--maple-hover);
 }
 
 .pause-experience__button:active {

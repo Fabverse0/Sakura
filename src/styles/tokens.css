@@ -1,0 +1,22 @@
+:root {
+  /* Core engawa palette */
+  --ink: #151619;
+  --paper: #ede8e3;
+  --maple: #bf1818;
+  --ivory: #f2eee7;
+
+  /* Roles that used to be literal values */
+  --text-ink: #141211;
+  --white: #fff;
+  --maple-hover: #a91616;
+  --maple-active: #8f1212;
+  --maple-rule: #d51e1a;
+  --maple-selection: #9f1717;
+  --focus-ring: #e03a32;
+  --rail-base: #1a1817;
+  --timber-scroll: #5a4432;
+  --label-on-timber: #f2f1ee;
+  --link-on-timber: #f5f5f3;
+  --wordmark: #f1f0e9;
+  --action-text: #f8f5f4;
+}

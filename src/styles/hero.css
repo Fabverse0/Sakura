@@ -30,7 +30,7 @@
   width: 12.55%;
   height: calc(var(--frame-vh) * 2.92);
   align-items: center;
-  color: #f1f0e9;
+  color: var(--wordmark);
   font-family: "Cantata One", Georgia, serif;
   font-size: 1.89vw;
   font-weight: 400;
@@ -52,7 +52,7 @@
   height: calc(var(--frame-vh) * 4.33);
   align-items: center;
   justify-content: center;
-  color: #f5f5f3;
+  color: var(--link-on-timber);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.45vw;
   font-weight: 500;
@@ -77,13 +77,13 @@
   bottom: 0;
   left: 0;
   height: calc(var(--frame-vh) * 0.32);
-  background: #d51e1a;
+  background: var(--maple-rule);
   content: "";
 }
 
 .header-nav__link:hover,
 .brand-wordmark:hover {
-  color: #fff;
+  color: var(--white);
 }
 
 .hero-stage {
@@ -121,7 +121,7 @@
   width: 36.44%;
   height: 11.19%;
   margin: 0;
-  color: #f2eee7;
+  color: var(--ivory);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 4.035vw;
   font-weight: 500;
@@ -141,7 +141,7 @@
   align-items: center;
   justify-content: center;
   background: var(--maple);
-  color: #f8f5f4;
+  color: var(--action-text);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.55vw;
   font-weight: 600;
@@ -152,12 +152,12 @@
 }
 
 .primary-action:hover {
-  background: #a91616;
-  color: #fff;
+  background: var(--maple-hover);
+  color: var(--white);
 }
 
 .primary-action:active {
-  background: #8f1212;
+  background: var(--maple-active);
 }
 
 .view-rail {
@@ -168,7 +168,7 @@
   top: var(--r-view-rail-timber-y);
   z-index: 3;
   height: var(--r-view-rail-timber-h);
-  background-color: #1a1817;
+  background-color: var(--rail-base);
   background-repeat: repeat-x;
   background-position: left center;
   background-size: 25.2vw calc(var(--frame-vh) * 6.35);
@@ -184,7 +184,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: #f2f1ee;
+  color: var(--label-on-timber);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.15vw;
   font-weight: 500;
@@ -210,7 +210,7 @@
 
 .view-control:hover,
 .view-control[aria-pressed="true"] {
-  color: #fff;
+  color: var(--white);
 }
 
 .view-control[aria-pressed="true"]::after,
@@ -219,7 +219,7 @@
   bottom: 0;
   width: 1.4em;
   height: 1px;
-  background: #d51e1a;
+  background: var(--maple-rule);
   content: "";
 }
 
@@ -241,7 +241,7 @@
   background-repeat: repeat;
   background-position: 40.98vw calc(var(--frame-vh) * 2.21);
   background-size: 20.18vw calc(var(--frame-vh) * 5.24);
-  color: #141211;
+  color: var(--text-ink);
 }
 
 .shoji-lintel {
@@ -327,7 +327,7 @@
   width: 24.59%;
   height: calc(var(--frame-vh) * 6.45);
   margin: 0;
-  color: #141211;
+  color: var(--text-ink);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 2.97vw;
   font-weight: 600;
@@ -343,7 +343,7 @@
   width: 54.48%;
   height: calc(var(--frame-vh) * 5.24);
   margin: 0;
-  color: #141211;
+  color: var(--text-ink);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 1.32vw;
   font-weight: 400;

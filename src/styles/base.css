@@ -5,12 +5,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: Georgia, "Times New Roman", serif;
-  background: #151619;
-  color: #f2eee7;
-  --ink: #151619;
-  --paper: #ede8e3;
-  --maple: #bf1818;
-  --ivory: #f2eee7;
+  background: var(--ink);
+  color: var(--ivory);
   --r-panorama-art-y: 5.85%;
   --r-panorama-art-w: 100%;
   --r-panorama-art-h: 72.18%;
@@ -29,14 +25,14 @@ html {
   text-size-adjust: 100%;
   min-width: 320px;
   scroll-behavior: smooth;
-  scrollbar-color: #5a4432 #151619;
+  scrollbar-color: var(--timber-scroll) var(--ink);
 }
 
 body {
   min-width: 320px;
   margin: 0;
   overflow-x: hidden;
-  background: #151619;
+  background: var(--ink);
 }
 
 button,
@@ -56,8 +52,8 @@ a {
 }
 
 ::selection {
-  color: #fff;
-  background: #9f1717;
+  color: var(--white);
+  background: var(--maple-selection);
 }
 
 #root {

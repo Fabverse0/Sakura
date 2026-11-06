@@ -89,9 +89,9 @@
 }
 
 .guided-route__button--primary:hover {
-  border-color: #a91616;
-  background: #a91616;
-  color: #fff;
+  border-color: var(--maple-hover);
+  background: var(--maple-hover);
+  color: var(--white);
 }
 
 .guided-route__button:active {

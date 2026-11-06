@@ -1,10 +1,10 @@
 :focus-visible {
-  outline: 2px solid #e03a32;
+  outline: 2px solid var(--focus-ring);
   outline-offset: 4px;
 }
 
 .panorama-details :focus-visible,
 .guided-route :focus-visible {
-  outline-color: #a91616;
+  outline-color: var(--maple-hover);
 }
 
