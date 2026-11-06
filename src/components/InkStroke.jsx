@@ -17,13 +17,14 @@ const variants = {
   },
 };
 
-export function InkStroke({ variant = "sweep", className = "", width = 6 }) {
+export function InkStroke({ variant = "sweep", className = "", width = 6, writing = false }) {
   const shape = variants[variant] ?? variants.sweep;
   return (
     <svg
       className={`ink-stroke ink-stroke--${variant} ${className}`.trim()}
       viewBox={shape.viewBox}
       preserveAspectRatio="none"
+      data-writing={writing}
       aria-hidden="true"
       focusable="false"
     >

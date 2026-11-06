@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { InkStroke } from "../components/InkStroke.jsx";
 import { haiku, haikuFor } from "../data/haiku.js";
 import { panoramaAt } from "../data/panorama.js";
@@ -10,6 +11,10 @@ import { findView } from "../data/views.js";
 export function Haiku({ activeView, onSelectView }) {
   const poem = haikuFor(activeView);
   const view = findView(poem.viewId);
+  // The first poem is written by scrolling; later poems write themselves on change.
+  const firstPoem = useRef(poem.viewId);
+  const hasChanged = useRef(false);
+  if (poem.viewId !== firstPoem.current) hasChanged.current = true;
 
   return (
     <section className="room room--mist haiku" id="haiku" aria-labelledby="haiku-title">
@@ -53,7 +58,12 @@ export function Haiku({ activeView, onSelectView }) {
               </span>
             ))}
           </blockquote>
-          <InkStroke className="haiku__stroke" variant="sweep" width={5} />
+          <InkStroke
+            className="haiku__stroke"
+            variant="sweep"
+            width={5}
+            writing={hasChanged.current}
+          />
           <figcaption className="haiku__caption">
             <span className="haiku__seal" aria-hidden="true">
               桜
