@@ -54,7 +54,7 @@ export function HeroComp({ activeView, onSelectView, onOpenRooms }) {
         </nav>
       </header>
 
-      <main className="page-main" id="top">
+      <div className="page-main">
         <section
           className="hero-stage"
           id="panorama"
@@ -156,7 +156,7 @@ export function HeroComp({ activeView, onSelectView, onOpenRooms }) {
             {selectedView?.description ?? overviewNote}
           </p>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

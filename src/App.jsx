@@ -45,7 +45,7 @@ export default function App() {
 
   return (
     <>
-      <a className="skip-link" href="#top">
+      <a className="skip-link" href="#panorama">
         Lewati ke konten utama
       </a>
       <InkFilters />
@@ -56,6 +56,7 @@ export default function App() {
         activeId={activeSection}
       />
       <ScrollBeam activeId={activeSection} onOpenRooms={() => setIsRoomsOpen(true)} />
+      <main id="top">
       <HeroComp
         activeView={activeView}
         onSelectView={selectView}
@@ -77,6 +78,8 @@ export default function App() {
       <PauseExperience pause={pause} />
 
       <Journal activeView={activeView} />
+
+      </main>
 
       <SiteFooter />
     </>
