@@ -218,3 +218,48 @@
   font-size: 20px;
   font-variant-numeric: lining-nums tabular-nums;
 }
+
+/* Keyboard reticle: only visible while the board has keyboard focus */
+.finder__reticle {
+  position: absolute;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border: 2px solid var(--ivory);
+  box-shadow: 0 0 0 1px var(--ink);
+  opacity: 0;
+  pointer-events: none;
+  translate: -50% -50%;
+  transition:
+    left var(--dur-feedback) linear,
+    top var(--dur-feedback) linear,
+    opacity var(--dur-feedback) ease;
+}
+
+.finder__reticle::before,
+.finder__reticle::after {
+  position: absolute;
+  background: var(--maple-rule);
+  content: "";
+}
+
+.finder__reticle::before {
+  inset: 50% -8px auto;
+  height: 2px;
+  translate: 0 -50%;
+}
+
+.finder__reticle::after {
+  inset: -8px auto -8px 50%;
+  width: 2px;
+  translate: -50% 0;
+}
+
+.finder__stage:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.finder__stage:focus-visible .finder__reticle {
+  opacity: 1;
+}

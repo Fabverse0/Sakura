@@ -4,6 +4,7 @@ import { Icon } from "../components/Icon.jsx";
 import { areas } from "../data/areas.js";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
+import { stepPosition } from "../lib/lens.js";
 import { directionHint, formatDuration, isHit, pickRound } from "../lib/finder.js";
 
 const roundSize = 6;
@@ -22,6 +23,7 @@ export function Finder() {
   const startedAt = useRef(null);
   const [elapsed, setElapsed] = useState(null);
   const [celebrate, setCelebrate] = useState(false);
+  const [cursor, setCursor] = useState({ x: 50, y: 50 });
   const [best, setBest] = useLocalStorage("sakura:temukan-rekor", null, (v) => v === null || typeof v === "number");
 
   const target = round[index];
@@ -66,6 +68,16 @@ export function Finder() {
     guess(((event.clientX - rect.left) / rect.width) * 100, ((event.clientY - rect.top) / rect.height) * 100);
   }
 
+  function handleKeyDown(event) {
+    if (event.key.startsWith("Arrow")) {
+      event.preventDefault();
+      setCursor((current) => stepPosition(current, event.key, event.shiftKey));
+    } else if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      guess(cursor.x, cursor.y);
+    }
+  }
+
   function restart() {
     setRound(pickRound(areas, roundSize));
     setIndex(0);
@@ -91,7 +103,20 @@ export function Finder() {
 
         <div className="finder__layout">
           <div className="finder__board">
-            <div className="finder__stage" ref={stageRef} onClick={handleClick}>
+            <div
+              className="finder__stage"
+              ref={stageRef}
+              onClick={handleClick}
+              onKeyDown={handleKeyDown}
+              tabIndex={0}
+              role="group"
+              aria-label="Lukisan permainan. Gunakan panah untuk menggeser penanda, Enter untuk menebak."
+            >
+              <span
+                className="finder__reticle"
+                aria-hidden="true"
+                style={{ left: `${cursor.x}%`, top: `${cursor.y}%` }}
+              />
               <img
                 className="finder__art"
                 src={panoramaAt(1920)}
