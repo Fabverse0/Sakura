@@ -4,6 +4,7 @@ import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
+import { useAmbience } from "./hooks/useAmbience.js";
 import { useNightMode } from "./hooks/useNightMode.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 import { useViewTransition } from "./hooks/useViewTransition.js";
@@ -40,6 +41,7 @@ export default function App() {
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
   const night = useNightMode();
+  const sound = useAmbience(night.isNight);
   const openRooms = useCallback(() => setIsRoomsOpen(true), []);
 
   function selectView(viewId, returnToPanorama = false) {
@@ -67,6 +69,7 @@ export default function App() {
         onOpenRooms={openRooms}
         isNight={night.isNight}
         onToggleNight={night.toggle}
+        sound={sound}
       />
 
       <main id="top">

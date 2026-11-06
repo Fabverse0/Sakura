@@ -162,3 +162,8 @@
     transform: scaleX(1);
   }
 }
+
+.beam-toggle[aria-pressed="true"] {
+  border-color: var(--maple-rule);
+  background: rgb(191 24 24 / 32%);
+}
