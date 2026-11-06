@@ -1,0 +1,105 @@
+.panorama-details {
+  padding: clamp(64px, 8vw, 112px) clamp(24px, 7vw, 120px)
+    clamp(72px, 9vw, 128px);
+  border-top: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);
+  background-color: var(--paper);
+  background-repeat: repeat;
+  background-size: 320px 80px;
+  color: var(--ink);
+}
+
+.panorama-details__inner {
+  width: min(100%, 1220px);
+  margin-inline: auto;
+}
+
+.panorama-details__title {
+  max-width: 13ch;
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(38px, 4.2vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+}
+
+.panorama-details__intro {
+  max-width: 60ch;
+  margin: 14px 0 36px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.4;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 24px);
+}
+
+.detail-card {
+  display: flex;
+  min-height: clamp(230px, 22vw, 300px);
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(22px, 2.4vw, 36px);
+  border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: left;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.detail-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--maple);
+}
+
+.detail-card[aria-pressed="true"] {
+  border-color: var(--maple);
+  background: var(--ivory);
+}
+
+.detail-card:active {
+  transform: translateY(0);
+}
+
+.detail-card:focus-visible {
+  outline-offset: 2px;
+}
+
+.detail-card__label {
+  margin-bottom: clamp(20px, 2vw, 28px);
+  color: var(--maple);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+}
+
+.detail-card__title {
+  margin-bottom: 10px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(28px, 2.4vw, 36px);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.detail-card__description {
+  overflow-wrap: break-word;
+  max-width: 38ch;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.38;
+}
+
+.detail-card__action {
+  margin-top: auto;
+  padding-top: 22px;
+  color: var(--maple);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+

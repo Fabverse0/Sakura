@@ -1,0 +1,15 @@
+@media print {
+  .skip-link,
+  .view-rail,
+  .guided-route__actions,
+  .pause-experience__button {
+    display: none;
+  }
+
+  body,
+  .pause-experience {
+    background: #fff;
+    color: #000;
+  }
+}
+

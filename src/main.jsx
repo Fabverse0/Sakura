@@ -5,7 +5,7 @@ import "@fontsource/cormorant-garamond/latin-400.css";
 import "@fontsource/cormorant-garamond/latin-500.css";
 import "@fontsource/cormorant-garamond/latin-600.css";
 import App from "./App.jsx";
-import "./styles.css";
+import "./styles/index.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

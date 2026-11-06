@@ -1,0 +1,127 @@
+.panorama-art,
+.guided-route__image {
+  -webkit-user-drag: none;
+}
+
+/* Hero entrance */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-headline {
+  animation: hero-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) 150ms backwards;
+}
+
+.primary-action {
+  animation: hero-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) 380ms backwards;
+}
+
+/* Falling petals */
+.petals {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.petal {
+  position: absolute;
+  top: -4%;
+  left: var(--petal-left);
+  width: calc(11px * var(--petal-size));
+  height: calc(15px * var(--petal-size));
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #f2c4c8, #d98a93);
+  opacity: 0;
+  animation: petal-fall var(--petal-duration) linear var(--petal-delay) infinite;
+}
+
+@keyframes petal-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+
+  10%,
+  85% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--petal-drift), 70cqh, 0) rotate(520deg);
+  }
+}
+
+/* Scroll reveal */
+.reveal-ready [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal] {
+  transition:
+    opacity 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.detail-card:nth-child(2) {
+  transition-delay: 90ms, 90ms, 0s, 0s;
+}
+
+.detail-card:nth-child(3) {
+  transition-delay: 180ms, 180ms, 0s, 0s;
+}
+
+.detail-card:hover {
+  box-shadow: 0 14px 28px -16px rgb(21 22 25 / 40%);
+}
+
+/* Pause progress */
+.pause-experience__progress {
+  width: clamp(168px, 18vw, 224px);
+  height: 2px;
+  margin-bottom: 18px;
+  background: color-mix(in srgb, var(--ivory) 24%, transparent);
+}
+
+.pause-experience__progress span {
+  display: block;
+  height: 100%;
+  background: #e03a32;
+  transform-origin: left center;
+  transition: transform 1s linear;
+}
+
+@media (max-width: 700px) {
+  .pause-experience__progress {
+    width: 176px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline,
+  .primary-action {
+    animation: none;
+  }
+
+  .petals {
+    display: none;
+  }
+
+  .reveal-ready [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+}

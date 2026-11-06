@@ -1,0 +1,94 @@
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #151619;
+  color: #f2eee7;
+  --ink: #151619;
+  --paper: #ede8e3;
+  --maple: #bf1818;
+  --ivory: #f2eee7;
+  --r-panorama-art-y: 5.85%;
+  --r-panorama-art-w: 100%;
+  --r-panorama-art-h: 72.18%;
+  --r-view-rail-timber-y: 78.02%;
+  --r-view-rail-timber-h: 6.35%;
+  --r-shoji-wall-y: 84.38%;
+  --r-shoji-wall-h: 15.62%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  min-width: 320px;
+  scroll-behavior: smooth;
+  scrollbar-color: #5a4432 #151619;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  overflow-x: hidden;
+  background: #151619;
+}
+
+button,
+a {
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  color: #fff;
+  background: #9f1717;
+}
+
+#root {
+  width: 100%;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 20;
+  padding: 10px 16px;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-weight: 600;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
