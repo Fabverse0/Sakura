@@ -4,6 +4,7 @@ import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
+import { useNightMode } from "./hooks/useNightMode.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 import { useViewTransition } from "./hooks/useViewTransition.js";
 import { Finder } from "./sections/Finder.jsx";
@@ -38,6 +39,7 @@ export default function App() {
   const route = useGuidedRoute(changeView);
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
+  const night = useNightMode();
   const openRooms = useCallback(() => setIsRoomsOpen(true), []);
 
   function selectView(viewId, returnToPanorama = false) {
@@ -60,7 +62,12 @@ export default function App() {
         onClose={() => setIsRoomsOpen(false)}
         activeId={activeSection}
       />
-      <ScrollBeam activeId={activeSection} onOpenRooms={openRooms} />
+      <ScrollBeam
+        activeId={activeSection}
+        onOpenRooms={openRooms}
+        isNight={night.isNight}
+        onToggleNight={night.toggle}
+      />
 
       <main id="top">
         <HeroComp activeView={activeView} onSelectView={selectView} onOpenRooms={openRooms} />

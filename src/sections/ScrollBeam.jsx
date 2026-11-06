@@ -8,7 +8,7 @@ import { sectionHref, sections } from "../data/sections.js";
  * A slim timber beam that slides down once the hero comp has scrolled away.
  * It mirrors the comp's own beam so the engawa frame follows the visitor.
  */
-export function ScrollBeam({ activeId, onOpenRooms, children }) {
+export function ScrollBeam({ activeId, onOpenRooms, isNight, onToggleNight }) {
   const [isShown, setIsShown] = useState(false);
   useScrollProgressFallback();
 
@@ -49,7 +49,18 @@ export function ScrollBeam({ activeId, onOpenRooms, children }) {
         </ul>
       </nav>
       <div className="scroll-beam__tools">
-        {children}
+        <button
+          className="beam-toggle"
+          type="button"
+          aria-pressed={isNight}
+          onClick={(event) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            onToggleNight({ x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 });
+          }}
+        >
+          <Icon name={isNight ? "sun" : "moon"} size={18} />
+          <span>{isNight ? "Siang" : "Malam"}</span>
+        </button>
         <button className="scroll-beam__rooms" type="button" onClick={onOpenRooms}>
           <Icon name="rooms" size={18} />
           <span>Ruang</span>

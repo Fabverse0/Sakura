@@ -38,3 +38,21 @@
     opacity: 1;
   }
 }
+
+/* Day/night: during a "mode" transition the whole page is captured and the
+   new state is revealed by a circular wipe animated from JS. */
+:root:active-view-transition-type(mode) {
+  view-transition-name: root;
+}
+
+:root:active-view-transition-type(mode)::view-transition-old(root),
+:root:active-view-transition-type(mode)::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+:root:active-view-transition-type(mode) .section-description,
+:root:active-view-transition-type(mode) .seasons__art,
+:root:active-view-transition-type(mode) .seasons__caption {
+  view-transition-name: none;
+}
