@@ -315,6 +315,10 @@ export function SumiCanvas() {
             onPointerCancel={handlePointerUp}
           />
         </div>
+        <p className="sumi__hint">
+          Ctrl + Z untuk mengurungkan, Ctrl + Shift + Z untuk mengulangi. Kanvas ini tidak
+          disimpan otomatis; gunakan Simpan PNG untuk menyimpan hasilnya.
+        </p>
       </div>
     </section>
   );

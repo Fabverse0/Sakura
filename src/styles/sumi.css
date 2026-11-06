@@ -90,3 +90,20 @@
   background: var(--maple);
   color: var(--action-text);
 }
+
+.sumi__hint {
+  margin: 16px 0 0;
+  color: color-mix(in srgb, var(--text-ink) 66%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-label);
+}
+
+@media (forced-colors: active) {
+  .sumi__ink[aria-checked="true"] {
+    outline: 2px solid Highlight;
+  }
+
+  .sumi__canvas {
+    forced-color-adjust: none;
+  }
+}
