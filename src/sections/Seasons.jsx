@@ -71,7 +71,9 @@ export function Seasons() {
           <Particles type={season.particle} count={season.particle === "snow" ? 90 : 26} />
 
           <div className="seasons__caption">
-            <p className="seasons__name">{season.title}</p>
+            <p className="seasons__name" aria-live="polite" aria-atomic="true">
+              {season.title}
+            </p>
             <p className="seasons__note">{season.note}</p>
           </div>
         </div>

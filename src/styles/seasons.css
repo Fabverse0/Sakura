@@ -182,3 +182,20 @@
     transform: translateY(24px);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .seasons__option::after {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .seasons__option[aria-checked="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: -4px;
+  }
+
+  .seasons__swatch {
+    forced-color-adjust: none;
+  }
+}
