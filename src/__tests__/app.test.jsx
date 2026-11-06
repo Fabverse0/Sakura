@@ -13,7 +13,7 @@ describe("App", () => {
         </ToastProvider>
       </StrictMode>,
     );
-    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/Satu lanskap/);
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toMatch(/Satu lanskap/);
     for (const name of [
       /Perhatikan detailnya/,
       /Lensa pandang/,
