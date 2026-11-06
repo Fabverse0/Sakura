@@ -53,6 +53,7 @@
   outline: 1px solid rgb(242 238 231 / 55%);
   outline-offset: -7px;
   background-color: var(--ink-900);
+  background-origin: border-box;
   background-repeat: no-repeat;
   box-shadow:
     0 24px 48px -16px rgb(0 0 0 / 75%),

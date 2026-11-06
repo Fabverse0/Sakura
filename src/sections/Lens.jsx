@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
-import { clampPosition, lensGeometry } from "../lib/lens.js";
+import { clampPosition, lensGeometry, nudgeZoom } from "../lib/lens.js";
 
 const lensSize = 240;
 
@@ -15,7 +15,21 @@ export function Lens() {
   const position = useRef({ x: 50, y: 50 });
   const [isActive, setIsActive] = useState(false);
   const [hasHiRes, setHasHiRes] = useState(false);
-  const [zoom] = useState(3);
+  const [zoom, setZoom] = useState(3);
+
+  // Wheel zoom needs a non-passive listener so the page does not scroll
+  // while the lens is in use.
+  useEffect(() => {
+    const stage = stageRef.current;
+    if (!stage) return undefined;
+    function handleWheel(event) {
+      if (!stage.dataset.active || stage.dataset.active === "false") return;
+      event.preventDefault();
+      setZoom((current) => nudgeZoom(current, event.deltaY < 0 ? 0.25 : -0.25));
+    }
+    stage.addEventListener("wheel", handleWheel, { passive: false });
+    return () => stage.removeEventListener("wheel", handleWheel);
+  }, []);
 
   const paint = useCallback(() => {
     frame.current = 0;
