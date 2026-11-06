@@ -694,3 +694,58 @@
     height: 100%;
   }
 }
+
+/* Rail labels: larger, tracked, and one maple bar that glides to the focus */
+.view-control {
+  font-size: 1.55vw;
+  letter-spacing: 0.04em;
+}
+
+.view-control[aria-pressed="true"]::after,
+.view-control:hover::after {
+  display: none;
+}
+
+.view-rail__indicator {
+  position: absolute;
+  bottom: 14%;
+  left: 0;
+  width: 5cqw;
+  height: 3px;
+  background: var(--maple-rule);
+  box-shadow: 0 0 12px rgb(213 30 26 / 60%);
+  opacity: 0;
+  translate: calc(50cqw - 2.5cqw) 0;
+  transition:
+    translate var(--dur-focal) var(--ease-out),
+    opacity var(--dur-state) ease;
+}
+
+.comp-frame[data-focus="cabang"] .view-rail__indicator {
+  opacity: 1;
+  translate: calc(25.79cqw - 2.5cqw) 0;
+}
+
+.comp-frame[data-focus="puncak"] .view-rail__indicator {
+  opacity: 1;
+  translate: calc(50.35cqw - 2.5cqw) 0;
+}
+
+.comp-frame[data-focus="pagoda"] .view-rail__indicator {
+  opacity: 1;
+  translate: calc(75.03cqw - 2.5cqw) 0;
+}
+
+@media (max-width: 1100px) {
+  .view-control {
+    font-size: clamp(17px, 1.9vw, 20px);
+  }
+
+  .view-rail__indicator {
+    display: none;
+  }
+
+  .view-control[aria-pressed="true"]::after {
+    display: block;
+  }
+}

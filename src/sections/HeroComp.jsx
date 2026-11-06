@@ -123,6 +123,7 @@ export function HeroComp({ activeView, onSelectView, onOpenRooms, isNight = fals
               {view.label}
             </button>
           ))}
+          <span className="view-rail__indicator" aria-hidden="true" />
         </nav>
 
         <section
