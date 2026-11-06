@@ -139,3 +139,18 @@
     clip-path: inset(0);
   }
 }
+
+.lens__controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.lens__controls + .lens__readout {
+  margin-top: 18px;
+}
+
+.lens__zoom {
+  min-width: 64px;
+  font-variant-numeric: lining-nums tabular-nums;
+}

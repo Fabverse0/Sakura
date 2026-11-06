@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { nearestArea } from "../data/areas.js";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
-import { clampPosition, lensGeometry, nudgeZoom, stepPosition } from "../lib/lens.js";
+import { zoomLevels, clampPosition, lensGeometry, nudgeZoom, stepPosition } from "../lib/lens.js";
 
 const lensSize = 240;
 
@@ -151,6 +151,22 @@ export function Lens() {
               <span className="lens__crosshair" />
             </div>
           </div>
+        </div>
+        <div className="lens__controls" role="group" aria-label="Perbesaran lensa">
+          {zoomLevels.map((level) => (
+            <button
+              key={level}
+              className="room-button room-button--quiet lens__zoom"
+              type="button"
+              aria-pressed={Math.abs(zoom - level) < 0.01}
+              onClick={() => {
+                setZoom(level);
+                setHasHiRes(true);
+              }}
+            >
+              {level}×
+            </button>
+          ))}
         </div>
         <p className="lens__readout" aria-hidden="true" data-shown={isActive && areaName !== ""}>
           <span className="lens__readout-label">Di bawah lensa</span>
