@@ -8,7 +8,7 @@ export function PauseExperience({ pause }) {
       aria-labelledby="pause-title"
     >
       <div className="pause-experience__inner">
-        <div className="pause-experience__copy" data-reveal>
+        <div className="pause-experience__copy">
           <h2 className="pause-experience__title" id="pause-title">
             Jeda 30 detik
           </h2>
@@ -27,7 +27,7 @@ export function PauseExperience({ pause }) {
           </p>
         </div>
 
-        <div className="pause-experience__practice" data-reveal>
+        <div className="pause-experience__practice">
           <div
             className="pause-experience__window"
             data-running={pause.isRunning}

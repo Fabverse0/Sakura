@@ -20,7 +20,7 @@ export function PanoramaDetails({ activeView, onSelectView }) {
           {views.map((view) => (
             <button
               className="detail-card"
-              data-reveal
+             
               key={view.id}
               type="button"
               aria-pressed={activeView === view.id}

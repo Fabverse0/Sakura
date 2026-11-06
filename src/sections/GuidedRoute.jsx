@@ -10,7 +10,7 @@ export function GuidedRoute({ route }) {
   return (
     <section className="guided-route" aria-labelledby="guided-route-title">
       <div className="guided-route__inner">
-        <div className="guided-route__intro" data-reveal>
+        <div className="guided-route__intro">
           <h2 className="guided-route__title" id="guided-route-title">
             Rute pandang
           </h2>
@@ -19,7 +19,7 @@ export function GuidedRoute({ route }) {
           </p>
         </div>
 
-        <div className="guided-route__panel" data-reveal>
+        <div className="guided-route__panel">
           {guidedStepIndex === null ? (
             <>
               <p className="guided-route__sequence">
