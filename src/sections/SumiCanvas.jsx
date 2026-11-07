@@ -173,11 +173,12 @@ export function SumiCanvas() {
   }
 
   function handlePointerDown(event) {
-    if (event.button !== 0) return;
+    if (event.button !== 0 || live.current) return; // one brush at a time
     event.currentTarget.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture(event.pointerId);
     const p = toPoint(event);
     live.current = {
+      pointerId: event.pointerId,
       stroke: { color: ink.color, points: [{ x: p.x, y: p.y, w: brushSize * 0.4 }] },
       last: p,
       width: brushSize * 0.4,
@@ -186,7 +187,7 @@ export function SumiCanvas() {
 
   function handlePointerMove(event) {
     const current = live.current;
-    if (!current) return;
+    if (!current || event.pointerId !== current.pointerId) return;
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
     const { width, height } = size.current;
@@ -209,10 +210,10 @@ export function SumiCanvas() {
     ctx.globalAlpha = 1;
   }
 
-  function handlePointerUp() {
+  function handlePointerUp(event) {
     const current = live.current;
+    if (!current || event.pointerId !== current.pointerId) return;
     live.current = null;
-    if (!current) return;
     const stroke = { ...current.stroke, points: taperEnd(current.stroke.points) };
     setHistory((h) => commitStroke(h, stroke));
   }
