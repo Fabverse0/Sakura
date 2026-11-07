@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import { prefersReducedMotion } from "./usePrefersReducedMotion.js";
 
 const storageKey = "sakura:mode";
@@ -31,10 +32,12 @@ export function useNightMode() {
 
   const toggle = useCallback(
     (origin) => {
-      const next = mode === "night" ? "day" : "night";
+      const current = document.documentElement.dataset.mode === "night" ? "night" : "day";
+      const next = current === "night" ? "day" : "night";
       const apply = () => {
         document.documentElement.dataset.mode = next;
-        setMode(next);
+        // flush so the wipe's new snapshot already shows the new label and icon
+        flushSync(() => setMode(next));
       };
 
       const canWipe =
@@ -63,7 +66,7 @@ export function useNightMode() {
         })
         .catch(() => {});
     },
-    [mode],
+    [],
   );
 
   return { mode, isNight: mode === "night", toggle };

@@ -15,6 +15,16 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Sakura · Satu lanskap, tiga cara memandang" />
     <meta name="twitter:description" content="Satu lanskap Jepang, tiga cara memandang." />
+    <script>
+      // Apply the saved day/night mode before first paint (no flash).
+      try {
+        var m = localStorage.getItem("sakura:mode");
+        if (m !== "day" && m !== "night") {
+          m = matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+        }
+        document.documentElement.dataset.mode = m;
+      } catch (e) {}
+    </script>
     <title>Sakura · Satu lanskap, tiga cara memandang</title>
   </head>
   <body>
