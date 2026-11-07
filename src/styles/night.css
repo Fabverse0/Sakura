@@ -117,6 +117,7 @@
 /* Paper stays paper at night: shoji surfaces keep their day ink and read as
    backlit by a lantern, instead of turning dark or losing their text. */
 :root[data-mode="night"] :is(
+    .shoji-wall,
     .detail-card,
     .guided-route__panel,
     .journal__form,
@@ -143,4 +144,9 @@
 :root[data-mode="night"] .palette__swatch,
 :root[data-mode="night"] .sumi__ink-dot {
   box-shadow: inset 0 0 0 1px rgb(242 238 231 / 22%);
+}
+
+:root[data-mode="night"] .shoji-wall {
+  background-color: var(--paper);
+  box-shadow: inset 0 0 120px rgb(232 200 150 / 30%);
 }
