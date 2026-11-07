@@ -107,12 +107,6 @@
   margin: 0;
 }
 
-.finder__prompt-label {
-  color: color-mix(in srgb, var(--text-ink) 66%, transparent);
-  font-size: var(--type-label);
-  letter-spacing: 0.04em;
-}
-
 .finder__target {
   font-size: clamp(30px, 2.4vw, 40px);
   font-weight: 600;

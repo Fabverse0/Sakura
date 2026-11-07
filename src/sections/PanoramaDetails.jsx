@@ -29,6 +29,7 @@ export function PanoramaDetails({ activeView, onSelectView }) {
               type="button"
               aria-pressed={activeView === view.id}
               aria-controls="panorama"
+              aria-label={`${view.label}: ${view.title}. Pilih fokus ini di panorama.`}
               onClick={() => onSelectView(view.id, true)}
             >
               <span
@@ -40,7 +41,6 @@ export function PanoramaDetails({ activeView, onSelectView }) {
                 }}
               />
               <span className="detail-card__body">
-                <span className="detail-card__label">{view.label}</span>
                 <span className="detail-card__title">{view.title}</span>
                 <span className="detail-card__description">{view.description}</span>
                 <span className="detail-card__action">

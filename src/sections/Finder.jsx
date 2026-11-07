@@ -173,9 +173,8 @@ export function Finder() {
               </p>
             ) : (
               <p className="finder__prompt">
-                <span className="finder__prompt-label">Temukan</span>
                 <span className="finder__target" key={target.id}>
-                  {target.name}
+                  Temukan: {target.name}
                 </span>
               </p>
             )}
