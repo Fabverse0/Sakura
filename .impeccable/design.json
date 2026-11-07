@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-27T13:39:32Z",
+  "generatedAt": "2026-11-07T01:53:47Z",
   "title": "Design System: Sakura",
   "extensions": {
     "colorMeta": {
@@ -63,6 +63,261 @@
           "oklch(83.6% 0.0103 81.79)",
           "oklch(95% 0.0103 81.79)"
         ]
+      },
+      "text-ink": {
+        "role": "neutral",
+        "displayName": "Text Ink",
+        "canonical": "#141211",
+        "tonalRamp": [
+          "oklch(15% 0.0039 48.50)",
+          "oklch(26.4% 0.0039 48.50)",
+          "oklch(37.9% 0.0039 48.50)",
+          "oklch(49.3% 0.0039 48.50)",
+          "oklch(60.7% 0.0039 48.50)",
+          "oklch(72.1% 0.0039 48.50)",
+          "oklch(83.6% 0.0039 48.50)",
+          "oklch(95% 0.0039 48.50)"
+        ]
+      },
+      "maple-hover": {
+        "role": "primary",
+        "displayName": "Maple Hover",
+        "canonical": "#a91616",
+        "tonalRamp": [
+          "oklch(15% 0.1798 27.75)",
+          "oklch(26.4% 0.1798 27.75)",
+          "oklch(37.9% 0.1798 27.75)",
+          "oklch(49.3% 0.1798 27.75)",
+          "oklch(60.7% 0.1798 27.75)",
+          "oklch(72.1% 0.1798 27.75)",
+          "oklch(83.6% 0.1798 27.75)",
+          "oklch(95% 0.1798 27.75)"
+        ]
+      },
+      "maple-active": {
+        "role": "primary",
+        "displayName": "Maple Active",
+        "canonical": "#8f1212",
+        "tonalRamp": [
+          "oklch(15% 0.1583 27.64)",
+          "oklch(26.4% 0.1583 27.64)",
+          "oklch(37.9% 0.1583 27.64)",
+          "oklch(49.3% 0.1583 27.64)",
+          "oklch(60.7% 0.1583 27.64)",
+          "oklch(72.1% 0.1583 27.64)",
+          "oklch(83.6% 0.1583 27.64)",
+          "oklch(95% 0.1583 27.64)"
+        ]
+      },
+      "maple-rule": {
+        "role": "primary",
+        "displayName": "Maple Rule",
+        "canonical": "#d51e1a",
+        "tonalRamp": [
+          "oklch(15% 0.2144 28.48)",
+          "oklch(26.4% 0.2144 28.48)",
+          "oklch(37.9% 0.2144 28.48)",
+          "oklch(49.3% 0.2144 28.48)",
+          "oklch(60.7% 0.2144 28.48)",
+          "oklch(72.1% 0.2144 28.48)",
+          "oklch(83.6% 0.2144 28.48)",
+          "oklch(95% 0.2144 28.48)"
+        ]
+      },
+      "maple-selection": {
+        "role": "primary",
+        "displayName": "Maple Selection",
+        "canonical": "#9f1717",
+        "tonalRamp": [
+          "oklch(15% 0.1700 27.47)",
+          "oklch(26.4% 0.1700 27.47)",
+          "oklch(37.9% 0.1700 27.47)",
+          "oklch(49.3% 0.1700 27.47)",
+          "oklch(60.7% 0.1700 27.47)",
+          "oklch(72.1% 0.1700 27.47)",
+          "oklch(83.6% 0.1700 27.47)",
+          "oklch(95% 0.1700 27.47)"
+        ]
+      },
+      "focus-ring": {
+        "role": "primary",
+        "displayName": "Focus Ring",
+        "canonical": "#e03a32",
+        "tonalRamp": [
+          "oklch(15% 0.2038 27.92)",
+          "oklch(26.4% 0.2038 27.92)",
+          "oklch(37.9% 0.2038 27.92)",
+          "oklch(49.3% 0.2038 27.92)",
+          "oklch(60.7% 0.2038 27.92)",
+          "oklch(72.1% 0.2038 27.92)",
+          "oklch(83.6% 0.2038 27.92)",
+          "oklch(95% 0.2038 27.92)"
+        ]
+      },
+      "rail-base": {
+        "role": "neutral",
+        "displayName": "Rail Base Timber",
+        "canonical": "#1a1817",
+        "tonalRamp": [
+          "oklch(15% 0.0037 48.54)",
+          "oklch(26.4% 0.0037 48.54)",
+          "oklch(37.9% 0.0037 48.54)",
+          "oklch(49.3% 0.0037 48.54)",
+          "oklch(60.7% 0.0037 48.54)",
+          "oklch(72.1% 0.0037 48.54)",
+          "oklch(83.6% 0.0037 48.54)",
+          "oklch(95% 0.0037 48.54)"
+        ]
+      },
+      "sumi": {
+        "role": "neutral",
+        "displayName": "Sumi",
+        "canonical": "#1e1a22",
+        "tonalRamp": [
+          "oklch(15% 0.0164 307.66)",
+          "oklch(26.4% 0.0164 307.66)",
+          "oklch(37.9% 0.0164 307.66)",
+          "oklch(49.3% 0.0164 307.66)",
+          "oklch(60.7% 0.0164 307.66)",
+          "oklch(72.1% 0.0164 307.66)",
+          "oklch(83.6% 0.0164 307.66)",
+          "oklch(95% 0.0164 307.66)"
+        ]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Mist",
+        "canonical": "#e7ddd9",
+        "tonalRamp": [
+          "oklch(15% 0.0123 43.27)",
+          "oklch(26.4% 0.0123 43.27)",
+          "oklch(37.9% 0.0123 43.27)",
+          "oklch(49.3% 0.0123 43.27)",
+          "oklch(60.7% 0.0123 43.27)",
+          "oklch(72.1% 0.0123 43.27)",
+          "oklch(83.6% 0.0123 43.27)",
+          "oklch(95% 0.0123 43.27)"
+        ]
+      },
+      "dusk-snow": {
+        "role": "neutral",
+        "displayName": "Dusk Snow",
+        "canonical": "#f4edea",
+        "tonalRamp": [
+          "oklch(15% 0.0086 44.89)",
+          "oklch(26.4% 0.0086 44.89)",
+          "oklch(37.9% 0.0086 44.89)",
+          "oklch(49.3% 0.0086 44.89)",
+          "oklch(60.7% 0.0086 44.89)",
+          "oklch(72.1% 0.0086 44.89)",
+          "oklch(83.6% 0.0086 44.89)",
+          "oklch(95% 0.0086 44.89)"
+        ]
+      },
+      "dusk-ash": {
+        "role": "neutral",
+        "displayName": "Dusk Ash",
+        "canonical": "#baa6a2",
+        "tonalRamp": [
+          "oklch(15% 0.0241 31.14)",
+          "oklch(26.4% 0.0241 31.14)",
+          "oklch(37.9% 0.0241 31.14)",
+          "oklch(49.3% 0.0241 31.14)",
+          "oklch(60.7% 0.0241 31.14)",
+          "oklch(72.1% 0.0241 31.14)",
+          "oklch(83.6% 0.0241 31.14)",
+          "oklch(95% 0.0241 31.14)"
+        ]
+      },
+      "maple-deep": {
+        "role": "primary",
+        "displayName": "Maple Deep",
+        "canonical": "#a62728",
+        "tonalRamp": [
+          "oklch(15% 0.1635 25.57)",
+          "oklch(26.4% 0.1635 25.57)",
+          "oklch(37.9% 0.1635 25.57)",
+          "oklch(49.3% 0.1635 25.57)",
+          "oklch(60.7% 0.1635 25.57)",
+          "oklch(72.1% 0.1635 25.57)",
+          "oklch(83.6% 0.1635 25.57)",
+          "oklch(95% 0.1635 25.57)"
+        ]
+      },
+      "ink-900": {
+        "role": "neutral",
+        "displayName": "Deep Ink",
+        "canonical": "#0f1013",
+        "tonalRamp": [
+          "oklch(15% 0.0064 271.03)",
+          "oklch(26.4% 0.0064 271.03)",
+          "oklch(37.9% 0.0064 271.03)",
+          "oklch(49.3% 0.0064 271.03)",
+          "oklch(60.7% 0.0064 271.03)",
+          "oklch(72.1% 0.0064 271.03)",
+          "oklch(83.6% 0.0064 271.03)",
+          "oklch(95% 0.0064 271.03)"
+        ]
+      },
+      "paper-50": {
+        "role": "neutral",
+        "displayName": "Light Paper",
+        "canonical": "#f7f3ee",
+        "tonalRamp": [
+          "oklch(15% 0.0079 73.74)",
+          "oklch(26.4% 0.0079 73.74)",
+          "oklch(37.9% 0.0079 73.74)",
+          "oklch(49.3% 0.0079 73.74)",
+          "oklch(60.7% 0.0079 73.74)",
+          "oklch(72.1% 0.0079 73.74)",
+          "oklch(83.6% 0.0079 73.74)",
+          "oklch(95% 0.0079 73.74)"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Paper",
+        "canonical": "#1e1a22",
+        "tonalRamp": [
+          "oklch(15% 0.0164 307.66)",
+          "oklch(26.4% 0.0164 307.66)",
+          "oklch(37.9% 0.0164 307.66)",
+          "oklch(49.3% 0.0164 307.66)",
+          "oklch(60.7% 0.0164 307.66)",
+          "oklch(72.1% 0.0164 307.66)",
+          "oklch(83.6% 0.0164 307.66)",
+          "oklch(95% 0.0164 307.66)"
+        ]
+      },
+      "night-text": {
+        "role": "neutral",
+        "displayName": "Night Text",
+        "canonical": "#ece4df",
+        "tonalRamp": [
+          "oklch(15% 0.0110 54.49)",
+          "oklch(26.4% 0.0110 54.49)",
+          "oklch(37.9% 0.0110 54.49)",
+          "oklch(49.3% 0.0110 54.49)",
+          "oklch(60.7% 0.0110 54.49)",
+          "oklch(72.1% 0.0110 54.49)",
+          "oklch(83.6% 0.0110 54.49)",
+          "oklch(95% 0.0110 54.49)"
+        ]
+      },
+      "night-glow": {
+        "role": "tertiary",
+        "displayName": "Lantern Glow",
+        "canonical": "#e8c896",
+        "tonalRamp": [
+          "oklch(15% 0.0746 78.59)",
+          "oklch(26.4% 0.0746 78.59)",
+          "oklch(37.9% 0.0746 78.59)",
+          "oklch(49.3% 0.0746 78.59)",
+          "oklch(60.7% 0.0746 78.59)",
+          "oklch(72.1% 0.0746 78.59)",
+          "oklch(83.6% 0.0746 78.59)",
+          "oklch(95% 0.0746 78.59)"
+        ]
       }
     },
     "typographyMeta": {
@@ -70,13 +325,25 @@
         "displayName": "Cormorant Garamond Display",
         "purpose": "Two-line hero headline over the panorama."
       },
+      "room-title": {
+        "displayName": "Cormorant Garamond Room Title",
+        "purpose": "Heading of every room below the hero."
+      },
       "title": {
         "displayName": "Cormorant Garamond Title",
-        "purpose": "Heading for the shoji description section."
+        "purpose": "Heading on the hero shoji wall."
+      },
+      "lead": {
+        "displayName": "Cormorant Garamond Lead",
+        "purpose": "Room introduction beside the title."
       },
       "body": {
         "displayName": "Cormorant Garamond Body",
-        "purpose": "Short Indonesian description of visible artwork details."
+        "purpose": "Card and panel copy."
+      },
+      "label": {
+        "displayName": "Cormorant Garamond Label",
+        "purpose": "Help text, readout labels, field labels; sentence case."
       },
       "navigation": {
         "displayName": "Cormorant Garamond Navigation",
@@ -92,54 +359,128 @@
       },
       "wordmark": {
         "displayName": "Cantata One Wordmark",
-        "purpose": "SAKURA wordmark in the top beam."
+        "purpose": "SAKURA wordmark in the hero beam, scroll beam, and footer."
       }
     },
     "shadows": [
       {
-        "name": "hero-text-contrast",
-        "value": "0 2px 8px rgb(17 12 10 / 28%)",
-        "purpose": "Text shadow behind the hero headline."
+        "name": "hanging-pane",
+        "value": "0 30px 60px -32px rgb(21 22 25 / 55%)",
+        "purpose": "Framed art and panels in paper rooms."
       },
       {
-        "name": "rail-label-contrast",
-        "value": "0 1px 3px rgb(0 0 0 / 55%)",
-        "purpose": "Text shadow on the timber focus rail labels."
+        "name": "hanging-pane-deep",
+        "value": "0 34px 70px -40px rgb(21 22 25 / 60%)",
+        "purpose": "Detail grid and sumi canvas."
+      },
+      {
+        "name": "deep-stage",
+        "value": "0 50px 90px -50px rgb(0 0 0 / 85%)",
+        "purpose": "Art stages in dark rooms (seasons)."
+      },
+      {
+        "name": "lintel",
+        "value": "0 4px 10px -6px rgb(0 0 0 / 55%)",
+        "purpose": "Timber lintel above each room."
+      },
+      {
+        "name": "scroll-beam",
+        "value": "0 10px 24px -14px rgb(0 0 0 / 70%)",
+        "purpose": "Fixed timber scroll beam."
+      },
+      {
+        "name": "maple-glow",
+        "value": "0 0 12px rgb(213 30 26 / 60%)",
+        "purpose": "Gliding rail focus indicator."
+      },
+      {
+        "name": "lantern-glow",
+        "value": "inset 0 0 90px rgb(232 200 150 / 32%), 0 0 60px -12px rgb(232 200 150 / 28%)",
+        "purpose": "Night only: shoji paper surfaces backlit by a lantern."
+      },
+      {
+        "name": "hero-headline-contrast",
+        "value": "0 2px 6px rgb(15 16 19 / 55%), 0 6px 28px rgb(15 16 19 / 45%)",
+        "purpose": "Text shadow on the hero headline over the ink scrim."
       }
     ],
     "motion": [
       {
-        "name": "panorama-focus",
-        "value": "900ms cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Transform transition when a focus view is selected."
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Focal settles, reveals, indicator glide."
       },
       {
-        "name": "action-color",
-        "value": "180ms ease",
-        "purpose": "Background and text color transition on the primary action."
+        "name": "ease-slide",
+        "value": "cubic-bezier(0.7, 0, 0.2, 1)",
+        "purpose": "Shoji movement: doors, wipes, dialog slide."
       },
       {
-        "name": "focus-label-color",
-        "value": "160ms ease",
-        "purpose": "Color transition on view rail controls."
+        "name": "ease-settle",
+        "value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Painting settle after the doors; pause backdrop."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Outgoing view-transition states; day/night wipe."
+      },
+      {
+        "name": "dur-feedback",
+        "value": "140ms",
+        "purpose": "Hover and press color feedback."
+      },
+      {
+        "name": "dur-state",
+        "value": "240ms",
+        "purpose": "State changes such as opacity and rules."
+      },
+      {
+        "name": "dur-layout",
+        "value": "420ms",
+        "purpose": "Layout and outgoing note transitions."
+      },
+      {
+        "name": "dur-focal",
+        "value": "900ms",
+        "purpose": "Panorama focus zoom, vignette, dialog slide."
+      },
+      {
+        "name": "dur-door",
+        "value": "1300ms",
+        "purpose": "Opening shoji doors."
+      },
+      {
+        "name": "season-wipe",
+        "value": "clip-path inset(0 0 0 100%) to inset(0 0 0 0), 1100ms var(--ease-slide)",
+        "purpose": "Seasons and route crop change, like a sliding shoji panel (route uses 900ms)."
+      },
+      {
+        "name": "mode-wipe",
+        "value": "clip-path circle(), 1000ms cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Day/night circular reveal from the toggle."
       },
       {
         "name": "reduced-motion",
-        "value": "transition-duration: 0.01ms !important; scroll-behavior: auto",
-        "purpose": "Reduced-motion treatment from the stylesheet."
+        "value": "transition-duration: 0.01ms !important; doors become a 700ms paper veil fade; focus zoom, breathing and lantern sway off",
+        "purpose": "prefers-reduced-motion: reduce."
       }
     ],
     "breakpoints": [
       {
-        "name": "tablet-and-below",
+        "name": "desktop-review",
+        "value": "1280px, 1440px, 1586px, 1920px"
+      },
+      {
+        "name": "single-column-fallback",
         "value": "1100px"
       },
       {
-        "name": "mobile",
+        "name": "legacy-hero-mobile",
         "value": "700px"
       },
       {
-        "name": "narrow-mobile",
+        "name": "legacy-hero-narrow",
         "value": "360px"
       }
     ]
@@ -159,7 +500,7 @@
       "refersTo": "button-primary",
       "description": "Action anchor returning the visitor to the panorama.",
       "html": "<a class=\"ds-btn-primary\" href=\"#panorama\">Jelajahi panorama</a>",
-      "css": ".ds-btn-primary { position: absolute; top: 56.85%; left: 4.22%; z-index: 2; display: flex; width: 18.73%; height: 6.05%; align-items: center; justify-content: center; background: #bf1818; color: #f8f5f4; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.55vw; font-weight: 600; line-height: 1; text-align: center; text-decoration: none; transition: background-color 180ms ease, color 180ms ease; } .ds-btn-primary:hover { background: #a91616; color: #fff; } .ds-btn-primary:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-btn-primary { top: auto; bottom: 6.2%; left: clamp(30px, 6vw, 72px); width: max-content; min-width: 220px; height: 54px; padding-inline: 24px; font-size: 21px; } } @media (max-width: 700px) { .ds-btn-primary { bottom: 8%; left: 5%; min-width: 190px; height: 48px; padding-inline: 18px; font-size: 19px; } }"
+      "css": ".ds-btn-primary { position: absolute; top: 56.85%; left: 4.22%; z-index: 2; display: flex; width: 18.73%; height: 6.05%; align-items: center; justify-content: center; background: #bf1818; color: #f8f5f4; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.55vw; font-weight: 600; line-height: 1; text-align: center; text-decoration: none; transition: background-color 140ms ease, color 140ms ease; } .ds-btn-primary:hover { background: #a91616; color: #fff; } .ds-btn-primary:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-btn-primary { top: auto; bottom: 6.2%; left: clamp(30px, 6vw, 72px); width: max-content; min-width: 220px; height: 54px; padding-inline: 24px; font-size: 21px; } } @media (max-width: 700px) { .ds-btn-primary { bottom: 8%; left: 5%; min-width: 190px; height: 48px; padding-inline: 18px; font-size: 19px; } } .ds-primary-action:active { background: #8f1212; }"
     },
     {
       "name": "Header Navigation",
@@ -173,9 +514,49 @@
       "name": "Panorama Focus Controls",
       "kind": "custom",
       "refersTo": "view-control",
-      "description": "Three initially unpressed buttons over the raster timber rail select a focus origin on the same artwork.",
-      "html": "<nav class=\"ds-view-controls\" aria-label=\"Pilih fokus panorama\"><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Cabang</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Puncak</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Pagoda</button></nav>",
-      "css": ".ds-view-controls { position: absolute; inset-inline: 0; top: 78.02%; z-index: 3; height: 6.35%; background-color: #1a1817; } .ds-view-control { position: absolute; top: 8.03%; display: flex; height: 77.8%; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: #f2f1ee; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 1.15vw; font-weight: 500; line-height: 1; text-shadow: 0 1px 3px rgb(0 0 0 / 55%); transition: color 160ms ease; } .ds-view-control:nth-child(1) { left: 20.18%; width: 11.22%; } .ds-view-control:nth-child(2) { left: 44.83%; width: 11.03%; } .ds-view-control:nth-child(3) { left: 69.42%; width: 11.22%; } .ds-view-control:hover, .ds-view-control[aria-pressed=\"true\"] { color: #fff; } .ds-view-control[aria-pressed=\"true\"]::after { position: absolute; bottom: 0; width: 1.4em; height: 1px; background: #d51e1a; content: \"\"; } .ds-view-control:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } @media (max-width: 1100px) { .ds-view-controls { position: relative; inset: auto; top: auto; display: grid; flex: 0 0 auto; min-height: 68px; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 8px clamp(30px, 10vw, 120px); } .ds-view-control { position: relative; top: auto; left: auto; width: auto; height: 100%; min-height: 48px; font-size: clamp(17px, 1.9vw, 20px); } } @media (max-width: 700px) { .ds-view-controls { min-height: 64px; padding: 6px 12px; } .ds-view-control { font-size: 18px; } }"
+      "description": "Three tracked buttons on the timber rail; one maple bar glides to the selected view.",
+      "html": "<nav class=\"ds-view-controls\" aria-label=\"Pilih fokus panorama\"><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Cabang</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"true\">Puncak</button><button class=\"ds-view-control\" type=\"button\" aria-pressed=\"false\">Pagoda</button><span class=\"ds-view-indicator\" aria-hidden=\"true\"></span></nav>",
+      "css": ".ds-view-controls { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); height: 64px; background-color: #1a1817; container-type: inline-size; } .ds-view-control { padding: 0; border: 0; background: transparent; color: #f2f1ee; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 22px; font-weight: 500; letter-spacing: 0.04em; line-height: 1; text-shadow: 0 1px 3px rgb(0 0 0 / 55%); cursor: pointer; transition: color 140ms ease; } .ds-view-control:hover, .ds-view-control[aria-pressed=\"true\"] { color: #fff; } .ds-view-control:focus-visible { outline: 2px solid #e03a32; outline-offset: -4px; } .ds-view-indicator { position: absolute; bottom: 14%; left: 0; width: 5cqw; height: 3px; background: #d51e1a; box-shadow: 0 0 12px rgb(213 30 26 / 60%); translate: calc(50cqw - 2.5cqw) 0; transition: translate 900ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-view-controls:has(.ds-view-control:nth-child(1):hover) .ds-view-indicator { translate: calc(16.6cqw - 2.5cqw) 0; } .ds-view-controls:has(.ds-view-control:nth-child(3):hover) .ds-view-indicator { translate: calc(83.3cqw - 2.5cqw) 0; }"
+    },
+    {
+      "name": "Room Button",
+      "kind": "button",
+      "refersTo": "room-button",
+      "description": "Square maple button used inside every room, with an optional square-capped SVG icon.",
+      "html": "<button class=\"ds-room-button\" type=\"button\">Mulai rute <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></button>",
+      "css": ".ds-room-button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 10px 20px; border: 1px solid #bf1818; border-radius: 0; background: #bf1818; color: #f8f5f4; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1; cursor: pointer; transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease; } .ds-room-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; } .ds-room-button:hover { border-color: #a91616; background: #a91616; } .ds-room-button:active { background: #8f1212; } .ds-room-button:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; }"
+    },
+    {
+      "name": "Room Button Quiet",
+      "kind": "button",
+      "refersTo": "room-button-quiet",
+      "description": "Transparent secondary room button; border at 45% of the current colour, maple wash on hover.",
+      "html": "<button class=\"ds-room-button ds-room-button-quiet\" type=\"button\">Ulangi</button>",
+      "css": ".ds-room-button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 10px; padding: 10px 20px; border: 1px solid #bf1818; border-radius: 0; background: #bf1818; color: #f8f5f4; font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 19px; font-weight: 600; line-height: 1; cursor: pointer; transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease; } .ds-room-button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; stroke-linejoin: miter; } .ds-room-button:hover { border-color: #a91616; background: #a91616; } .ds-room-button:active { background: #8f1212; } .ds-room-button:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; } .ds-room-button-quiet { border-color: color-mix(in srgb, #141211 45%, transparent); background: transparent; color: #141211; } .ds-room-button-quiet:hover { border-color: #bf1818; background: color-mix(in srgb, #bf1818 10%, transparent); } .ds-room-button-quiet:disabled { opacity: 0.45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Detail Pane",
+      "kind": "card",
+      "refersTo": "detail-card",
+      "description": "Shoji pane between timber posts: a crop of the same painting above a title and description; pressed shows a maple top rule.",
+      "html": "<div class=\"ds-detail-grid\"><button class=\"ds-detail-card\" type=\"button\" aria-pressed=\"true\"><span class=\"ds-detail-crop\"></span><span class=\"ds-detail-body\"><span class=\"ds-detail-title\">Cabang</span><span class=\"ds-detail-desc\">Daun maple merah menaungi tepi danau.</span></span></button></div>",
+      "css": ".ds-detail-grid { display: grid; max-width: 360px; padding: 0 14px; background: #1a1817; box-shadow: 0 34px 70px -40px rgb(21 22 25 / 60%); } .ds-detail-card { display: grid; margin: 14px 0; padding: 0; border: 0; background: #f4edea; color: #141211; text-align: left; cursor: pointer; font-family: \"Cormorant Garamond\", Georgia, serif; } .ds-detail-crop { display: block; aspect-ratio: 4 / 3; background: linear-gradient(160deg, #a62728 0%, #c66661 35%, #e7ddd9 70%, #8a8381 100%); filter: saturate(0.9); transition: filter 420ms ease; } .ds-detail-card:hover .ds-detail-crop, .ds-detail-card[aria-pressed=\"true\"] .ds-detail-crop { filter: saturate(1.08); } .ds-detail-body { display: flex; flex-direction: column; gap: 8px; padding: 28px; border-top: 3px solid transparent; transition: border-color 240ms ease; } .ds-detail-card[aria-pressed=\"true\"] .ds-detail-body { border-top-color: #bf1818; } .ds-detail-title { font-size: 34px; font-weight: 600; letter-spacing: -0.015em; line-height: 1; } .ds-detail-desc { color: color-mix(in srgb, #141211 80%, transparent); font-size: 19px; line-height: 1.45; } .ds-detail-card:focus-visible { outline: 2px solid #a91616; outline-offset: 4px; }"
+    },
+    {
+      "name": "Scroll Beam",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed timber beam that appears after the hero: Cantata wordmark and room links with a maple current rule.",
+      "html": "<nav class=\"ds-scroll-beam\" aria-label=\"Ruang di halaman\"><a class=\"ds-beam-mark\" href=\"#top\">SAKURA</a><a class=\"ds-beam-link\" href=\"#detail\" aria-current=\"location\">Detail</a><a class=\"ds-beam-link\" href=\"#lensa\">Lensa</a><a class=\"ds-beam-link\" href=\"#musim\">Musim</a></nav>",
+      "css": ".ds-scroll-beam { display: flex; height: 60px; align-items: center; gap: 28px; padding-inline: 32px; background: #1a1817; box-shadow: 0 10px 24px -14px rgb(0 0 0 / 70%); } .ds-beam-mark { margin-right: auto; color: #f1f0e9; font-family: \"Cantata One\", Georgia, serif; font-size: 20px; letter-spacing: 0.3em; text-decoration: none; } .ds-beam-link { position: relative; padding-block: 18px; color: color-mix(in srgb, #f5f5f3 78%, transparent); font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 18px; font-weight: 500; text-decoration: none; transition: color 140ms ease; } .ds-beam-link:hover, .ds-beam-link[aria-current=\"location\"] { color: #fff; } .ds-beam-link[aria-current=\"location\"]::after { position: absolute; right: 0; bottom: 12px; left: 0; height: 2px; background: #d51e1a; content: \"\"; } .ds-beam-link:focus-visible { outline: 2px solid #e03a32; outline-offset: -4px; }"
+    },
+    {
+      "name": "Ruang Dialog Link",
+      "kind": "nav",
+      "refersTo": "nav-panel",
+      "description": "Room list inside the right-hand paper dialog with a timber left edge; links slide right on hover, current label turns maple.",
+      "html": "<div class=\"ds-nav-panel\"><a class=\"ds-panel-link\" href=\"#lensa\" aria-current=\"location\"><span class=\"ds-panel-label\">Lensa pandang</span><span class=\"ds-panel-summary\">Perbesar bagian lukisan.</span></a><a class=\"ds-panel-link\" href=\"#musim\"><span class=\"ds-panel-label\">Empat musim</span><span class=\"ds-panel-summary\">Lukisan yang sama, dibayangkan dalam empat musim.</span></a></div>",
+      "css": ".ds-nav-panel { width: 420px; padding: 8px 24px 24px; border-left: 14px solid #1a1817; background: #ede8e3; color: #141211; } .ds-panel-link { display: grid; gap: 2px; padding: 14px 12px 14px 16px; border-bottom: 1px solid color-mix(in srgb, #151619 16%, transparent); color: #141211; text-decoration: none; transition: background-color 140ms ease, padding-left 240ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-panel-link:hover, .ds-panel-link[aria-current=\"location\"] { padding-left: 24px; background: color-mix(in srgb, #f2eee7 70%, transparent); } .ds-panel-link[aria-current=\"location\"] .ds-panel-label { color: #bf1818; } .ds-panel-label { font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 26px; font-weight: 600; line-height: 1.1; } .ds-panel-summary { color: color-mix(in srgb, #141211 76%, #ede8e3); font-family: \"Cormorant Garamond\", Georgia, serif; font-size: 18px; } .ds-panel-link:focus-visible { outline: 2px solid #e03a32; outline-offset: 4px; }"
     },
     {
       "name": "Shoji Description Copy",
@@ -187,25 +568,61 @@
   ],
   "narrative": {
     "northStar": "Engawa, Teras Menghadap Lanskap",
-    "overview": "One supplied Japanese landscape is the page's visual anchor. Charred timber forms a narrow upper beam and a sightline rail; warm shoji paper closes the composition below the art. The interface stays sparse and contemplative, with Cormorant Garamond for its working type and Cantata One only for the wordmark.\n\nProduct truth bounds the message: Sakura is a pause around the illustration, not a travel service. Keep prose in Indonesian and describe only what the illustration shows. The focus controls offer three viewpoints of the same image.",
+    "overview": "One supplied Japanese landscape is the page's visual anchor. Charred timber forms a narrow upper beam and a sightline rail; warm shoji paper closes the composition below the art. The interface stays sparse and contemplative, with Cormorant Garamond for its working type and Cantata One only for the wordmark.\n\nBelow the hero, the engawa continues as a sequence of rooms. Each room opens under a timber lintel and is built from the same materials: shoji paper, ivory, mist, sumi, or ink grounds; timber posts and frames; and the same painting cropped, magnified, recoloured, or sampled. Every room studies the one illustration, and none adds new imagery. Motion behaves like the house: doors slide, panels wipe like shoji, and focus settles slowly.\n\nProduct truth bounds the message: Sakura is a pause around the illustration, not a travel service. Keep prose in Indonesian and describe only what the illustration shows. The focus controls offer three viewpoints of the same image. The four-season room is an imagined recolouring, presented as interpretation. The surface targets desktop browsers; narrower widths fall back to a single column without overflow and get no extra features.\n\nThe user accepted the rendered hero. This extension's finish review returned a \"fix\" disposition, and all of its material fixes have shipped (removed eyebrow labels, night legibility on paper, title and lead spacing, lens readout contrast).",
     "keyCharacteristics": [
-      "One supplied panorama is shown as a single, full-width view.",
-      "Dark timber textures frame the image; a warm paper texture carries the closing description.",
+      "One supplied panorama is shown as a single, full-width view, and every room below works from that same painting.",
+      "Dark timber frames the image, its rooms, and its controls; warm shoji paper carries reading surfaces.",
       "Maple red marks the main action and selected navigation or focus states.",
-      "The visual depth comes from the image, raster materials, and one soft maple shadow on the shoji field."
+      "Depth comes from the image, raster materials, ink vignettes, and long soft drop shadows beneath framed panes.",
+      "Motion is architectural: sliding doors, shoji wipes, and a slow 900ms focal settle, with a still path for reduced motion."
     ],
-    "rules": [],
+    "rules": [
+      {
+        "name": "The Paper Stays Paper Rule",
+        "body": "At night, shoji surfaces (the hero shoji wall, detail cards, route panel, journal form and slips, haiku scroll, toast) keep their day paper and Text Ink. They read as lit from behind by an inset lantern glow (`inset 0 0 90px rgb(232 200 150 / 32%)`); they never turn dark or lose their text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Painting's Own Colour Rule",
+        "body": "Before introducing a new hue, sample it from the painting and add it to the extended palette. Maple is the only saturated UI accent.",
+        "section": "colors"
+      },
+      {
+        "name": "The Heading Stands Alone Rule",
+        "body": "A room opens with its title and lead only. No eyebrow, kicker, or small-caps label sits above a heading.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Family Rule",
+        "body": "Every working role is Cormorant Garamond. Cantata One appears only in the wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Hanging Pane Rule",
+        "body": "A pane earns a shadow only when it is framed in timber or paper. The shadow is always a long, soft drop with negative spread and is never offset sideways.",
+        "section": "elevation"
+      }
+    ],
     "dos": [
-      "Do use the responsive panorama JPEG set in public/images and preserve the unchanged user source at assets/originals/sakura-landscape.jpg.",
+      "Do use the responsive panorama JPEG set in `public/images` and preserve the unchanged user source at `assets/originals/sakura-landscape.jpg`.",
       "Do keep the timber textures on the top beam and view rail, and the shoji paper, posts, lintel, lattice, and maple shadow in the lower section.",
       "Do preserve the serif type roles, square-edged action, three view controls, keyboard focus outline, and reduced-motion behavior.",
+      "Do keep the guided route optional, self-paced, and synchronized with the same three implemented panorama views.",
       "Do keep Indonesian copy limited to the visible illustration and confirmed product information.",
-      "Do preserve the embedded provenance metadata when replacing or re-encoding the raster plates."
+      "Do preserve the embedded provenance metadata when replacing or re-encoding the raster plates.",
+      "Do open every new room with the shared room frame: timber lintel, `room-pad`, `gutter`, and a twelve-column title and lead head.",
+      "Do build new rooms from the same painting and from colors sampled from it.",
+      "Do use the motion tokens; move panels like shoji (`--ease-slide` wipes) and settle focus over `--dur-focal`; give every motion a reduced-motion path.",
+      "Do keep paper surfaces as paper at night, lit by the lantern glow."
     ],
     "donts": [
-      "Don't turn the illustration into a real-world destination, travel service, or booking offer; PRODUCT.md excludes those claims.",
-      "Don't invent spacing or radius scales; neither is defined in the source stylesheet.",
-      "Don't add panorama focus points or behavior beyond the three implemented views without updating the product and surface direction."
+      "Don't turn the illustration into a real-world destination, travel service, or booking offer; `PRODUCT.md` excludes those claims.",
+      "Don't present the four seasons as fact; they are an imagined recolouring of the same painting.",
+      "Don't introduce rounded corners or a radius scale; the house is square-edged joinery.",
+      "Don't add panorama focus points or behavior beyond the three implemented views without updating the product and surface direction.",
+      "Don't place eyebrow or kicker labels above room titles.",
+      "Don't use hard or offset shadows; depth is long, soft, and hanging.",
+      "Don't invert shoji paper surfaces to dark at night."
     ]
   }
 }
