@@ -1,32 +1,65 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+function createContext() {
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  return AudioContext ? new AudioContext() : null;
+}
+
 /**
- * Opt-in ambience. Sound never starts on its own: the AudioContext is only
- * created inside the visitor's click. Suspends while the tab is hidden and
- * follows night mode (crickets).
+ * Opt-in ambience. Sound never starts on its own: the AudioContext is created
+ * and resumed synchronously inside the visitor's click (autoplay policy), and
+ * the engine code is downloaded only then. Suspends while the tab is hidden
+ * and follows night mode (crickets).
  */
 export function useAmbience(isNight) {
   const engine = useRef(null);
+  const context = useRef(null);
+  const loading = useRef(null);
+  const disposed = useRef(false);
   const [isOn, setIsOn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [volume, setVolume] = useState(0.6);
 
-  const toggle = useCallback(async () => {
+  const toggle = useCallback(() => {
+    if (loading.current) return; // ignore clicks while the engine downloads
+
     if (isOn) {
       engine.current?.stop();
       setIsOn(false);
       return;
     }
-    // The engine is only downloaded when the visitor asks for sound. The
-    // AudioContext is created right after, still inside the click's task chain.
-    if (!engine.current) {
-      const { Ambience } = await import("../lib/ambience.js");
-      engine.current = new Ambience();
+
+    if (engine.current) {
+      if (engine.current.start()) {
+        engine.current.setNight(isNight);
+        setIsOn(true);
+      }
+      return;
     }
-    if (engine.current.start()) {
-      engine.current.setNight(isNight);
-      setIsOn(true);
-    }
-  }, [isOn, isNight]);
+
+    // First time: make and resume the context inside the click itself.
+    context.current ??= createContext();
+    if (!context.current) return;
+    context.current.resume();
+    setIsLoading(true);
+
+    loading.current = import("../lib/ambience.js")
+      .then(({ Ambience }) => {
+        if (disposed.current) return;
+        engine.current = new Ambience();
+        engine.current.setVolume(volume);
+        engine.current.start(context.current);
+        engine.current.setNight(isNight);
+        setIsOn(context.current.state !== "closed");
+      })
+      .catch(() => {
+        setIsOn(false);
+      })
+      .finally(() => {
+        loading.current = null;
+        setIsLoading(false);
+      });
+  }, [isOn, isNight, volume]);
 
   useEffect(() => {
     if (isOn) engine.current?.setNight(isNight);
@@ -46,7 +79,16 @@ export function useAmbience(isNight) {
     return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, [isOn]);
 
-  useEffect(() => () => engine.current?.dispose(), []);
+  useEffect(() => {
+    disposed.current = false;
+    return () => {
+      disposed.current = true;
+      engine.current?.dispose();
+      engine.current = null;
+      if (context.current && context.current.state !== "closed") context.current.close();
+      context.current = null;
+    };
+  }, []);
 
-  return { isOn, toggle, volume, setVolume };
+  return { isOn, isLoading, toggle, volume, setVolume };
 }

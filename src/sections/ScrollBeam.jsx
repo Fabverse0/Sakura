@@ -53,6 +53,7 @@ export function ScrollBeam({ activeId, onOpenRooms, isNight, onToggleNight, soun
           className="beam-toggle"
           type="button"
           aria-pressed={sound.isOn}
+          aria-busy={sound.isLoading || undefined}
           onClick={sound.toggle}
         >
           <Icon name={sound.isOn ? "sound" : "sound-off"} size={18} />
