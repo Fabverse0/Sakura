@@ -113,3 +113,34 @@
     animation: none;
   }
 }
+
+/* Paper stays paper at night: shoji surfaces keep their day ink and read as
+   backlit by a lantern, instead of turning dark or losing their text. */
+:root[data-mode="night"] :is(
+    .detail-card,
+    .guided-route__panel,
+    .journal__form,
+    .journal__slip,
+    .haiku__scroll,
+    .toast
+  ) {
+  --text-ink: #141211;
+  --paper: #ede8e3;
+  --paper-50: #f7f3ee;
+  --dusk-snow: #f4edea;
+  --mist: #e7ddd9;
+  color: var(--text-ink);
+  box-shadow:
+    inset 0 0 90px rgb(232 200 150 / 32%),
+    0 0 60px -12px rgb(232 200 150 / 28%);
+}
+
+:root[data-mode="night"] .journal__form {
+  background-color: var(--paper);
+}
+
+/* Sumi-dark swatches and chips keep an edge against the sumi night room */
+:root[data-mode="night"] .palette__swatch,
+:root[data-mode="night"] .sumi__ink-dot {
+  box-shadow: inset 0 0 0 1px rgb(242 238 231 / 22%);
+}
