@@ -38,3 +38,12 @@ describe("journal", () => {
     expect(isNoteList([createNote("ok", "cabang")])).toBe(true);
   });
 });
+
+describe("journal storage recovery", () => {
+  it("keeps valid notes when one stored note is broken", async () => {
+    const { sanitizeNotes } = await import("../lib/journal.js");
+    const good = createNote("tetap", "umum", 1);
+    expect(sanitizeNotes([good, { id: 2, text: null }])).toEqual([good]);
+    expect(sanitizeNotes("oops")).toEqual([]);
+  });
+});

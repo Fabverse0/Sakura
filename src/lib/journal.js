@@ -19,6 +19,11 @@ export function isNote(value) {
   );
 }
 
+/** Keep every valid note from stored data; drop only the broken ones. */
+export function sanitizeNotes(value) {
+  return Array.isArray(value) ? value.filter(isNote) : [];
+}
+
 export function isNoteList(value) {
   return Array.isArray(value) && value.every(isNote);
 }

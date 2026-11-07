@@ -6,6 +6,7 @@ import {
   addNote,
   removeNote,
   restoreNote,
+  sanitizeNotes,
   createNote,
   formatNoteDate,
   isNoteList,
@@ -19,7 +20,12 @@ import {
  * Jurnal Pandang: private notes kept only in this browser.
  */
 export function Journal({ activeView }) {
-  const [notes, setNotes, isPersistent] = useLocalStorage(journalKey, [], isNoteList);
+  const [notes, setNotes, isPersistent] = useLocalStorage(
+    journalKey,
+    [],
+    isNoteList,
+    sanitizeNotes,
+  );
   const [text, setText] = useState("");
   const [tag, setTag] = useState(() =>
     noteTags.some((item) => item.id === activeView) ? activeView : "umum",

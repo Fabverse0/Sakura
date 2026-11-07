@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-function readStorage(key, fallback, validate) {
+function readStorage(key, fallback, validate, sanitize) {
   try {
     const raw = window.localStorage.getItem(key);
     if (raw === null) return { value: fallback, available: true };
     const parsed = JSON.parse(raw);
-    return { value: validate(parsed) ? parsed : fallback, available: true };
+    if (validate(parsed)) return { value: parsed, available: true };
+    return { value: sanitize ? sanitize(parsed) : fallback, available: true };
   } catch {
     return { value: fallback, available: false };
   }
@@ -16,9 +17,12 @@ function readStorage(key, fallback, validate) {
  * quota errors or corrupt JSON fall back to in-memory state, and
  * `isPersistent` tells the UI so it can say so.
  */
-export function useLocalStorage(key, fallback, validate = () => true) {
+export function useLocalStorage(key, fallback, validate = () => true, sanitize) {
   const validateRef = useRef(validate);
-  const [state, setState] = useState(() => readStorage(key, fallback, validateRef.current));
+  const sanitizeRef = useRef(sanitize);
+  const [state, setState] = useState(() =>
+    readStorage(key, fallback, validateRef.current, sanitizeRef.current),
+  );
 
   const setValue = useCallback(
     (update) => {
@@ -41,7 +45,7 @@ export function useLocalStorage(key, fallback, validate = () => true) {
   useEffect(() => {
     function handleStorage(event) {
       if (event.key !== key) return;
-      setState(readStorage(key, fallback, validateRef.current));
+      setState(readStorage(key, fallback, validateRef.current, sanitizeRef.current));
     }
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
