@@ -44,7 +44,6 @@ export function Finder() {
 
   function guess(x, y) {
     if (isDone) return;
-    if (startedAt.current === null) startedAt.current = Date.now();
     if (isHit(target, x, y)) {
       setMarks((current) => [...current, { id: target.id, x: target.x, y: target.y, kind: "hit" }]);
       setFeedback(`Tepat. ${target.name} ditemukan.`);
@@ -61,6 +60,12 @@ export function Finder() {
           : `Belum. ${directionHint(target, x, y)}`,
       );
     }
+  }
+
+  // The clock starts when the visitor first engages the board, not at the
+  // first guess, so the record reflects searching rather than clicking.
+  function startClock() {
+    if (startedAt.current === null && index < round.length) startedAt.current = Date.now();
   }
 
   function handleClick(event) {
@@ -107,6 +112,8 @@ export function Finder() {
               className="finder__stage"
               ref={stageRef}
               onClick={handleClick}
+              onPointerEnter={startClock}
+              onFocus={startClock}
               onKeyDown={handleKeyDown}
               tabIndex={0}
               role="group"
