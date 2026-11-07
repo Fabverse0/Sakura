@@ -26,9 +26,17 @@ export function Lens() {
     const stage = stageRef.current;
     if (!stage) return undefined;
     function handleWheel(event) {
-      if (!stage.dataset.active || stage.dataset.active === "false") return;
+      // Only take over the wheel when the visitor clearly means the lens:
+      // the painting has keyboard focus, or Ctrl/Cmd is held. Otherwise the
+      // page scrolls normally over the painting.
+      const intends = document.activeElement === stage || event.ctrlKey || event.metaKey;
+      if (!intends) return;
+      const delta = event.deltaY < 0 ? 0.25 : -0.25;
+      const current = Number(stage.dataset.zoom);
+      if (nudgeZoom(current, delta) === current) return;
       event.preventDefault();
-      setZoom((current) => nudgeZoom(current, event.deltaY < 0 ? 0.25 : -0.25));
+      setZoom((value) => nudgeZoom(value, delta));
+      setHasHiRes(true);
     }
     stage.addEventListener("wheel", handleWheel, { passive: false });
     return () => stage.removeEventListener("wheel", handleWheel);
@@ -60,10 +68,17 @@ export function Lens() {
     };
   }, [schedulePaint, isActive]);
 
+  const hiResTimer = useRef(0);
+
+  // The 3840px source loads only when the visitor lingers over the painting,
+  // not when the page merely scrolls under a resting cursor.
   function activate() {
     setIsActive(true);
-    setHasHiRes(true);
+    window.clearTimeout(hiResTimer.current);
+    hiResTimer.current = window.setTimeout(() => setHasHiRes(true), 450);
   }
+
+  useEffect(() => () => window.clearTimeout(hiResTimer.current), []);
 
   function handlePointerMove(event) {
     const rect = stageRef.current.getBoundingClientRect();
@@ -105,8 +120,8 @@ export function Lens() {
             Lensa pandang
           </h2>
           <p className="room__lead">
-            Dekatkan mata ke lukisan. Gerakkan kursor di atasnya, putar roda tetikus untuk
-            memperbesar, atau gunakan tombol panah setelah memilih lukisan.
+            Dekatkan mata ke lukisan. Gerakkan kursor di atasnya, tahan Ctrl sambil memutar roda
+            tetikus untuk memperbesar, atau pilih lukisan lalu gunakan tombol panah.
           </p>
         </div>
 
@@ -115,9 +130,11 @@ export function Lens() {
             className="lens__stage"
             ref={stageRef}
             data-active={isActive}
+            data-zoom={zoom}
             onPointerEnter={activate}
             onPointerMove={handlePointerMove}
             onPointerLeave={(event) => {
+              window.clearTimeout(hiResTimer.current);
               if (document.activeElement !== event.currentTarget) setIsActive(false);
             }}
             tabIndex={0}
