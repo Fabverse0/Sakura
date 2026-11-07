@@ -54,12 +54,9 @@ export function PauseExperience({ pause }) {
             </span>
           </div>
 
-          <time
-            className="pause-experience__timer"
-            dateTime={`PT${pause.secondsRemaining}S`}
-            aria-label={`${pause.secondsRemaining} detik tersisa`}
-          >
-            00:{String(pause.secondsRemaining).padStart(2, "0")}
+          <time className="pause-experience__timer" dateTime={`PT${pause.secondsRemaining}S`}>
+            <span aria-hidden="true">00:{String(pause.secondsRemaining).padStart(2, "0")}</span>
+            <span className="visually-hidden">{pause.secondsRemaining} detik tersisa</span>
           </time>
           <div className="pause-experience__progress" aria-hidden="true">
             <span style={{ transform: `scaleX(${pause.progress})` }} />

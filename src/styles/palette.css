@@ -138,12 +138,12 @@
 }
 
 .palette__swatch:hover,
-.palette__swatch[aria-pressed="true"] {
+.palette__swatch[data-current="true"] {
   translate: 0 -4px;
 }
 
 .palette__swatch:hover .palette__chip,
-.palette__swatch[aria-pressed="true"] .palette__chip {
+.palette__swatch[data-current="true"] .palette__chip {
   clip-path: inset(0 0 0 0);
 }
 
@@ -207,7 +207,7 @@
     forced-color-adjust: none;
   }
 
-  .palette__swatch[aria-pressed="true"] {
+  .palette__swatch[data-current="true"] {
     outline: 3px solid Highlight;
   }
 }

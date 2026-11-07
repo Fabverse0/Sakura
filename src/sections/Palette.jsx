@@ -67,7 +67,7 @@ export function Palette() {
                 <button
                   className="palette__swatch"
                   type="button"
-                  aria-pressed={current.id === color.id}
+                  data-current={current.id === color.id}
                   aria-label={`Salin ${color.name}, ${color.hex}`}
                   onMouseEnter={() => setCurrent(color)}
                   onFocus={() => setCurrent(color)}

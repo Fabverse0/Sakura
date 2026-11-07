@@ -40,7 +40,10 @@ export function usePauseTimer() {
     if (!isRunning) return undefined;
 
     function handleKeyDown(event) {
-      if (event.key === "Escape") end();
+      // Escape that closes a dialog (e.g. Ruang) should not also end the pause.
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      if (document.querySelector("dialog[open]")) return;
+      end();
     }
 
     window.addEventListener("keydown", handleKeyDown);
