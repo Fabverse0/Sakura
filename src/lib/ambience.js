@@ -32,20 +32,28 @@ export class Ambience {
   constructor() {
     this.ctx = null;
     this.nodes = [];
-    this.timers = [];
+    this.loops = { jump: 0, chirp: 0, suspend: 0 };
     this.crickets = null;
     this.volume = 0.6;
+    this.paused = true;
   }
 
   get isRunning() {
     return this.ctx?.state === "running";
   }
 
-  start() {
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!AudioContext) return false;
-    if (!this.ctx) this.build(new AudioContext());
+  /** Start (or restart) with a context created inside the visitor's click. */
+  start(ctx) {
+    if (!this.ctx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      const context = ctx ?? (AudioContext ? new AudioContext() : null);
+      if (!context) return false;
+      this.build(context);
+    }
+    window.clearTimeout(this.loops.suspend);
     this.ctx.resume();
+    this.paused = false;
+    this.runLoops();
     const now = this.ctx.currentTime;
     this.master.gain.cancelScheduledValues(now);
     this.master.gain.setValueAtTime(this.master.gain.value, now);
@@ -59,7 +67,10 @@ export class Ambience {
     this.master.gain.cancelScheduledValues(now);
     this.master.gain.setValueAtTime(this.master.gain.value, now);
     this.master.gain.linearRampToValueAtTime(0, now + 0.8);
-    this.timers.push(window.setTimeout(() => this.ctx?.suspend(), 900));
+    this.paused = true;
+    this.stopLoops();
+    window.clearTimeout(this.loops.suspend);
+    this.loops.suspend = window.setTimeout(() => this.ctx?.suspend(), 900);
   }
 
   setVolume(value) {
@@ -70,11 +81,43 @@ export class Ambience {
   }
 
   suspend() {
+    this.stopLoops();
     this.ctx?.suspend();
   }
 
   resume() {
+    if (this.paused) return;
     this.ctx?.resume();
+    this.runLoops();
+  }
+
+  /* Timer loops (water babble, cricket chirps): one handle each, paused with the sound. */
+  runLoops() {
+    this.stopLoops();
+    const jump = () => {
+      if (!this.ctx || this.paused) return;
+      this.babble.frequency.setTargetAtTime(600 + Math.random() * 1800, this.ctx.currentTime, 0.03);
+      this.loops.jump = window.setTimeout(jump, 70 + Math.random() * 90);
+    };
+    jump();
+    if (this.crickets) this.chirp();
+  }
+
+  stopLoops() {
+    window.clearTimeout(this.loops.jump);
+    window.clearTimeout(this.loops.chirp);
+  }
+
+  chirp() {
+    if (!this.crickets || !this.ctx || this.paused) return;
+    const cricket = this.crickets[Math.floor(Math.random() * 2)];
+    let t = this.ctx.currentTime + 0.02;
+    for (let pulse = 0; pulse < 3 + Math.floor(Math.random() * 2); pulse++) {
+      cricket.gain.gain.setValueAtTime(0.035, t);
+      cricket.gain.gain.setValueAtTime(0, t + 0.015);
+      t += 0.04;
+    }
+    this.loops.chirp = window.setTimeout(() => this.chirp(), 600 + Math.random() * 600);
   }
 
   build(ctx) {
@@ -119,12 +162,7 @@ export class Ambience {
     water.connect(babble).connect(waterGain).connect(this.master);
     water.connect(bed).connect(bedGain).connect(this.master);
 
-    const jump = () => {
-      if (!this.ctx) return;
-      babble.frequency.setTargetAtTime(600 + Math.random() * 1800, this.ctx.currentTime, 0.03);
-      this.timers.push(window.setTimeout(jump, 70 + Math.random() * 90));
-    };
-    jump();
+    this.babble = babble;
 
     for (const node of [wind, sweep, gust, water]) node.start();
     this.nodes.push(wind, sweep, gust, water);
@@ -145,28 +183,20 @@ export class Ambience {
         osc.start();
         return { osc, gain };
       });
-      const chirp = () => {
-        if (!this.crickets || !this.ctx) return;
-        const cricket = this.crickets[Math.floor(Math.random() * 2)];
-        let t = this.ctx.currentTime + 0.02;
-        for (let pulse = 0; pulse < 3 + Math.floor(Math.random() * 2); pulse++) {
-          cricket.gain.gain.setValueAtTime(0.035, t);
-          cricket.gain.gain.setValueAtTime(0, t + 0.015);
-          t += 0.04;
-        }
-        this.timers.push(window.setTimeout(chirp, 600 + Math.random() * 600));
-      };
-      chirp();
+      window.clearTimeout(this.loops.chirp);
+      this.chirp();
     }
     if (!isNight && this.crickets) {
+      window.clearTimeout(this.loops.chirp);
       for (const cricket of this.crickets) cricket.osc.stop();
       this.crickets = null;
     }
   }
 
   dispose() {
-    for (const timer of this.timers) window.clearTimeout(timer);
-    this.timers = [];
+    this.paused = true;
+    this.stopLoops();
+    window.clearTimeout(this.loops.suspend);
     this.crickets = null;
     this.ctx?.close();
     this.ctx = null;
