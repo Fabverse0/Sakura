@@ -101,12 +101,11 @@
   min-height: 1.4em;
   margin: 26px 0 0;
   font-family: "Cormorant Garamond", Georgia, serif;
-  opacity: 0.35;
-  transition: opacity var(--dur-state) ease;
+  visibility: hidden;
 }
 
 .lens__readout[data-shown="true"] {
-  opacity: 1;
+  visibility: visible;
 }
 
 .lens__readout-label {
@@ -125,7 +124,7 @@
 
 .lens__readout-zoom {
   margin-left: auto;
-  color: var(--maple-rule);
+  color: var(--dusk-ash);
   font-size: 24px;
   font-variant-numeric: lining-nums tabular-nums;
 }

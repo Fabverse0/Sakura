@@ -329,7 +329,7 @@
 
 .section-heading {
   position: absolute;
-  top: calc(var(--frame-vh) * 0.4);
+  top: calc(var(--frame-vh) * 2);
   left: 10.78%;
   z-index: 3;
   width: 24.59%;
@@ -345,7 +345,7 @@
 
 .section-description {
   position: absolute;
-  top: calc(var(--frame-vh) * 8.56);
+  top: calc(var(--frame-vh) * 9.5);
   left: 10.78%;
   z-index: 3;
   width: 54.48%;
