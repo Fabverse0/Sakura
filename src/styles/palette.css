@@ -211,3 +211,9 @@
     outline: 3px solid Highlight;
   }
 }
+
+.palette__toolbar {
+  grid-column: 7 / span 6;
+  grid-row: 0;
+  margin-bottom: 14px;
+}

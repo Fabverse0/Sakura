@@ -3,6 +3,7 @@ import { Icon } from "../components/Icon.jsx";
 import { useToast } from "../components/Toast.jsx";
 import { useClipboard } from "../hooks/useClipboard.js";
 import { labelColorFor, palette } from "../data/palette.js";
+import { paletteAsText } from "../lib/palette.js";
 import { panoramaAt } from "../data/panorama.js";
 
 /**
@@ -13,6 +14,11 @@ export function Palette() {
   const [current, setCurrent] = useState(palette[1]);
   const copy = useClipboard();
   const { show } = useToast();
+
+  async function handleCopyAll() {
+    const ok = await copy(paletteAsText(palette));
+    show(ok ? "Seluruh palet disalin." : "Tidak bisa menyalin palet.");
+  }
 
   async function handleCopy(color) {
     const ok = await copy(color.hex);
@@ -60,6 +66,12 @@ export function Palette() {
               <span className="palette__caption-note">{current.note}</span>
             </figcaption>
           </figure>
+
+          <div className="palette__toolbar">
+            <button className="room-button room-button--quiet" type="button" onClick={handleCopyAll}>
+              Salin seluruh palet
+            </button>
+          </div>
 
           <ul className="palette__swatches">
             {palette.map((color, index) => (
