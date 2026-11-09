@@ -5,6 +5,7 @@ import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { useAmbience } from "./hooks/useAmbience.js";
+import { useJournal } from "./hooks/useJournal.js";
 import { useNightMode } from "./hooks/useNightMode.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
 import { useViewTransition } from "./hooks/useViewTransition.js";
@@ -40,6 +41,7 @@ export default function App() {
   const route = useGuidedRoute(changeView);
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
+  const journal = useJournal();
   const night = useNightMode();
   const sound = useAmbience(night.isNight);
   const openRooms = useCallback(() => setIsRoomsOpen(true), []);
@@ -82,12 +84,16 @@ export default function App() {
         <PanoramaDetails activeView={activeView} onSelectView={selectView} />
         <Lens />
         <Finder />
-        <Haiku activeView={activeView} onSelectView={selectView} />
+        <Haiku
+          activeView={activeView}
+          onSelectView={selectView}
+          onSavePoem={(text) => journal.add(text, "umum")}
+        />
         <GuidedRoute route={route} />
         <Seasons />
         <Palette />
         <PauseExperience pause={pause} />
-        <Journal activeView={activeView} />
+        <Journal activeView={activeView} journal={journal} />
         <SumiCanvas />
       </main>
 

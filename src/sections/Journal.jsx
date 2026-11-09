@@ -1,16 +1,12 @@
 import { useId, useState } from "react";
 import { Icon } from "../components/Icon.jsx";
 import { useToast } from "../components/Toast.jsx";
-import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import {
   addNote,
   removeNote,
   restoreNote,
-  sanitizeNotes,
   createNote,
   formatNoteDate,
-  isNoteList,
-  journalKey,
   maxNoteLength,
   noteTags,
   validateNoteText,
@@ -19,13 +15,8 @@ import {
 /**
  * Jurnal Pandang: private notes kept only in this browser.
  */
-export function Journal({ activeView }) {
-  const [notes, setNotes, isPersistent] = useLocalStorage(
-    journalKey,
-    [],
-    isNoteList,
-    sanitizeNotes,
-  );
+export function Journal({ activeView, journal }) {
+  const { notes, setNotes, isPersistent } = journal;
   const [text, setText] = useState("");
   const [tag, setTag] = useState(() =>
     noteTags.some((item) => item.id === activeView) ? activeView : "umum",

@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { HaikuComposer } from "../components/HaikuComposer.jsx";
 import { InkStroke } from "../components/InkStroke.jsx";
 import { haiku, haikuFor } from "../data/haiku.js";
 import { panoramaAt } from "../data/panorama.js";
@@ -8,7 +9,7 @@ import { findView } from "../data/views.js";
  * Haiku: a hanging scroll (kakejiku) that shows the poem for the current
  * focus. Choosing a poem also moves the panorama focus.
  */
-export function Haiku({ activeView, onSelectView }) {
+export function Haiku({ activeView, onSelectView, onSavePoem }) {
   const poem = haikuFor(activeView);
   const view = findView(poem.viewId);
   // The first poem is written by scrolling; later poems write themselves on change.
@@ -72,6 +73,10 @@ export function Haiku({ activeView, onSelectView }) {
           </figcaption>
           <span className="haiku__rod haiku__rod--bottom" aria-hidden="true" />
         </figure>
+      </div>
+
+      <div className="room__inner">
+        <HaikuComposer onSave={onSavePoem} />
       </div>
     </section>
   );
