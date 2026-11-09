@@ -82,3 +82,14 @@ describe("room links", () => {
     expect(roomLink("https://example.com/", "")).toBe("https://example.com/");
   });
 });
+
+import { groundTones, nextTone } from "../lib/tone.js";
+
+describe("ground tones", () => {
+  it("cycles through every tone and wraps", () => {
+    expect(nextTone("paper")).toBe("ivory");
+    expect(nextTone("mist")).toBe("paper");
+    expect(nextTone("unknown")).toBe("paper");
+    expect(new Set(groundTones).size).toBe(groundTones.length);
+  });
+});
