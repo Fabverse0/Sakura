@@ -325,3 +325,29 @@
     border: 1px solid CanvasText;
   }
 }
+
+.journal__edit-open {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 4px 10px;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  background: transparent;
+  color: var(--text-ink);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity var(--dur-feedback) ease;
+}
+
+.journal__slip:hover .journal__edit-open,
+.journal__edit-open:focus-visible {
+  opacity: 1;
+}
+
+.journal__edit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}

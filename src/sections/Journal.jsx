@@ -1,4 +1,5 @@
 import { useId, useState } from "react";
+import { updateNoteText } from "../lib/journal.js";
 import { Icon } from "../components/Icon.jsx";
 import { useToast } from "../components/Toast.jsx";
 import {
@@ -22,9 +23,27 @@ export function Journal({ activeView, journal, onNote }) {
     noteTags.some((item) => item.id === activeView) ? activeView : "umum",
   );
   const [error, setError] = useState(null);
+  const [editing, setEditing] = useState(null);
+  const [draft, setDraft] = useState("");
   const ids = useId();
   const remaining = maxNoteLength - text.length;
   const { show } = useToast();
+
+  function startEdit(note) {
+    setEditing(note.id);
+    setDraft(note.text);
+  }
+
+  function saveEdit() {
+    const problem = validateNoteText(draft);
+    if (problem) {
+      setError(problem);
+      return;
+    }
+    setNotes((current) => updateNoteText(current, editing, draft));
+    setEditing(null);
+    setError(null);
+  }
 
   function handleDelete(note) {
     const index = notes.findIndex((item) => item.id === note.id);
@@ -140,7 +159,32 @@ export function Journal({ activeView, journal, onNote }) {
               <ol className="journal__list" aria-label="Daftar catatan">
                 {notes.map((note) => (
                   <li className="journal__slip" key={note.id}>
-                    <p className="journal__text">{note.text}</p>
+                    {editing === note.id ? (
+                      <div className="journal__edit">
+                        <textarea
+                          className="journal__input"
+                          rows={4}
+                          maxLength={maxNoteLength}
+                          value={draft}
+                          onChange={(event) => setDraft(event.target.value)}
+                          aria-label="Ubah catatan"
+                        />
+                        <div className="journal__edit-actions">
+                          <button className="room-button" type="button" onClick={saveEdit}>
+                            Simpan perubahan
+                          </button>
+                          <button
+                            className="room-button room-button--quiet"
+                            type="button"
+                            onClick={() => setEditing(null)}
+                          >
+                            Batal
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="journal__text">{note.text}</p>
+                    )}
                     <p className="journal__info">
                       <span className="journal__tag-label">
                         {noteTags.find((item) => item.id === note.tag)?.label}
@@ -149,6 +193,15 @@ export function Journal({ activeView, journal, onNote }) {
                         {formatNoteDate(note.createdAt)}
                       </time>
                     </p>
+                    {editing !== note.id && (
+                      <button
+                        className="journal__edit-open"
+                        type="button"
+                        onClick={() => startEdit(note)}
+                      >
+                        Ubah
+                      </button>
+                    )}
                     <button
                       className="journal__delete"
                       type="button"
