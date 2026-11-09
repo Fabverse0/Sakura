@@ -1,0 +1,37 @@
+/* Higher contrast on demand (html[data-contrast="high"]): firmer text, firmer
+   edges, and no faint tints. Off by default; the visitor turns it on. */
+:root[data-contrast="high"] {
+  --text-ink: #000;
+  --ivory: #fff;
+  --paper: #fff;
+  --paper-50: #fff;
+  --dusk-snow: #fff;
+  --mist: #f1f1f1;
+}
+
+:root[data-contrast="high"] body {
+  color: var(--text-ink);
+}
+
+:root[data-contrast="high"] .room,
+:root[data-contrast="high"] .room--paper,
+:root[data-contrast="high"] .room--ivory,
+:root[data-contrast="high"] .room--mist {
+  color: #000;
+}
+
+:root[data-contrast="high"] .room--ink,
+:root[data-contrast="high"] .room--sumi,
+:root[data-contrast="high"] .pause-experience {
+  color: #fff;
+}
+
+:root[data-contrast="high"] :is(.detail-card, .composer__phrase span, .journal__slip, .hanko__cell) {
+  border: 2px solid #000;
+}
+
+:root[data-contrast="high"] .view-control,
+:root[data-contrast="high"] .scroll-beam__link {
+  text-shadow: none;
+  font-weight: 700;
+}
