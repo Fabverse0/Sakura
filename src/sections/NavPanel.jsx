@@ -30,7 +30,7 @@ function CopyRoomLink({ activeId }) {
   );
 }
 
-export function NavPanel({ isOpen, onClose, activeId }) {
+export function NavPanel({ isOpen, onClose, activeId, contrast }) {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -81,6 +81,14 @@ export function NavPanel({ isOpen, onClose, activeId }) {
         </nav>
 
         <CopyRoomLink activeId={activeId} />
+
+        {contrast && (
+          <div className="nav-panel__share">
+            <button className="room-button room-button--quiet" type="button" aria-pressed={contrast.high} onClick={contrast.toggle}>
+              {contrast.high ? "Kontras normal" : "Kontras tinggi"}
+            </button>
+          </div>
+        )}
 
         <div className="nav-panel__keys">
           <h3 className="nav-panel__keys-title">Pintasan keyboard</h3>

@@ -24,6 +24,7 @@ import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
 import { BackToTop } from "./components/BackToTop.jsx";
 import { ResumeNotice } from "./components/ResumeNotice.jsx";
+import { useContrast } from "./hooks/useContrast.js";
 import { useResumePosition } from "./hooks/useResumePosition.js";
 import { RoomDots } from "./components/RoomDots.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
@@ -50,6 +51,7 @@ export default function App() {
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
   const resume = useResumePosition(activeSection);
+  const contrast = useContrast();
   const journal = useJournal();
   const hanko = useHanko();
   const night = useNightMode();
@@ -99,6 +101,7 @@ export default function App() {
         isNight={night.isNight}
         onToggleNight={night.toggle}
         sound={sound}
+        contrast={contrast}
       />
 
       <main id="top">
