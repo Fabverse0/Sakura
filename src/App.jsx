@@ -22,6 +22,7 @@ import { NavPanel } from "./sections/NavPanel.jsx";
 import { Palette } from "./sections/Palette.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
+import { BackToTop } from "./components/BackToTop.jsx";
 import { RoomDots } from "./components/RoomDots.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
@@ -128,6 +129,7 @@ export default function App() {
       </main>
 
       <SiteFooter />
+      <BackToTop />
     </>
   );
 }

@@ -1,0 +1,57 @@
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 45;
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 1px solid var(--maple-rule);
+  background: var(--maple);
+  color: var(--action-text);
+  box-shadow: 0 14px 30px -12px rgb(0 0 0 / 60%);
+  opacity: 0;
+  pointer-events: none;
+  translate: 0 14px;
+  transition:
+    opacity var(--dur-state) ease,
+    translate var(--dur-layout) var(--ease-out),
+    background-color var(--dur-feedback) ease;
+}
+
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  translate: 0 0;
+}
+
+.back-to-top:hover {
+  background: var(--maple-hover);
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.back-to-top .icon {
+  transition: translate var(--dur-state) var(--ease-out);
+}
+
+.back-to-top:hover .icon {
+  translate: 0 -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top,
+  .back-to-top .icon {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .back-to-top {
+    border: 2px solid ButtonText;
+  }
+}
