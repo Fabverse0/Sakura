@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { SeasonCompare } from "../components/SeasonCompare.jsx";
 import { Particles } from "../components/Particles.jsx";
 import { useViewTransition } from "../hooks/useViewTransition.js";
 import { panoramaAt } from "../data/panorama.js";
@@ -12,6 +13,7 @@ export function Seasons() {
   const season = findSeason(seasonId);
   const transition = useViewTransition();
 
+  const [pair, setPair] = useState({ left: "semi", right: "dingin" });
   const optionRefs = useRef([]);
 
   function handleKeyDown(event, index) {
@@ -99,6 +101,16 @@ export function Seasons() {
             </button>
           ))}
         </div>
+
+        <h3 className="seasons__compare-title">Bandingkan dua musim</h3>
+        <p className="seasons__compare-lead">
+          Seret pembatas untuk membandingkan dua tafsir warna pada lukisan yang sama.
+        </p>
+        <SeasonCompare
+          leftId={pair.left}
+          rightId={pair.right}
+          onChange={(side, id) => setPair((current) => ({ ...current, [side]: id }))}
+        />
       </div>
     </section>
   );

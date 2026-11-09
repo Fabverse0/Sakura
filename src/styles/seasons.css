@@ -211,3 +211,16 @@
     forced-color-adjust: none;
   }
 }
+
+.seasons__compare-title {
+  margin: 72px 0 6px;
+  font-size: clamp(32px, 2.8vw, 44px);
+  font-weight: 600;
+}
+
+.seasons__compare-lead {
+  max-width: 56ch;
+  margin: 0;
+  color: color-mix(in srgb, var(--ivory) 76%, transparent);
+  font-size: var(--type-lead);
+}
