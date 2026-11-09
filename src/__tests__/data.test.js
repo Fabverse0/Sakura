@@ -46,3 +46,18 @@ describe("shortcuts", () => {
     for (const key of keys) expect(key).toHaveLength(1);
   });
 });
+
+import { readPercent } from "../lib/progress.js";
+
+describe("reading progress", () => {
+  it("is 0 at the top, 100 at the bottom and clamped", () => {
+    expect(readPercent(0, 3000, 900)).toBe(0);
+    expect(readPercent(2100, 3000, 900)).toBe(100);
+    expect(readPercent(5000, 3000, 900)).toBe(100);
+    expect(readPercent(1050, 3000, 900)).toBe(50);
+  });
+
+  it("treats a page shorter than the viewport as fully read", () => {
+    expect(readPercent(0, 500, 900)).toBe(100);
+  });
+});
