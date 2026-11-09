@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Fireflies } from "../components/Fireflies.jsx";
 import { nearestArea } from "../data/areas.js";
 import { panoramaAt, panoramaArtSrcSet } from "../data/panorama.js";
 import { zoomLevels, clampPosition, lensGeometry, nudgeZoom, stepPosition } from "../lib/lens.js";
@@ -146,6 +147,7 @@ export function Lens({ onUse }) {
             onBlur={() => setIsActive(false)}
             onKeyDown={handleKeyDown}
           >
+            <Fireflies />
             <img
               className="lens__art"
               src={panoramaAt(1920)}
