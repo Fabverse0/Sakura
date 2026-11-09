@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { WaterRipples } from "../components/WaterRipples.jsx";
 import { Lantern } from "../components/Lantern.jsx";
 import { Particles } from "../components/Particles.jsx";
 import { useInView } from "../hooks/useInView.js";
@@ -92,6 +93,7 @@ export function HeroComp({ activeView, onSelectView, onOpenRooms, isNight = fals
               />
             ))}
           </div>
+          <WaterRipples />
           <h1 className="hero-headline" id="hero-title">
             <span className="hero-headline__line">
               <span>Satu lanskap.</span>

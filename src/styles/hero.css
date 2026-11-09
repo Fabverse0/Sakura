@@ -779,3 +779,22 @@
     height: 100%;
   }
 }
+
+/* Water interaction: only the lake band receives the pointer. */
+.water-ripples {
+  position: absolute;
+  top: calc(var(--r-panorama-art-y) + var(--r-panorama-art-h) * 0.7);
+  left: 0;
+  z-index: var(--z-petals);
+  width: 100%;
+  height: calc(var(--r-panorama-art-h) * 0.3);
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+@media (max-width: 1100px) {
+  .water-ripples {
+    top: 70%;
+    height: 30%;
+  }
+}
