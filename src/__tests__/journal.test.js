@@ -47,3 +47,20 @@ describe("journal storage recovery", () => {
     expect(sanitizeNotes("oops")).toEqual([]);
   });
 });
+
+import { updateNoteText } from "../lib/journal.js";
+
+describe("journal editing", () => {
+  it("changes only the text of the chosen note", () => {
+    const notes = [createNote("satu", "pagoda", 1), createNote("dua", "umum", 2)];
+    const updated = updateNoteText(notes, notes[0].id, "  baru  ");
+    expect(updated[0]).toEqual({ ...notes[0], text: "baru" });
+    expect(updated[1]).toBe(notes[1]);
+  });
+
+  it("keeps the length cap when editing", () => {
+    const notes = [createNote("x", "umum", 1)];
+    const updated = updateNoteText(notes, notes[0].id, "y".repeat(400));
+    expect(updated[0].text).toHaveLength(maxNoteLength);
+  });
+});

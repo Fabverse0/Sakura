@@ -72,3 +72,9 @@ const dateFormatter = new Intl.DateTimeFormat("id-ID", {
 export function formatNoteDate(timestamp) {
   return dateFormatter.format(new Date(timestamp));
 }
+
+/** Replace one note's text (trimmed and capped). Other fields are kept. */
+export function updateNoteText(notes, id, text) {
+  const trimmed = text.trim().slice(0, maxNoteLength);
+  return notes.map((note) => (note.id === id ? { ...note, text: trimmed } : note));
+}
