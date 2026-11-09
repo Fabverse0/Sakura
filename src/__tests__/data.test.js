@@ -36,3 +36,13 @@ describe("content data", () => {
     expect(seasons.map((s) => s.id)).toEqual(["semi", "panas", "gugur", "dingin"]);
   });
 });
+
+import { shortcuts } from "../data/shortcuts.js";
+
+describe("shortcuts", () => {
+  it("uses unique single keys", () => {
+    const keys = shortcuts.map((s) => s.key);
+    expect(new Set(keys).size).toBe(keys.length);
+    for (const key of keys) expect(key).toHaveLength(1);
+  });
+});
