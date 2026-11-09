@@ -65,6 +65,7 @@ export function SumiCanvas({ onSave }) {
   const [history, setHistory] = useState(emptyHistory);
   const [ink, setInk] = useState(inks[0]);
   const [brushSize, setBrushSize] = useState(14);
+  const [rubbing, setRubbing] = useState(false);
   const [confirmClear, setConfirmClear] = useState(false);
 
   // Ctrl/Cmd+Z undoes, Ctrl/Cmd+Shift+Z or Ctrl+Y redoes while focus is inside the room.
@@ -221,7 +222,7 @@ export function SumiCanvas({ onSave }) {
 
   return (
     <section
-      className="room room--mist sumi"
+      className="room room--mist sumi" data-rubbing={rubbing}
       id="kanvas"
       aria-labelledby="sumi-title"
       onKeyDown={handleKeyDown}
@@ -269,6 +270,14 @@ export function SumiCanvas({ onSave }) {
           </label>
 
           <div className="sumi__group">
+            <button
+              className="room-button room-button--quiet sumi__tool"
+              type="button"
+              aria-pressed={rubbing}
+              onClick={() => setRubbing((value) => !value)}
+            >
+              {rubbing ? "Kuas biasa" : "Jiplak"}
+            </button>
             <button
               className="room-button room-button--quiet sumi__tool"
               type="button"
