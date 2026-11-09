@@ -8,6 +8,7 @@ import {
   restoreNote,
   createNote,
   formatNoteDate,
+  relativeTime,
   maxNoteLength,
   noteTags,
   validateNoteText,
@@ -190,7 +191,7 @@ export function Journal({ activeView, journal, onNote }) {
                         {noteTags.find((item) => item.id === note.tag)?.label}
                       </span>
                       <time dateTime={new Date(note.createdAt).toISOString()}>
-                        {formatNoteDate(note.createdAt)}
+                        {relativeTime(note.createdAt)}
                       </time>
                     </p>
                     {editing !== note.id && (
