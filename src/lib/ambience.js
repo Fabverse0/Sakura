@@ -1,3 +1,5 @@
+import { setAmbienceContext } from "./ambience-context.js";
+
 /**
  * Synthesised engawa ambience: wind (low-passed brown noise with slow gusts),
  * water (band-passed noise with babbling filter jumps) and, at night,
@@ -122,6 +124,7 @@ export class Ambience {
 
   build(ctx) {
     this.ctx = ctx;
+    setAmbienceContext(ctx);
     this.master = ctx.createGain();
     this.master.gain.value = 0;
     this.master.connect(ctx.destination);

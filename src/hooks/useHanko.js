@@ -3,6 +3,8 @@ import { useToast } from "../components/Toast.jsx";
 import { hankoById, hankoStorageKey } from "../data/hanko.js";
 import { earn, isHankoList, sanitizeHanko } from "../lib/hanko.js";
 import { useLocalStorage } from "./useLocalStorage.js";
+import { playChime } from "../lib/chime.js";
+import { getAmbienceContext } from "../lib/ambience-context.js";
 
 /**
  * Collection of earned stamps. `award(id)` is safe to call repeatedly: only
@@ -21,6 +23,7 @@ export function useHanko() {
       setEarned((current) => earn(current, id));
       const item = hankoById(id);
       if (item) show(`Cap baru: ${item.name} ${item.glyph}`, { duration: 4200 });
+      playChime(getAmbienceContext());
     },
     [setEarned, show],
   );
