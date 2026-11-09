@@ -15,7 +15,7 @@ import {
 /**
  * Jurnal Pandang: private notes kept only in this browser.
  */
-export function Journal({ activeView, journal }) {
+export function Journal({ activeView, journal, onNote }) {
   const { notes, setNotes, isPersistent } = journal;
   const [text, setText] = useState("");
   const [tag, setTag] = useState(() =>
@@ -46,6 +46,7 @@ export function Journal({ activeView, journal }) {
       return;
     }
     setNotes((current) => addNote(current, createNote(text, tag)));
+    onNote?.();
     setText("");
     setError(null);
   }

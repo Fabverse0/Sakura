@@ -1,10 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { sections } from "./data/sections.js";
 import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { useAmbience } from "./hooks/useAmbience.js";
+import { useHanko } from "./hooks/useHanko.js";
 import { useJournal } from "./hooks/useJournal.js";
 import { useNightMode } from "./hooks/useNightMode.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
@@ -33,6 +34,7 @@ const sectionIds = sections.map((section) => section.id);
 export default function App() {
   const [activeView, setActiveView] = useState("overview");
   const [isRoomsOpen, setIsRoomsOpen] = useState(false);
+  const [seenViews, setSeenViews] = useState(() => new Set());
   const transition = useViewTransition();
   const changeView = useCallback(
     (viewId) => transition(() => setActiveView(viewId), ["focus"]),
@@ -42,12 +44,23 @@ export default function App() {
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
   const journal = useJournal();
+  const hanko = useHanko();
   const night = useNightMode();
   const sound = useAmbience(night.isNight);
   const openRooms = useCallback(() => setIsRoomsOpen(true), []);
 
+  useEffect(() => {
+    hanko.award("buka");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function selectView(viewId, returnToPanorama = false) {
     changeView(viewId);
+    setSeenViews((current) => {
+      const next = new Set(current).add(viewId);
+      if (next.size >= 3) hanko.award("fokus");
+      return next;
+    });
     route.reset();
     if (returnToPanorama) {
       document.getElementById("panorama")?.scrollIntoView({ block: "start" });
@@ -82,19 +95,26 @@ export default function App() {
           isNight={night.isNight}
         />
         <PanoramaDetails activeView={activeView} onSelectView={selectView} />
-        <Lens />
-        <Finder />
+        <Lens onUse={() => hanko.award("lensa")} />
+        <Finder onComplete={() => hanko.award("temukan")} />
         <Haiku
           activeView={activeView}
           onSelectView={selectView}
-          onSavePoem={(text) => journal.add(text, "umum")}
+          onSavePoem={(text) => {
+            journal.add(text, "umum");
+            hanko.award("haiku");
+          }}
         />
         <GuidedRoute route={route} />
-        <Seasons />
+        <Seasons onSeason={(count) => count >= 4 && hanko.award("musim")} />
         <Palette />
-        <PauseExperience pause={pause} />
-        <Journal activeView={activeView} journal={journal} />
-        <SumiCanvas />
+        <PauseExperience pause={pause} onComplete={() => hanko.award("napas")} />
+        <Journal
+          activeView={activeView}
+          journal={journal}
+          onNote={() => hanko.award("catatan")}
+        />
+        <SumiCanvas onSave={() => hanko.award("tinta")} />
       </main>
 
       <SiteFooter />

@@ -8,13 +8,14 @@ import { defaultSeasonId, findSeason, seasons } from "../data/seasons.js";
 /**
  * Empat Musim: the same painting re-lit through four imagined seasons.
  */
-export function Seasons() {
+export function Seasons({ onSeason }) {
   const [seasonId, setSeasonId] = useState(defaultSeasonId);
   const season = findSeason(seasonId);
   const transition = useViewTransition();
 
   const [pair, setPair] = useState({ left: "semi", right: "dingin" });
   const optionRefs = useRef([]);
+  const visited = useRef(new Set([defaultSeasonId]));
 
   function handleKeyDown(event, index) {
     const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
@@ -31,6 +32,8 @@ export function Seasons() {
   function choose(id) {
     if (id === seasonId) return;
     transition(() => setSeasonId(id), ["season"]);
+    visited.current.add(id);
+    onSeason?.(visited.current.size);
   }
 
   return (

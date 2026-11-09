@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import shojiPaper from "../../assets/plates/shoji-paper.png";
 import { Icon } from "../components/Icon.jsx";
 import { breathPatterns, pauseDurations } from "../data/pause.js";
@@ -9,7 +10,12 @@ import { panoramaAt } from "../data/panorama.js";
  * The window brightens and opens on the inhale (4 s) and settles on the
  * exhale (6 s), like light through paper.
  */
-export function PauseExperience({ pause }) {
+export function PauseExperience({ pause, onComplete }) {
+  useEffect(() => {
+    if (pause.isComplete) onComplete?.();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pause.isComplete]);
+
   return (
     <section
       className="room room--sumi pause-experience"

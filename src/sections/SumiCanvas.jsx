@@ -58,7 +58,7 @@ function drawBleed(ctx, stroke, width, height) {
 /**
  * Kanvas Sumi: free ink drawing on shoji paper.
  */
-export function SumiCanvas() {
+export function SumiCanvas({ onSave }) {
   const canvasRef = useRef(null);
   const size = useRef({ width: 0, height: 0 });
   const live = useRef(null);
@@ -104,6 +104,7 @@ export function SumiCanvas() {
     ctx.fillText("桜", out.width - margin - seal / 2, out.height - margin - seal / 2);
     out.toBlob((blob) => {
       if (!blob) return;
+      onSave?.();
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;

@@ -13,7 +13,7 @@ const roundSize = 6;
  * Temukan Detail: a small looking game. Find six details of the painting,
  * one at a time, by clicking where they are.
  */
-export function Finder() {
+export function Finder({ onComplete }) {
   const [round, setRound] = useState(() => pickRound(areas, roundSize));
   const [index, setIndex] = useState(0);
   const [marks, setMarks] = useState([]);
@@ -39,6 +39,7 @@ export function Finder() {
     const time = Date.now() - (startedAt.current ?? Date.now());
     setElapsed(time);
     setCelebrate(true);
+    onComplete?.();
     if (best === null || time < best) setBest(time);
   }
 

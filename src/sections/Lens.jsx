@@ -9,7 +9,7 @@ const lensSize = 240;
  * Lensa Pandang: the whole painting in a timber frame with a square
  * magnifier that follows the pointer or the arrow keys.
  */
-export function Lens() {
+export function Lens({ onUse }) {
   const stageRef = useRef(null);
   const lensRef = useRef(null);
   const frame = useRef(0);
@@ -74,6 +74,7 @@ export function Lens() {
   // not when the page merely scrolls under a resting cursor.
   function activate() {
     setIsActive(true);
+    onUse?.();
     window.clearTimeout(hiResTimer.current);
     hiResTimer.current = window.setTimeout(() => setHasHiRes(true), 450);
   }
