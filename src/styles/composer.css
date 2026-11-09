@@ -1,0 +1,158 @@
+.composer {
+  margin-top: 88px;
+  padding-top: 56px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 22%, transparent);
+}
+
+.composer__title {
+  margin: 0 0 6px;
+  font-size: clamp(32px, 2.8vw, 44px);
+  font-weight: 600;
+}
+
+.composer__lead {
+  max-width: 56ch;
+  margin: 0 0 36px;
+  color: color-mix(in srgb, var(--text-ink) 76%, transparent);
+  font-size: var(--type-lead);
+}
+
+.composer__columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.composer__column {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 44px;
+  border: 0;
+}
+
+.composer__legend {
+  margin-bottom: 10px;
+  padding: 0;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.composer__count {
+  color: color-mix(in srgb, var(--text-ink) 62%, transparent);
+  font-weight: 500;
+}
+
+.composer__phrase {
+  position: relative;
+  cursor: pointer;
+}
+
+.composer__phrase input {
+  position: absolute;
+  opacity: 0;
+}
+
+.composer__phrase span {
+  display: block;
+  padding: 11px 14px;
+  border: 1px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  font-size: 19px;
+  line-height: 1.25;
+  transition:
+    background-color var(--dur-feedback) ease,
+    border-color var(--dur-feedback) ease,
+    color var(--dur-feedback) ease;
+}
+
+.composer__phrase:hover span {
+  border-color: var(--maple);
+}
+
+.composer__phrase input:checked + span {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--ivory);
+}
+
+.composer__phrase input:focus-visible + span {
+  outline: 2px solid var(--maple-hover);
+  outline-offset: 2px;
+}
+
+.composer__spin {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  gap: 4px;
+}
+
+.composer__step {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+  background: transparent;
+  color: var(--text-ink);
+}
+
+.composer__step:hover {
+  border-color: var(--maple);
+  color: var(--maple);
+}
+
+.composer__preview {
+  margin: 28px 0 0;
+  padding: clamp(28px, 3vw, 44px);
+  background-color: var(--dusk-snow);
+  background-image: url("../../assets/plates/shoji-paper.png");
+  background-size: 320px 80px;
+  box-shadow: 0 26px 50px -32px rgb(21 22 25 / 50%);
+}
+
+.composer__poem {
+  margin: 0;
+  color: var(--sumi);
+  font-size: clamp(30px, 2.8vw, 46px);
+  font-style: italic;
+  line-height: 1.26;
+}
+
+.composer__line {
+  display: block;
+  animation: line-rise 700ms var(--ease-out) backwards;
+}
+
+.composer__line:nth-child(2) {
+  padding-left: 1.2em;
+  animation-delay: 90ms;
+}
+
+.composer__line:nth-child(3) {
+  padding-left: 0.6em;
+  animation-delay: 180ms;
+}
+
+.composer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+@media (max-width: 1100px) {
+  .composer__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .composer__line {
+    animation: none;
+  }
+}
