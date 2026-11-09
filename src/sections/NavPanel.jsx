@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import shojiPaper from "../../assets/plates/shoji-paper.png";
 import { Icon } from "../components/Icon.jsx";
+import { shortcuts } from "../data/shortcuts.js";
 import { sectionHref, sections } from "../data/sections.js";
 
 /**
@@ -56,6 +57,18 @@ export function NavPanel({ isOpen, onClose, activeId }) {
             ))}
           </ol>
         </nav>
+
+        <div className="nav-panel__keys">
+          <h3 className="nav-panel__keys-title">Pintasan keyboard</h3>
+          <dl className="nav-panel__keys-list">
+            {shortcuts.map((item) => (
+              <div key={item.key} className="nav-panel__key">
+                <dt><kbd>{item.key}</kbd></dt>
+                <dd>{item.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </dialog>
   );
