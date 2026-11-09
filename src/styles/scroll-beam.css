@@ -178,3 +178,12 @@
   width: 96px;
   accent-color: var(--maple-rule);
 }
+
+.reading-percent {
+  min-width: 4ch;
+  color: color-mix(in srgb, var(--ivory) 70%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  font-variant-numeric: lining-nums tabular-nums;
+  text-align: right;
+}

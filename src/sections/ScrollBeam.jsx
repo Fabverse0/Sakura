@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import topTimber from "../../assets/plates/top-charred-timber.png";
+import { ReadingPercent } from "../components/ReadingPercent.jsx";
 import { Icon } from "../components/Icon.jsx";
 import { useScrollProgressFallback } from "../hooks/useScrollProgressFallback.js";
 import { sectionHref, sections } from "../data/sections.js";
@@ -49,6 +50,7 @@ export function ScrollBeam({ activeId, onOpenRooms, isNight, onToggleNight, soun
         </ul>
       </nav>
       <div className="scroll-beam__tools">
+        <ReadingPercent />
         <button
           className="beam-toggle"
           type="button"
