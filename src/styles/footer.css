@@ -140,3 +140,12 @@
 .site-footer__top:hover .icon {
   translate: 0 -3px;
 }
+
+.site-footer__clock {
+  display: block;
+  margin-top: 16px;
+  color: color-mix(in srgb, var(--ivory) 58%, transparent);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: var(--type-label);
+  font-variant-numeric: lining-nums tabular-nums;
+}
