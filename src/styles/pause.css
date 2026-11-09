@@ -172,12 +172,13 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pause-experience__window[data-running="true"] .pause-experience__pane,
-  .pause-experience__window[data-running="true"] .pause-experience__light {
-    animation: none;
+  /* No scaling: the status text and a brighter pane still mark each phase. */
+  .pause-experience__window .pause-experience__pane,
+  .pause-experience__window .pause-experience__light {
+    transition: none;
   }
 
-  .pause-experience__pane {
+  .pause-experience__window[data-phase] .pause-experience__pane {
     scale: 1;
   }
 
