@@ -22,6 +22,7 @@ export function Finder({ onComplete }) {
   const stageRef = useRef(null);
   const startedAt = useRef(null);
   const [elapsed, setElapsed] = useState(null);
+  const [live, setLive] = useState(0);
   const [celebrate, setCelebrate] = useState(false);
   const [cursor, setCursor] = useState({ x: 50, y: 50 });
   const [best, setBest] = useLocalStorage("sakura:temukan-rekor", null, (v) => v === null || typeof v === "number");
@@ -65,6 +66,15 @@ export function Finder({ onComplete }) {
 
   // The clock starts when the visitor first engages the board, not at the
   // first guess, so the record reflects searching rather than clicking.
+  // A live counter while the round runs; it stops when the round finishes.
+  useEffect(() => {
+    if (startedAt.current === null || elapsed !== null) return undefined;
+    const id = window.setInterval(() => {
+      if (startedAt.current !== null) setLive(Date.now() - startedAt.current);
+    }, 250);
+    return () => window.clearInterval(id);
+  }, [index, elapsed]);
+
   function startClock() {
     if (startedAt.current === null && index < round.length) startedAt.current = Date.now();
   }
@@ -168,7 +178,7 @@ export function Finder({ onComplete }) {
               <p className="finder__prompt finder__prompt--done">
                 <span className="finder__target">Semua ditemukan</span>
                 <span className="finder__time">
-                  Waktu {formatDuration(elapsed ?? 0)}
+                  Waktu {formatDuration(elapsed ?? live)}
                   {best !== null && <> · Rekor {formatDuration(best)}</>}
                 </span>
               </p>
