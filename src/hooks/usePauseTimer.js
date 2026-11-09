@@ -1,22 +1,24 @@
 import { useCallback, useEffect, useState } from "react";
-import {
-  breathCycleSeconds,
-  inhaleSeconds,
-  pauseDurationSeconds,
-} from "../data/pause.js";
+import { breathPatterns, defaultPatternId, pauseDurationSeconds } from "../data/pause.js";
+import { phaseAt, phaseCopy } from "../lib/breath.js";
 
 /**
- * Drives the 30-second breathing pause: countdown, breath phase and status copy.
- * Escape ends a running pause.
+ * Drives the breathing pause: countdown, breath phase and status copy.
+ * Defaults to 30 s with a soft 4 s in / 6 s out rhythm; the visitor may pick
+ * another pattern or a longer duration while no pause is running.
+ * Escape ends a running pause (unless a dialog is open).
  */
 export function usePauseTimer() {
   const [isRunning, setIsRunning] = useState(false);
+  const [duration, setDurationState] = useState(pauseDurationSeconds);
+  const [patternId, setPatternId] = useState(defaultPatternId);
   const [secondsRemaining, setSecondsRemaining] = useState(pauseDurationSeconds);
+  const pattern = breathPatterns.find((item) => item.id === patternId) ?? breathPatterns[0];
 
   useEffect(() => {
     if (!isRunning) return undefined;
 
-    const endsAt = Date.now() + pauseDurationSeconds * 1000;
+    const endsAt = Date.now() + duration * 1000;
     const intervalId = window.setInterval(() => {
       const next = Math.max(0, Math.ceil((endsAt - Date.now()) / 1000));
       setSecondsRemaining(next);
@@ -24,17 +26,33 @@ export function usePauseTimer() {
     }, 1000);
 
     return () => window.clearInterval(intervalId);
-  }, [isRunning]);
+  }, [isRunning, duration]);
 
   const end = useCallback(() => {
     setIsRunning(false);
-    setSecondsRemaining(pauseDurationSeconds);
-  }, []);
+    setSecondsRemaining(duration);
+  }, [duration]);
 
   const start = useCallback(() => {
-    setSecondsRemaining(pauseDurationSeconds);
+    setSecondsRemaining(duration);
     setIsRunning(true);
-  }, []);
+  }, [duration]);
+
+  const setDuration = useCallback(
+    (seconds) => {
+      if (isRunning) return;
+      setDurationState(seconds);
+      setSecondsRemaining(seconds);
+    },
+    [isRunning],
+  );
+
+  const choosePattern = useCallback(
+    (id) => {
+      if (!isRunning) setPatternId(id);
+    },
+    [isRunning],
+  );
 
   useEffect(() => {
     if (!isRunning) return undefined;
@@ -50,13 +68,12 @@ export function usePauseTimer() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isRunning, end]);
 
-  const elapsed = pauseDurationSeconds - secondsRemaining;
-  const isInhale = elapsed % breathCycleSeconds < inhaleSeconds;
-  const phase = isRunning ? (isInhale ? "inhale" : "exhale") : "rest";
+  const elapsed = duration - secondsRemaining;
+  const { phase: breathPhase } = phaseAt(pattern, elapsed);
+  // The window only has two visual states: opening (inhale) and settling.
+  const phase = isRunning ? (breathPhase === "inhale" || breathPhase === "hold-in" ? "inhale" : "exhale") : "rest";
   const status = isRunning
-    ? isInhale
-      ? "Tarik napas pelan."
-      : "Hembuskan perlahan."
+    ? phaseCopy[breathPhase]
     : secondsRemaining === 0
       ? "Jeda selesai. Lanjutkan saat siap."
       : "Pandang panorama, lalu mulai kapan pun kamu siap.";
@@ -64,11 +81,17 @@ export function usePauseTimer() {
   return {
     isRunning,
     secondsRemaining,
-    progress: secondsRemaining / pauseDurationSeconds,
+    duration,
+    pattern,
+    patternId,
+    progress: secondsRemaining / duration,
     phase,
+    breathPhase,
     status,
     isComplete: !isRunning && secondsRemaining === 0,
     start,
     end,
+    setDuration,
+    choosePattern,
   };
 }
