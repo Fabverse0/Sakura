@@ -22,7 +22,7 @@ describe("App", () => {
       /Rute pandang/,
       /Empat musim/,
       /Palet lukisan/,
-      /Jeda 30 detik/,
+      /Jeda napas/,
       /Jurnal pandang/,
       /Kanvas sumi/,
     ]) {
