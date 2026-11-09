@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { inkAt } from "../lib/rubbing.js";
 import { Icon } from "../components/Icon.jsx";
 import {
   commitStroke,
@@ -15,6 +16,21 @@ export const inks = [
   { id: "maple", label: "Maple", color: "#a62728" },
   { id: "fuji", label: "Abu Fuji", color: "#8a8381" },
 ];
+
+/** Rubbing: lay ink only where the paper grain is raised along the segment. */
+function rubSegment(ctx, from, to, width, height, color) {
+  const steps = Math.max(2, Math.ceil(Math.hypot((to.x - from.x) * width, (to.y - from.y) * height) / 2));
+  ctx.fillStyle = color;
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    const x = (from.x + (to.x - from.x) * t) * width;
+    const y = (from.y + (to.y - from.y) * t) * height;
+    const alpha = inkAt(x, y, 0.9, 7) * 0.5;
+    ctx.globalAlpha = alpha;
+    ctx.fillRect(x - 1.5, y - 1.5, 3, 3);
+  }
+  ctx.globalAlpha = 1;
+}
 
 function drawStroke(ctx, stroke, width, height) {
   const pts = stroke.points;
@@ -66,6 +82,8 @@ export function SumiCanvas({ onSave }) {
   const [ink, setInk] = useState(inks[0]);
   const [brushSize, setBrushSize] = useState(14);
   const [rubbing, setRubbing] = useState(false);
+  const rubbingRef = useRef(false);
+  rubbingRef.current = rubbing;
   const [confirmClear, setConfirmClear] = useState(false);
 
   // Ctrl/Cmd+Z undoes, Ctrl/Cmd+Shift+Z or Ctrl+Y redoes while focus is inside the room.
@@ -179,8 +197,10 @@ export function SumiCanvas({ onSave }) {
     event.currentTarget.focus({ preventScroll: true });
     event.currentTarget.setPointerCapture(event.pointerId);
     const p = toPoint(event);
+    const rubbing = rubbingRef.current;
     live.current = {
       pointerId: event.pointerId,
+      rubbing,
       stroke: { color: ink.color, points: [{ x: p.x, y: p.y, w: brushSize * 0.4 }] },
       last: p,
       width: brushSize * 0.4,
@@ -194,6 +214,7 @@ export function SumiCanvas({ onSave }) {
     if (!ctx) return;
     const { width, height } = size.current;
     const events = event.nativeEvent.getCoalescedEvents?.() ?? [event.nativeEvent];
+    const rubbing = live.current?.rubbing ?? false;
 
     for (const raw of events) {
       const p = toPoint(raw);
@@ -207,7 +228,11 @@ export function SumiCanvas({ onSave }) {
       points.push({ x: p.x, y: p.y, w: current.width });
       current.last = p;
       // draw just the newest segment
-      drawStroke(ctx, { color: current.stroke.color, points: points.slice(-3) }, width, height);
+      if (rubbing) {
+        rubSegment(ctx, current.last, p, width, height, current.stroke.color);
+      } else {
+        drawStroke(ctx, { color: current.stroke.color, points: points.slice(-3) }, width, height);
+      }
     }
     ctx.globalAlpha = 1;
   }
