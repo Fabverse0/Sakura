@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { InkFilters } from "./components/InkFilters.jsx";
 import { ShojiDoors } from "./components/ShojiDoors.jsx";
 import { sections } from "./data/sections.js";
@@ -6,6 +6,7 @@ import { useActiveSection } from "./hooks/useActiveSection.js";
 import { useGuidedRoute } from "./hooks/useGuidedRoute.js";
 import { useAmbience } from "./hooks/useAmbience.js";
 import { useHanko } from "./hooks/useHanko.js";
+import { useShortcuts } from "./hooks/useShortcuts.js";
 import { useJournal } from "./hooks/useJournal.js";
 import { useNightMode } from "./hooks/useNightMode.js";
 import { usePauseTimer } from "./hooks/usePauseTimer.js";
@@ -47,6 +48,11 @@ export default function App() {
   const journal = useJournal();
   const hanko = useHanko();
   const night = useNightMode();
+  const shortcutActions = useMemo(
+    () => ({ __night: () => night.toggle(), __help: () => setIsRoomsOpen(true) }),
+    [night],
+  );
+  useShortcuts(shortcutActions);
   const sound = useAmbience(night.isNight);
   const openRooms = useCallback(() => setIsRoomsOpen(true), []);
 
