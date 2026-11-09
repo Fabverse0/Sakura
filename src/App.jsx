@@ -23,6 +23,8 @@ import { Palette } from "./sections/Palette.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
 import { BackToTop } from "./components/BackToTop.jsx";
+import { ResumeNotice } from "./components/ResumeNotice.jsx";
+import { useResumePosition } from "./hooks/useResumePosition.js";
 import { RoomDots } from "./components/RoomDots.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
@@ -47,6 +49,7 @@ export default function App() {
   const route = useGuidedRoute(changeView);
   const pause = usePauseTimer();
   const activeSection = useActiveSection(sectionIds);
+  const resume = useResumePosition(activeSection);
   const journal = useJournal();
   const hanko = useHanko();
   const night = useNightMode();
@@ -89,6 +92,7 @@ export default function App() {
         activeId={activeSection}
       />
       <RoomDots activeId={activeSection} />
+      <ResumeNotice target={resume.target} />
       <ScrollBeam
         activeId={activeSection}
         onOpenRooms={openRooms}
