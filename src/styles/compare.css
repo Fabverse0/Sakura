@@ -1,0 +1,140 @@
+.compare {
+  margin-top: 56px;
+}
+
+.compare__picks {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.compare__pick {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: color-mix(in srgb, var(--ivory) 78%, transparent);
+  font-size: var(--type-label);
+  font-weight: 600;
+}
+
+.compare__pick select {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid color-mix(in srgb, var(--ivory) 35%, transparent);
+  background: var(--ink-700);
+  color: var(--ivory);
+  font-family: inherit;
+  font-size: 18px;
+}
+
+.compare__stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 21 / 9;
+  background: var(--ink-900);
+  cursor: ew-resize;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.compare__layer,
+.compare__right {
+  position: absolute;
+  inset: 0;
+}
+
+.compare__layer {
+  background-position: 50% 45%;
+  background-size: cover;
+}
+
+.compare__tint {
+  position: absolute;
+  inset: 0;
+}
+
+.compare__tag {
+  position: absolute;
+  bottom: 18px;
+  z-index: 2;
+  padding: 6px 14px;
+  background: rgb(15 16 19 / 72%);
+  color: var(--ivory);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.compare__tag--left {
+  left: 18px;
+}
+
+.compare__tag--right {
+  right: 18px;
+}
+
+/* Divider: a timber stile with a grip */
+.compare__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 14px;
+  background-color: var(--rail-base);
+  background-image: url("../../assets/plates/shoji-post.png");
+  background-size: 14px 120px;
+  box-shadow: 0 0 22px rgb(0 0 0 / 55%);
+  translate: -50% 0;
+}
+
+.compare__grip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--ivory);
+  background: var(--maple);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 50%);
+  translate: -50% -50%;
+  transition: scale var(--dur-state) var(--ease-out);
+}
+
+.compare__grip::before,
+.compare__grip::after {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--ivory);
+  content: "";
+}
+
+.compare__grip::before {
+  left: 8px;
+  border-left: 2px solid var(--ivory);
+  rotate: -45deg;
+  translate: 0 -50%;
+}
+
+.compare__grip::after {
+  right: 8px;
+  border-right: 2px solid var(--ivory);
+  rotate: 45deg;
+  translate: 0 -50%;
+}
+
+.compare__stage[data-dragging="true"] .compare__grip,
+.compare__handle:focus-visible .compare__grip {
+  scale: 1.15;
+}
+
+.compare__handle:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+@media (forced-colors: active) {
+  .compare__handle {
+    border: 2px solid CanvasText;
+  }
+}
