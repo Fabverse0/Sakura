@@ -73,3 +73,12 @@ describe("palette export", () => {
     expect(text.split("\n")).toEqual(["Sumi\t#1E1A22", "Maple\t#A62728"]);
   });
 });
+
+import { roomLink } from "../lib/share-link.js";
+
+describe("room links", () => {
+  it("points at a room and drops any old hash", () => {
+    expect(roomLink("https://example.com/sakura/#lensa", "haiku")).toBe("https://example.com/sakura/#haiku");
+    expect(roomLink("https://example.com/", "")).toBe("https://example.com/");
+  });
+});
