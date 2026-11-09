@@ -1,0 +1,54 @@
+.room-dots {
+  position: fixed;
+  top: 50%;
+  left: 18px;
+  z-index: 40;
+  translate: 0 -50%;
+}
+
+.room-dots__list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.room-dots__dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: 1px solid color-mix(in srgb, var(--ivory) 55%, transparent);
+  background: transparent;
+  transition:
+    background-color var(--dur-feedback) ease,
+    scale var(--dur-state) var(--ease-out);
+}
+
+.room-dots__dot:hover {
+  background: color-mix(in srgb, var(--ivory) 40%, transparent);
+}
+
+.room-dots__dot[aria-current="location"] {
+  border-color: var(--maple-rule);
+  background: var(--maple-rule);
+  scale: 1.35;
+}
+
+.room-dots__dot:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Narrow screens already have the Ruang menu; the dots would crowd the content. */
+@media (max-width: 1100px) {
+  .room-dots {
+    display: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .room-dots__dot[aria-current="location"] {
+    outline: 2px solid Highlight;
+  }
+}

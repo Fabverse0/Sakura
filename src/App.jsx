@@ -22,6 +22,7 @@ import { NavPanel } from "./sections/NavPanel.jsx";
 import { Palette } from "./sections/Palette.jsx";
 import { PanoramaDetails } from "./sections/PanoramaDetails.jsx";
 import { PauseExperience } from "./sections/PauseExperience.jsx";
+import { RoomDots } from "./components/RoomDots.jsx";
 import { ScrollBeam } from "./sections/ScrollBeam.jsx";
 import { Seasons } from "./sections/Seasons.jsx";
 import { SiteFooter } from "./sections/SiteFooter.jsx";
@@ -86,6 +87,7 @@ export default function App() {
         onClose={() => setIsRoomsOpen(false)}
         activeId={activeSection}
       />
+      <RoomDots activeId={activeSection} />
       <ScrollBeam
         activeId={activeSection}
         onOpenRooms={openRooms}
