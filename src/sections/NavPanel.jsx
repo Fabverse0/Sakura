@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import shojiPaper from "../../assets/plates/shoji-paper.png";
 import { Icon } from "../components/Icon.jsx";
+import { roomLink } from "../lib/share-link.js";
 import { shortcuts } from "../data/shortcuts.js";
 import { sectionHref, sections } from "../data/sections.js";
 
@@ -8,6 +9,27 @@ import { sectionHref, sections } from "../data/sections.js";
  * "Ruang": a shoji panel that slides in from the right as a modal <dialog>.
  * Lists every room of the page with a one-line summary.
  */
+function CopyRoomLink({ activeId }) {
+  const [copied, setCopied] = useState(false);
+  async function copy() {
+    const url = roomLink(window.location.href, activeId);
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2200);
+    } catch {
+      setCopied(false);
+    }
+  }
+  return (
+    <div className="nav-panel__share">
+      <button className="room-button room-button--quiet" type="button" onClick={copy}>
+        {copied ? "Tautan disalin" : "Salin tautan ruang ini"}
+      </button>
+    </div>
+  );
+}
+
 export function NavPanel({ isOpen, onClose, activeId }) {
   const dialogRef = useRef(null);
 
@@ -57,6 +79,8 @@ export function NavPanel({ isOpen, onClose, activeId }) {
             ))}
           </ol>
         </nav>
+
+        <CopyRoomLink activeId={activeId} />
 
         <div className="nav-panel__keys">
           <h3 className="nav-panel__keys-title">Pintasan keyboard</h3>
