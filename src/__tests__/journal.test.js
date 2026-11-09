@@ -64,3 +64,17 @@ describe("journal editing", () => {
     expect(updated[0].text).toHaveLength(maxNoteLength);
   });
 });
+
+import { relativeTime } from "../lib/journal.js";
+
+describe("relative journal time", () => {
+  const now = 1_000_000_000_000;
+  it("says just now for the last minute", () => {
+    expect(relativeTime(now - 20_000, now)).toBe("baru saja");
+  });
+
+  it("uses hours and days for recent notes", () => {
+    expect(relativeTime(now - 2 * 3600_000, now)).toMatch(/2 jam/);
+    expect(relativeTime(now - 26 * 3600_000, now)).toMatch(/kemarin|1 hari/);
+  });
+});
