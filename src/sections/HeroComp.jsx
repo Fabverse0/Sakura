@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { WaterRipples } from "../components/WaterRipples.jsx";
 import { Lantern } from "../components/Lantern.jsx";
 import { Particles } from "../components/Particles.jsx";
+import { usePointerParallax } from "../hooks/usePointerParallax.js";
 import { useInView } from "../hooks/useInView.js";
 import topTimber from "../../assets/plates/top-charred-timber.png";
 import railTimber from "../../assets/plates/view-rail-timber.png";
@@ -21,6 +22,7 @@ const petals = createPetals();
  */
 export function HeroComp({ activeView, onSelectView, onOpenRooms, isNight = false }) {
   const heroRef = useRef(null);
+  usePointerParallax(heroRef);
   const isHeroVisible = useInView(heroRef);
   const selectedView = findView(activeView);
   const activeOrigin = selectedView?.origin ?? "50% 50%";

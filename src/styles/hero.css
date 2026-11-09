@@ -798,3 +798,27 @@
     height: 30%;
   }
 }
+
+/* Depth: layers drift by different amounts. The `translate` property is used
+   so the focus zoom (`transform`) keeps working independently. */
+.panorama-art {
+  translate: calc(var(--px, 0) * -9px) calc(var(--py, 0) * -5px);
+}
+
+.petals,
+.hero-lantern {
+  translate: calc(var(--px, 0) * 16px) calc(var(--py, 0) * 9px);
+}
+
+.hero-headline {
+  translate: calc(var(--px, 0) * 4px) calc(var(--py, 0) * 2px);
+}
+
+@media (max-width: 1100px) {
+  .panorama-art,
+  .petals,
+  .hero-lantern,
+  .hero-headline {
+    translate: none;
+  }
+}
