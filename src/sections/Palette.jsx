@@ -4,6 +4,8 @@ import { useToast } from "../components/Toast.jsx";
 import { useClipboard } from "../hooks/useClipboard.js";
 import { labelColorFor, palette } from "../data/palette.js";
 import { paletteAsText } from "../lib/palette.js";
+import { nextTone } from "../lib/tone.js";
+import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import { panoramaAt } from "../data/panorama.js";
 
 /**
@@ -12,6 +14,7 @@ import { panoramaAt } from "../data/panorama.js";
  */
 export function Palette() {
   const [current, setCurrent] = useState(palette[1]);
+  const [tone, setTone] = useLocalStorage("sakura:palet-latar", "paper", (v) => ["paper", "ivory", "mist"].includes(v));
   const copy = useClipboard();
   const { show } = useToast();
 
@@ -28,7 +31,7 @@ export function Palette() {
   }
 
   return (
-    <section className="room room--paper palette" id="palet" aria-labelledby="palette-title">
+    <section className={`room room--${tone === "paper" ? "paper" : tone === "ivory" ? "ivory" : "mist"} palette`} id="palet" aria-labelledby="palette-title">
       <div className="room__inner">
         <div className="room__head">
           <h2 className="room__title" id="palette-title">
@@ -68,6 +71,9 @@ export function Palette() {
           </figure>
 
           <div className="palette__toolbar">
+            <button className="room-button room-button--quiet" type="button" onClick={() => setTone(nextTone(tone))}>
+              Ganti latar
+            </button>
             <button className="room-button room-button--quiet" type="button" onClick={handleCopyAll}>
               Salin seluruh palet
             </button>
