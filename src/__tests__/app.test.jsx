@@ -25,6 +25,7 @@ describe("App", () => {
       /Jeda napas/,
       /Jurnal pandang/,
       /Kanvas sumi/,
+      /Koleksi cap/,
     ]) {
       expect(screen.getByRole("heading", { level: 2, name })).toBeTruthy();
     }

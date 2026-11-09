@@ -12,6 +12,7 @@ import { usePauseTimer } from "./hooks/usePauseTimer.js";
 import { useViewTransition } from "./hooks/useViewTransition.js";
 import { Finder } from "./sections/Finder.jsx";
 import { GuidedRoute } from "./sections/GuidedRoute.jsx";
+import { HankoBoard } from "./sections/HankoBoard.jsx";
 import { Haiku } from "./sections/Haiku.jsx";
 import { HeroComp } from "./sections/HeroComp.jsx";
 import { Journal } from "./sections/Journal.jsx";
@@ -115,6 +116,7 @@ export default function App() {
           onNote={() => hanko.award("catatan")}
         />
         <SumiCanvas onSave={() => hanko.award("tinta")} />
+        <HankoBoard earned={hanko.earned} />
       </main>
 
       <SiteFooter />

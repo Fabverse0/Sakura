@@ -14,6 +14,7 @@ export const sections = [
   { id: "pause-experience", label: "Jeda", summary: "Tiga tarikan napas selama 30 detik." },
   { id: "jurnal", label: "Jurnal", summary: "Catatan pribadi yang tersimpan di peramban." },
   { id: "kanvas", label: "Kanvas", summary: "Melukis bebas dengan tinta sumi." },
+  { id: "koleksi", label: "Cap", summary: "Cap yang kamu kumpulkan dari tiap ruang." },
 ];
 
 export function sectionHref(id) {
