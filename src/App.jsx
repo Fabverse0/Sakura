@@ -92,6 +92,7 @@ export default function App() {
         isOpen={isRoomsOpen}
         onClose={() => setIsRoomsOpen(false)}
         activeId={activeSection}
+        contrast={contrast}
       />
       <RoomDots activeId={activeSection} />
       <ResumeNotice target={resume.target} />
