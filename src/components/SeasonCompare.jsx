@@ -11,8 +11,14 @@ export function SeasonCompare({ leftId = "semi", rightId = "dingin", onChange })
   const stageRef = useRef(null);
   const [position, setPosition] = useState(50);
   const [dragging, setDragging] = useState(false);
+  const isDragging = useRef(false);
   const left = findSeason(leftId);
   const right = findSeason(rightId);
+
+  function stop() {
+    isDragging.current = false;
+    setDragging(false);
+  }
 
   function move(event) {
     setPosition(percentFromPointer(event.clientX, stageRef.current.getBoundingClientRect()));
@@ -65,12 +71,13 @@ export function SeasonCompare({ leftId = "semi", rightId = "dingin", onChange })
         data-dragging={dragging}
         onPointerDown={(event) => {
           event.currentTarget.setPointerCapture(event.pointerId);
+          isDragging.current = true;
           setDragging(true);
           move(event);
         }}
-        onPointerMove={(event) => dragging && move(event)}
-        onPointerUp={() => setDragging(false)}
-        onPointerCancel={() => setDragging(false)}
+        onPointerMove={(event) => isDragging.current && move(event)}
+        onPointerUp={stop}
+        onPointerCancel={stop}
       >
         {layer(left)}
         <span className="compare__right" style={{ clipPath: `inset(0 0 0 ${position}%)` }}>
