@@ -61,3 +61,15 @@ describe("reading progress", () => {
     expect(readPercent(0, 500, 900)).toBe(100);
   });
 });
+
+import { paletteAsText } from "../lib/palette.js";
+
+describe("palette export", () => {
+  it("lists every colour once, one per line", () => {
+    const text = paletteAsText([
+      { name: "Sumi", hex: "#1e1a22" },
+      { name: "Maple", hex: "#a62728" },
+    ]);
+    expect(text.split("\n")).toEqual(["Sumi\t#1E1A22", "Maple\t#A62728"]);
+  });
+});
