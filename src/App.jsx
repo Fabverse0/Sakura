@@ -57,11 +57,11 @@ export default function App() {
 
   function selectView(viewId, returnToPanorama = false) {
     changeView(viewId);
-    setSeenViews((current) => {
-      const next = new Set(current).add(viewId);
+    if (!seenViews.has(viewId)) {
+      const next = new Set(seenViews).add(viewId);
+      setSeenViews(next);
       if (next.size >= 3) hanko.award("fokus");
-      return next;
-    });
+    }
     route.reset();
     if (returnToPanorama) {
       document.getElementById("panorama")?.scrollIntoView({ block: "start" });
